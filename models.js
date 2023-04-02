@@ -16,7 +16,7 @@ async function main(){
 
     //_id is automatically created
     const familySchema = new mongoose.Schema({
-        name: String,
+        name: String, //can add family nickname
         members: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
         events: [{type: mongoose.Schema.Types.ObjectId, ref: 'Event'}],
         posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}] //for public posts
