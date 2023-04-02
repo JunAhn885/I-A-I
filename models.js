@@ -1,0 +1,49 @@
+import mongoose from 'mongoose';
+
+import { MONGODB_USERNAME, MONGODB_PASSWORD } from './credentials.js';
+
+let models = {};
+
+async function main(){
+    try{
+        let url = "mongodb+srv://"+ MONGODB_USERNAME + ":"+ MONGODB_PASSWORD + "@mvpcluster.drilqih.mongodb.net/test"
+        console.log("Connecting to MongoDB...");
+        await mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
+        console.log('Connected to MongoDB');
+    } catch(err) {
+        console.log("could not connect to MongoSB", err);
+    }
+
+    //_id is automatically created
+    const familySchema = new mongoose.Schema({
+        name: String,
+        members: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+        events: [{type: mongoose.Schema.Types.ObjectId, ref: 'Event'}],
+        posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}] //for public posts
+    })
+
+    const userSchema = new mongoose.Schema({
+        username: String, //get from google auth
+        post: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}], //for private posts
+        DateCreated: Date,
+    })
+
+    // for family log
+    const eventSchema = new mongoose.Schema({
+        postedBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+        title: String,
+        date: Date,
+        location: String,
+        media: String, //url
+        description: String,
+    })
+
+    const postSchema = new mongoose.Schema({
+        postedBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+        title: String,
+        date: Date,
+        content: String,
+        emoji: String,
+    })
+
+}
