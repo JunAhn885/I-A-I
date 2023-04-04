@@ -46,4 +46,14 @@ async function main(){
         emoji: String,
     })
 
+    models.Family = mongoose.model('Family', familySchema);
+    console.log("Family model created");
+    models.User = mongoose.model('User', userSchema);
+    console.log("User model created");
+    models.Event = mongoose.model('Event', eventSchema);
+    console.log("Event model created");
+    models.Post = mongoose.model('Post', postSchema);
+    console.log("Post model created");
 }
+
+export default models;
