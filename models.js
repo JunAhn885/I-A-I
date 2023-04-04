@@ -24,6 +24,7 @@ async function main(){
 
     const userSchema = new mongoose.Schema({
         username: String, //get from google auth
+        family: {type: mongoose.Schema.Types.ObjectId, ref: 'Family'},
         post: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}], //for private posts
         DateCreated: Date,
     })
@@ -40,6 +41,7 @@ async function main(){
 
     const postSchema = new mongoose.Schema({
         postedBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+        family: {type: mongoose.Schema.Types.ObjectId, ref: 'Family'},
         title: String,
         date: Date,
         content: String,
