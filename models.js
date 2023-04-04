@@ -55,5 +55,4 @@ async function main(){
     models.Post = mongoose.model('Post', postSchema);
     console.log("Post model created");
 }
-
 export default models;
