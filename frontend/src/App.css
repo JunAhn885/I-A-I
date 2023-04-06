@@ -9,7 +9,17 @@ html, body {
   font-family: 'Helvetica Neue';
 }
 
-/*CSS for the Login Page*/
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/*CSS for the Login Page----------------------------*/
 .Login-Box {
   width: 699px;
   height: 504px;
@@ -60,4 +70,165 @@ html, body {
   font-weight: 200;
   font-size: 16px;
   margin-top: 10%;
+}
+
+/*CSS for the Landingpage----------------------------------------*/
+.Landingpage-Header {
+  width: 100%;
+  height: 600px;
+  background: #F2DBC5;
+  z-index: 0;
+}
+
+.Landingpage-Header > h1 {
+  margin-left: 10%;
+  color: #A1876F;
+  font-weight: 700;
+  font-size: 64px;
+  padding-top: 70px;
+  position: relative;
+  z-index: 2;
+}
+
+.Landingpage-Header > button {
+  position: absolute;
+  width: 291px;
+  height: 66px;
+  left: 10%;
+  top: 565px;
+  background: linear-gradient(179.05deg, #C9AC91 0.81%, #81644A 199.8%);
+  border: 3px dashed #483B2E;
+  border-radius: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  color:#FFFEFC;
+  z-index: 2;
+}
+
+.header-content{
+  position: relative;
+  width: 675px;
+  height: 166px;
+  inline-size: 750px;
+  overflow-wrap: break-word;
+  margin-left: 10%;
+  color: #81644A;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  margin-top:200px;
+  z-index: 2;
+}
+
+.Landingpage-Box1, .Landingpage-Box2, .Landingpage-Box3{
+  width: 80%;
+  height: 850px;
+  background: linear-gradient(108.52deg, rgba(255, 254, 252, 0.5) 2.73%, rgba(255, 224, 177, 0.475) 50.33%, rgba(253, 253, 253, 0.5) 98.36%);
+  opacity: 1.0;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(25px);
+  border-radius: 53px;
+  margin: auto;
+  margin-bottom: 10%;
+}
+
+.Box1-content, .Box2-content, .Box3-content {
+  color: #81644A;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 80px;
+  overflow-wrap: break-word;
+}
+
+.Landingpage-Box1 {
+  margin-top: 10%;
+}
+
+.Box1-content {
+  text-align: right;
+  margin-right: 50px;
+  position: absolute;
+  inline-size: 950px;
+  right: 50px;
+  top: 50px;
+}
+
+.Landingpage-Box1 > img {
+  position: absolute;
+  width: 1200px;
+  height: 1600px;
+  top:-30%;
+  left:-10%
+}
+
+.Box2-content {
+  text-align: left;
+  margin-left: 50px;
+  position: absolute;
+  inline-size: 1050px;
+  left: 50px;
+  top: 70px;
+}
+
+.Landingpage-Box2 > img {
+  position: absolute;
+  width: 1200px;
+  height: 1600px;
+  top:-40%;
+  right:-5%;
+}
+
+.Box3-content {
+  text-align: right;
+  margin-right: 50px;
+  position: absolute;
+  inline-size: 1200px;
+  right: 50px;
+  top: 70px;
+}
+
+.Landingpage-Box3 > img {
+  position: absolute;
+  width: 500px;
+  height: 1600px;
+  top:-30%;
+  left:60px
+}
+
+.small-bean{
+  position:absolute;
+  right: 15%;
+  top:12%;
+  z-index: 2;
+}
+
+.large-bean{
+  position:absolute;
+  right:16%;
+  top:22%;
+  z-index: 2;
+}
+
+.plant-pot{
+  position:absolute;
+  right:10%;
+  top: 27.49%
+}
+
+.mark-left{
+  position:absolute;
+  left:0;
+  top: 0;
+  width:600px;
+  z-index: 1;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(248deg) brightness(106%) contrast(106%);
+}
+
+.mark-right-top{
+  position:absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(248deg) brightness(106%) contrast(106%);
 }
