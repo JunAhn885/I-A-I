@@ -2,12 +2,18 @@
   text-align: center;
 }
 
-html, body {
-  width: 100%;
+html{
   min-height: 100%;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background: conic-gradient(from 169.99deg at 38.79% 56.55%, #DDC3B0 -39.44deg, #E6D2F7 48.14deg, #C4F4EF 132.64deg, #C6E3D9 171.28deg, #DDC3B0 320.56deg, #E6D2F7 408.14deg);
   font-family: 'Helvetica Neue';
-  background-size: cover; 
+  background-size: cover;
 }
 
 * {
@@ -236,4 +242,119 @@ html, body {
   top: 0;
   z-index: 1;
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(248deg) brightness(106%) contrast(106%);
+}
+
+/*CSS for the navbar-----------------------------*/
+.navbar{
+  display:flex;
+  position: absolute;
+  right: 50px;
+  top:100px;
+  list-style: none;
+}
+
+.navbar li {
+  margin-right: 30px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  color: #797979;
+}
+
+/*CSS for the emotion post page---------------------------------*/
+.emotion-post > .content-box {
+  margin: auto;
+  margin-top: 200px;
+  width: 1055px;
+  height: 967px;
+  left: 110px;
+  top: 133px;
+  background: rgba(253, 253, 253, 0.6);
+  border: 10px solid #CDBBA2;
+  backdrop-filter: blur(25px);
+  border-radius: 30px; 
+} 
+
+.emotion-post > .content-box > h1, h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 49px;
+  color: #AC9C86;
+  margin-left: 80px;
+}
+
+.emotion-post > .content-box > h1 {
+  margin-top: 60px;
+  width:20ch;
+}
+
+.emotion-post > .content-box > h2{
+  position: absolute;
+  right: 70px;
+  top:20px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+}
+
+.emotion-post > .content-box > h3 {
+  margin-top: 60px;
+}
+
+.emotion-post > .content-box > button {
+  width: 157px;
+  height: 78px;
+  border-radius: 10px;
+}
+
+.cancel-button, .post-button {
+  position: absolute;
+  left: 767px;
+}
+
+.cancel-button {
+  top: 648px;
+  background: #DBD3C9;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  color:#AC9C86;
+}
+
+.post-button {
+  background: #AC9C86;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  color:#FFFFFF;
+  top: 753px;
+}
+
+.emotion-post-input{
+  width: 652px;
+  height: 399px;
+  background: #DBD3C9;
+  margin-left: 80px;
+  margin-top: 20px;
+}
+
+.emotion-box {
+  display: flex;
+  margin-left: 80px;
+  margin-top: 30px;
+}
+
+.emotion {
+  margin-right: 40px;
+  text-align: center;
+}
+
+.emotion-name {
+  color:#706455;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
 }

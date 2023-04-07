@@ -6,7 +6,10 @@ import EmotionPost from './pages/emotionPost';
 
 function App() {
   return (
-    <EmotionPost/>
+    <EmotionPost 
+      name="John"
+      pageName="Emotion Post"
+    />
   );
 }
 
