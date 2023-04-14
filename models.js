@@ -48,7 +48,7 @@ async function main(){
         title: String,
         date: Date,
         content: String,
-        emoji: Number,
+        emoji: String,
     })
 
     models.Family = mongoose.model('Family', familySchema);
