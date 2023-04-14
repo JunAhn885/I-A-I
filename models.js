@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import { MONGODB_USERNAME, MONGODB_PASSWORD } from './credentials.js';
 
 let models = {};
+main().catch((error) => console.log(error));
 
 async function main(){
     try{
@@ -11,7 +12,7 @@ async function main(){
         await mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
         console.log('Connected to MongoDB');
     } catch(err) {
-        console.log("could not connect to MongoSB", err);
+        console.log("could not connect to MongoDB", err);
     }
 
     //_id is automatically created
@@ -24,6 +25,8 @@ async function main(){
 
     const userSchema = new mongoose.Schema({
         username: String, //get from google auth
+        password: String, //hash the password before saving to db
+        family: {type: mongoose.Schema.Types.ObjectId, ref: 'Family'},
         post: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}], //for private posts
         DateCreated: Date,
     })
@@ -40,6 +43,8 @@ async function main(){
 
     const postSchema = new mongoose.Schema({
         postedBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+        family: {type: mongoose.Schema.Types.ObjectId, ref: 'Family'},
+        type: String, //emotion or gratitude
         title: String,
         date: Date,
         content: String,
