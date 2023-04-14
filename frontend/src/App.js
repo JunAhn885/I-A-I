@@ -6,11 +6,13 @@ import EmotionPost from './pages/emotionPost';
 
 function App() {
   return (
+    
     <EmotionPost 
       name="John"
       pageName="Emotion Post"
     />
-  );
+    
+    );
 }
 
 export default App;
