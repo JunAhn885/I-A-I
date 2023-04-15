@@ -1,0 +1,239 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url("./../../fonts/Helvetica\ Neu\ Bold.ttf");
+}
+@font-face {
+  font-family: myyLightFont;
+  src: url("./../../fonts/HelveticaNeue\ Light.ttf");
+}
+.addLogTop {
+  background: rgba(253, 253, 253, 0.5);
+  backdrop-filter: blur(25px);
+  width: 100%;
+  width: 90%;
+  margin: auto;
+  padding: 59px 0px 19px 0px;
+  border-radius: 30px;
+  border: 10px solid #ffb06b;
+  position: relative;
+
+  margin-bottom: 50px;
+}
+
+.addLogTop .pageName {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 326.01px;
+  height: 63px;
+  background: #ffb06b;
+  border-radius: 0px 20px 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.addLogTop .pageName h1 {
+  font-family: myFirstFont;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  margin-top: -8px;
+  line-height: 29px;
+  color: #ffffff;
+}
+.addLogTop .addMainContent {
+  padding: 28px 57px;
+  width: 100%;
+  margin: auto;
+}
+.addLogTop .addMainContent label {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  display: block;
+  line-height: 49px;
+  font-family: myFirstFont;
+  color: #ffb06b;
+  margin-bottom: 16px;
+}
+.addLogTop .addMainContent input {
+  background: #f8e1cd;
+  box-shadow: 5px 5px 10px #ffb06b, 5px 5px 10px #ffb06b, 5px 5px 10px #ffb06b;
+  border-radius: 20px;
+  max-width: 748px;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 83px;
+  padding: 0px 20px;
+  margin-bottom: 20px;
+}
+.addLogTop .addMainContent .datePicker {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.addLogTop .addMainContent .datePicker .date {
+  background: #ffffff;
+  border: 5px dashed #81644a;
+  border-radius: 16px;
+  max-width: 353px;
+  width: 100%;
+  height: auto;
+  margin-right: 58px;
+}
+.addLogTop .addMainContent .datePicker .timePicker {
+  display: flex;
+  align-items: center;
+}
+.addLogTop .addMainContent .datePicker .timePicker .left,
+.addLogTop .addMainContent .datePicker .timePicker .right {
+  display: flex;
+  align-items: center;
+}
+.addLogTop .addMainContent .datePicker .timePicker .left .card,
+.addLogTop .addMainContent .datePicker .timePicker .right .card {
+  background: linear-gradient(
+    103.99deg,
+    #ffb06b 4.84%,
+    rgba(246, 246, 215, 0.49) 108.55%
+  );
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65.31px;
+  height: 83px;
+}
+.addLogTop .addMainContent .datePicker .timePicker .left .card p,
+.addLogTop .addMainContent .datePicker .timePicker .right .card p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 49px;
+  color: #81644a;
+  font-family: myyLightFont;
+}
+.addLogTop .addMainContent .datePicker .timePicker .left h1,
+.addLogTop .addMainContent .datePicker .timePicker .right h1 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 39px;
+  margin: 0px 6px;
+  font-family: myyLightFont;
+  color: #81644a;
+}
+.addLogTop .addMainContent .datePicker .lineDot {
+  margin: 0px 6px;
+}
+.addLogTop .addMainContent textarea {
+  background: #f8e1cd;
+  box-shadow: 5px 5px 10px #ffb06b, 5px 5px 10px #ffb06b, 5px 5px 10px #ffb06b;
+  border-radius: 20px;
+  max-width: 748px;
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 235px;
+  padding: 20px;
+  margin-bottom: 69px;
+  resize: none;
+}
+.addLogTop .addMainContent .btns {
+  display: flex;
+  align-items: center;
+}
+.addLogTop .addMainContent .btns .cancel {
+  background: #f8e1cd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 219px;
+  height: 78px;
+  margin-right: 62px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 49px;
+  font-family: myyLightFont;
+  color: #ffb06b;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+.addLogTop .addMainContent .btns .create {
+  background: #ffb06b;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 219px;
+  height: 78px;
+  font-style: normal;
+  font-family: myyLightFont;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 49px;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width:992px){
+  .addLogTop .pageName h1{
+font-size: 24px;
+  }
+  .addLogTop .pageName{
+    width: 236px;
+  }
+  .addLogTop .addMainContent{
+    padding: 28px;
+  }
+
+  .addLogTop .addMainContent input{
+    width: 100%;
+    height: 59px;
+  }
+  .addLogTop .addMainContent .datePicker{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .addLogTop .addMainContent .datePicker .date{
+    margin-bottom: 24px;
+  }
+  .addLogTop .addMainContent .datePicker .timePicker .left .card,
+.addLogTop .addMainContent .datePicker .timePicker .right .card {
+  width: 50px;
+  height: 60px;
+  
+}
+.addLogTop .addMainContent .datePicker .timePicker .left .card p,
+.addLogTop .addMainContent .datePicker .timePicker .right .card p{
+  font-size: 12px;
+}
+}
+@media only screen and (max-width:692px){
+  .addLogTop {
+    border:  5px solid #ffb06b;
+  }
+  .addLogTop .addMainContent{
+    padding: 10px;
+  }
+  .addLogTop .addMainContent .btns .cancel,
+  .addLogTop .addMainContent .btns .create{
+    width: 49%;
+    font-size: 24px;
+    height: 48px;
+    line-height: 39px;
+  }
+  .addLogTop .addMainContent label{
+    font-size: 24px;
+  }
+
+}
