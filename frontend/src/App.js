@@ -5,12 +5,14 @@ import Login from './pages/login';
 import EmotionPost from './pages/emotionPost';
 
 function App() {
+  // "/api/event/"
   return (
-    <EmotionPost 
+    <LandingPage/>
+    /*<EmotionPost 
       name="John"
       pageName="Emotion Post"
     />
-    
+    */
     );
 }
 

@@ -1,0 +1,305 @@
+:root {
+  --pointy: 20px;
+  --padding: 1rem;
+  --fontsize: 1rem;
+}
+@font-face {
+  font-family: myFirstFont;
+  src: url("./../../fonts/Helvetica\ Neu\ Bold.ttf");
+}
+@font-face {
+  font-family: myyLightFont;
+  src: url("./../../fonts/HelveticaNeue\ Light.ttf");
+}
+/* .tp-dfwv {
+  top: 56%;
+  cursor: pointer;
+} */
+.familyLogTop .rowTop .right .years .arrow:hover {
+  color: red;
+}
+.familyLogTop .rowTop .right .years .arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffe8d5;
+  cursor: pointer;
+  width: 176.5px;
+  height: 60px;
+  cursor: pointer;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+}
+.familyLogTop .rowTop .right .years .arrowActive {
+  background: #ffd3ac;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 99px;
+  width: 228px;
+}
+.familyLogTop .rowTop .right .years .arrowActive p{
+  font-weight: 500;
+font-size: 36px;
+line-height: 44px;
+}
+/* .familyLogTop .rowTop .right .years .arrow:hover {
+
+  background: #ffd3ac;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+} */
+.familyLogTop .rowTop .right .years .arrow p {
+  display: block;
+  font-size: var(--fontsize);
+  text-decoration: none;
+  padding: var(--padding);
+  color: white;
+  text-align: center;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 29px;
+  color: #bc7435;
+}
+
+.familyLogTop .rowTop .right .years .arrow {
+  width: 176.5px;
+  cursor: pointer;
+  clip-path: polygon(
+    0 0%,
+    calc(100% - var(--pointy)) 0,
+    100% 50%,
+    calc(100% - var(--pointy)) 100%,
+    0 100%,
+    var(--pointy) 50%
+  );
+}
+.familyLogTop {
+  background: rgba(253, 253, 253, 0.5);
+  backdrop-filter: blur(25px);
+  width: 100%;
+  width: 90%;
+  padding-bottom: 30px;
+  margin: auto;
+  border-radius: 30px;
+  margin-bottom: 100px;
+}
+
+.familyLogTop .rowTop {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.familyLogTop .rowTop .left {
+  width: 330px;
+  z-index: 1;
+}
+.familyLogTop .rowTop .left img {
+  width: 103%;
+  margin-right: -3%;
+  z-index: 99;
+}
+.familyLogTop .rowTop .right {
+  width: calc(100% - 300px);
+  margin-bottom: -55px;
+  /* z-index: -1; */
+}
+
+.familyLogTop .rowTop .right img {
+  width: 100%;
+  z-index: -1;
+}
+.familyLogTop .rowTop .right .years {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0px 50px;
+  padding-bottom: 30px !important;
+
+  height: 140px;
+}
+.familyLogTop .rowTop .right .months {
+  height: 140px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 50px;
+}
+
+.familyLogTop .rowTop .right .months .tabs {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffe8d4;
+  border: 2px solid #bc7435;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  font-family: myyLightFont;
+  color: #000000;
+  cursor: pointer;
+}
+.familyLogTop .rowTop .right .months .findActive {
+  width: 46px;
+  height: 46px;
+}
+.familyLogTop .rowTop .right .months .activeMonths {
+  width: 46px;
+  height: 46px;
+
+  background: #ffd3ac;
+  border: 2px solid #bc7435;
+}
+
+.details {
+  width: 95%;
+  margin: auto;
+}
+.details .addLog {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.details .addLog a {
+  width: 100px;
+  height: 100px;
+  text-decoration: none;
+  border-radius: 50%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #ffb06b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Helvetica";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 64px;
+  cursor: pointer;
+  color: #ffffff;
+  margin-bottom: 22px;
+}
+.details .data {
+  width: 100%;
+  background: #ffd3ac;
+  border-radius: 20px;
+  padding: 40px 58px;
+  display: none;
+}
+.details .findActiveContent {
+  display: block;
+}
+.details .data .card {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.details .data .card .lineLeft {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 7px;
+  background: #bc7435;
+  border-radius: 4px;
+  height: 100%;
+}
+.details .data .card {
+  width: 100%;
+}
+.details .data .card .cardInner .pic {
+  margin-right: 20px;
+  width: 264px;
+  position: relative;
+  height: 160px;
+}
+.details .data .card .cardInner .pic img {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  bottom: 0px;
+}
+.details .data .card .cardInner .pic img:nth-child(1) {
+  transform: rotate(10deg);
+  right: -30px;
+}
+.details .data .card .cardInner {
+  width: 100%;
+  margin-left: 37px;
+  background: #ffb06b;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 27px 56px 27px 31px;
+  display: flex;
+  align-items: flex-start;
+}
+.details .data .card .cardInner .text {
+  width: calc(100% - 281px);
+}
+.details .data .card .cardInner .text h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  font-family: myFirstFont;
+  color: #ffffff;
+  /* margin-bottom: 16px; */
+}
+.details .data .card .cardInner .text h2 span {
+  font-size: 24px !important;
+  font-family: myyLightFont !important;
+}
+.details .data .card .cardInner .text p {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 29px;
+  font-family: myyLightFont;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.details .data .upcoming {
+  margin: 18px 0px;
+  display: flex;
+  align-items: center;
+}
+.details .data .upcoming .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 20px;
+  background: #bc7435;
+}
+.details .data .upcoming .textUpcoming {
+  width: 100%;
+}
+.details .data .upcoming .textUpcoming div {
+  width: 100%;
+  height: 1px;
+  position: relative;
+  background-color: #bc7435;
+}
+.details .data .upcoming .textUpcoming div p {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  color: #ffb06b;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: normal;
+  font-weight: 700;
+  top: -12px;
+  width: 120px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: myFirstFont;
+  color: #bc7435;
+  background: #ffd3ac;
+}
