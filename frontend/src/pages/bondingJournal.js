@@ -6,13 +6,13 @@ import 'react-calendar/dist/Calendar.css';
 import {useState} from 'react';
 import { Link } from "react-router-dom"
 
-
 const BondingJournal = (props) => {
     const journal = [
         {
             type:"Gratitude", 
             content: "Today, I am thankful for the way my wife challenges me to be my best self and pushes me to reach my goals.\
-            Their belief in me gives me the courage to keep going and continue to be a better mother. I feel empowered and loved!"},
+            Their belief in me gives me the courage to keep going and continue to be a better mother. I feel empowered and loved!"
+        },
         {
             type:"Emotion",
             content:"I just witnessed my baby’s first crawl, so cute,YAY!!",
@@ -25,9 +25,20 @@ const BondingJournal = (props) => {
             emotion:"./images/emotionPost/sad.svg"
         }
     ]
-    
+    // useState hook for the calendar
     const [value, setValue] = useState(new Date());
     
+    // iterate through the list received, check each object and if the type === Gratitude, return gratitudebox component, and if Emotion, return emotionbox component. If object is empty, print "No Notes to display, add more notes".
+    const boxElements = journal.map(item => {
+        if (item.type === "Gratitude"){
+            return <GratitudeBox content={item.content} />
+        } else if (item.type === "Emotion"){
+            return <EmotionBox content={item.content} emotion={item.emotion}/>
+        } else if (journal.length === 0){
+            return <p className="no-notes-display">No Notes to display, add more notes</p>
+        }
+    })
+
     return (
         <div className="bonding-journal">
             <Navbar/>
@@ -48,9 +59,7 @@ const BondingJournal = (props) => {
                     </div>
                 </div>
                 <div className="right-content">
-                    <GratitudeBox content={journal[0].content}/>
-                    <EmotionBox content={journal[1].content} emotion={journal[1].emotion}/>
-                    <EmotionBox content={journal[2].content} emotion={journal[2].emotion}/>
+                    {boxElements}
                 </div>
             </div>
         </div>
