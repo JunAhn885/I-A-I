@@ -98,7 +98,6 @@
   width: 100%;
   border: none;
   box-shadow: none;
-  padding: 10px 10px 40px 10px;
 }
 
 .editLogTop .editMainContent .messagearea .textarea img {
@@ -128,7 +127,6 @@
   outline: none;
   margin-left: 70px;
 }
-
 
 @media only screen and (max-width:992px){
   .editLogTop .pageName h1{

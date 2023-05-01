@@ -12,33 +12,3 @@ code {
     monospace;
 }
 
-.react-calendar__tile--active {
-  background: #81705D!important;
-  color: white;
-  border-radius: 50%!important;
-  width: 50px!important;
-  height: 50px!important;
-}
-
-.react-calendar__tile:hover{
-  border-radius: 50%!important;
-  width: 50px!important;
-  height: 50px!important;
-}
-.react-calendar button{
-  
-  padding: 20px 0px !important;
-  display: flex!important;
-  align-items: center!important;
-  justify-content: center!important;
-}
-.react-calendar{
-  border: none!important;
-}
-.react-calendar__tile--now{
-  background: #E4ECE7!important;
-  border-radius: 50%;
-  width: 50px!important;
-  height: 50px!important;
-  color: #000!important;
-}

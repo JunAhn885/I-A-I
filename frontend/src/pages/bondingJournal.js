@@ -6,6 +6,7 @@ import 'react-calendar/dist/Calendar.css';
 import {useState} from 'react';
 import { Link } from "react-router-dom"
 
+
 const BondingJournal = (props) => {
     const journal = [
         {
@@ -34,7 +35,7 @@ const BondingJournal = (props) => {
             <div className="content">
                 <div className="dimple"></div>
                 <div className="left-content">
-                    <div className="calendar">
+                    <div className="bonding-journal-calendar">
                         <Calendar onChange={setValue} value={value}/>
                     </div>
                     <div className="emotion-post-button">

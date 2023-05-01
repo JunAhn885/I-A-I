@@ -171,19 +171,13 @@ button:hover{
   margin-top: 10%;
 }
 
-
-
 .Landingpage-Box1 > img {
-  margin: 0px 40px;
+  margin: 0px 50px;
 }
-
-
 
 .Landingpage-Box2 > img {
-  margin: 0px 40px;
+  margin: 0px 60px;
 }
-
-
 
 .Landingpage-Box3 > img {
   width: 325px;
@@ -517,7 +511,15 @@ button:hover{
   justify-content: center;
   align-items: center;
   padding: 8px;
+  width: 353px;
 
+}
+
+.addlog-calendar {
+  margin-right: 50px;
+}
+
+.bonding-journal-calendar {
   position: absolute;
   width: 353px;
   margin-left: 60px;
