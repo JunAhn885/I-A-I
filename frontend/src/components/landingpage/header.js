@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function Header(){
     return(
         <div className="Landingpage-Header">
@@ -10,7 +12,7 @@ export default function Header(){
             <div className="header-content">
                 Grow your own beans with your partner Harvest with bonding and efficiency for a healthier family dynamic as new parents
             </div>
-            <button>Log in/Sign up</button>
+            <button><Link to="/login">Log in/Sign up</Link></button>
         </div>
     )
 }

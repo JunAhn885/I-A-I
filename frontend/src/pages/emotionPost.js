@@ -1,5 +1,6 @@
 import Navbar from "../components/shared/navbar";
 import Emotion from "../components/emotionPost/emotion";
+import { Link } from "react-router-dom"
 
 // props should include name, page name, and list of emotions and respective images
 export default function EmotionPost(props){
@@ -27,10 +28,6 @@ export default function EmotionPost(props){
         {
           emotionName:"Sad",
           emotionImageUrl:"./images/emotionPost/sad.svg"
-        },
-        {
-          emotionName:"Customize",
-          emotionImageUrl:"./images/emotionPost/custom.svg"
         }
     ]
     
@@ -40,17 +37,19 @@ export default function EmotionPost(props){
     
     return(
         <div className='emotion-post'>
-            <Navbar/>
             <div className='content-box'>
+              <Navbar/>
                 <h1>Hi, {props.name}, how are you feeling today?</h1>
-                <h2>{props.pageName}</h2>
+                <div className="tab-emotionpost">
+                  <h1>{props.pageName}</h1>
+                </div>
                 <div className='emotion-box'>
                     {emotionElements}
                 </div>
                 <h3>Record your thoughts</h3>
                 <input className="emotion-post-input" type="text"></input>
-                <button className="cancel-button">Cancel</button>
-                <button className="post-button">Post</button>
+                <button className="cancel-button-emotionpost"><Link to="/bonding-journal">Cancel</Link></button>
+                <button className="post-button-emotionpost"><Link to="/bonding-journal">Post</Link></button>
             </div>
         </div>
     )
