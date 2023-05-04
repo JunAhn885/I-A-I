@@ -44,7 +44,7 @@ const BondingJournal = (props) => {
             <Navbar/>
             <img src="./images/bondingjournal/beanbag.svg" alt="beanbag" className="beanbag"></img>
             <div className="content">
-                <div className="dimple"></div>
+                <div className="curve-box"></div>
                 <div className="left-content">
                     <div className="bonding-journal-calendar">
                         <Calendar onChange={setValue} value={value}/>
