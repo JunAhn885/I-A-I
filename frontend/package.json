@@ -27,6 +27,7 @@
       "react-app/jest"
     ]
   },
+  "homepage": "https://JunAhn885.github.io/my-app",
   "browserslist": {
     "production": [
       ">0.2%",
