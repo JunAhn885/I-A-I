@@ -51,6 +51,13 @@ const BondingJournal = (props) => {
         }
     })
 
+    // local storage for the selected date
+    const setDate = event => {
+        setValue(new Date())
+        const date = window.localStorage.setItem("date", event.target.value);
+        console.log(date)
+    }
+
     return (
         <div className="bonding-journal">
             <Navbar/>
