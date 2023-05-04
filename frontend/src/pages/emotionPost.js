@@ -1,6 +1,8 @@
 import Navbar from "../components/shared/navbar";
 import Emotion from "../components/emotionPost/emotion";
 import { Link } from "react-router-dom"
+import UserService from "../userSerivces"
+import {useState} from 'react';
 
 // props should include name, page name, and list of emotions and respective images
 export default function EmotionPost(props){
@@ -31,6 +33,21 @@ export default function EmotionPost(props){
         }
     ]
     
+    // state hooks
+    const [content, setContent] = useState("");
+    const [emotion, setEmotion] = useState("");
+
+    const addEmotionPost = async () => {
+      //need to pass in date as a parameter
+      const response = await UserService.addEmotionPost( "Emotion", content, emotion);
+      this.console.log(response)
+    }
+
+    const updateContent = event => {
+      setContent(event.target.value)
+      console.log(content)
+    }
+
     const emotionElements = emotions.map(emotion => {
         return <Emotion emotionName={emotion.emotionName} emotionImageUrl={emotion.emotionImageUrl} />
     })
@@ -47,9 +64,9 @@ export default function EmotionPost(props){
                     {emotionElements}
                 </div>
                 <h3>Record your thoughts</h3>
-                <input className="emotion-post-input" type="text"></input>
+                <input className="emotion-post-input" value={content} onChange={updateContent} type="text"></input>
                 <button className="cancel-button-emotionpost"><Link to="/bonding-journal">Cancel</Link></button>
-                <button className="post-button-emotionpost"><Link to="/bonding-journal">Post</Link></button>
+                <button className="post-button-emotionpost" onClick={addEmotionPost}><Link to="/bonding-journal">Post</Link></button>
             </div>
         </div>
     )

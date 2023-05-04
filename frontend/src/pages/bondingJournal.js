@@ -5,8 +5,10 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import {useState} from 'react';
 import { Link } from "react-router-dom"
+import UserService from "../userSerivces"
 
 const BondingJournal = (props) => {
+    /*
     const journal = [
         {
             type:"Gratitude", 
@@ -25,10 +27,20 @@ const BondingJournal = (props) => {
             emotion:"./images/emotionPost/sad.svg"
         }
     ]
-    // useState hook for the calendar
+    */
+
+    // useState hooks
     const [value, setValue] = useState(new Date());
-    
-    // iterate through the list received, check each object and if the type === Gratitude, return gratitudebox component, and if Emotion, return emotionbox component. If object is empty, print "No Notes to display, add more notes".
+    const [journal, setJournal] = useState([])
+
+
+    // event handler when user clicks a date on the calendar
+    const getJournalPost = async () => {
+        const response = await UserService.getBJPosts(value);
+        this.setJournal([response.data])
+    }
+
+    // iterate through the list received, then check each object and if the type === Gratitude, return gratitudebox component, and if Emotion, return emotionbox component. If object is empty, print "No Notes to display, add more notes".
     const boxElements = journal.map(item => {
         if (item.type === "Gratitude"){
             return <GratitudeBox content={item.content} />
@@ -47,7 +59,7 @@ const BondingJournal = (props) => {
                 <div className="curve-box"></div>
                 <div className="left-content">
                     <div className="bonding-journal-calendar">
-                        <Calendar onChange={setValue} value={value}/>
+                        <Calendar onChange={setValue} value={value}/> 
                     </div>
                     <div className="emotion-post-button">
                         <h1>Emotion Post</h1>
