@@ -5,6 +5,10 @@
   "description": "## Code repository for the all the ML framworks for AMI",
   "main": "credentials.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,9 +20,10 @@
   "bugs": {
     "url": "https://github.com/JunAhn885/I-A-I/issues"
   },
-  "homepage": "https://github.com/JunAhn885/I-A-I#readme",
+  "homepage": "https://JunAhn885.github.io/my-app",
   "dependencies": {
     "express": "^4.18.2",
+    "gh-pages": "^5.0.0",
     "mongoose": "^7.0.3"
   }
 }
