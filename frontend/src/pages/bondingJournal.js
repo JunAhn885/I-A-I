@@ -3,12 +3,12 @@ import EmotionBox from "../components/bondingJournal/emotionBox";
 import GratitudeBox from "../components/bondingJournal/gratitudeBox";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import {useState} from 'react';
+import { useState } from 'react';
 import { Link } from "react-router-dom"
 import UserService from "../userSerivces"
 
 const BondingJournal = (props) => {
-    /*
+    
     const journal = [
         {
             type:"Gratitude", 
@@ -27,17 +27,19 @@ const BondingJournal = (props) => {
             emotion:"./images/emotionPost/sad.svg"
         }
     ]
-    */
 
     // useState hooks
     const [value, setValue] = useState(new Date());
-    const [journal, setJournal] = useState([])
-
+    //const [journal, setJournal] = useState([])
 
     // event handler when user clicks a date on the calendar
     const getJournalPost = async () => {
-        const response = await UserService.getBJPosts(value);
-        this.setJournal([response.data])
+        try {
+            const response = await UserService.getBJPosts(value);
+            this.setJournal([response.data])
+        } catch (e) {
+            console.error(e)
+        }
     }
 
     // iterate through the list received, then check each object and if the type === Gratitude, return gratitudebox component, and if Emotion, return emotionbox component. If object is empty, print "No Notes to display, add more notes".
@@ -51,19 +53,13 @@ const BondingJournal = (props) => {
         }
     })
 
-    // local storage for the selected date
-    const setDate = event => {
-        setValue(new Date())
-        const date = window.localStorage.setItem("date", event.target.value);
-        console.log(date)
-    }
-
     return (
         <div className="bonding-journal">
             <Navbar/>
             <img src="./images/bondingjournal/beanbag.svg" alt="beanbag" className="beanbag"></img>
             <div className="content">
-                <div className="curve-box"></div>
+                <div className="curve-box1"></div>
+                <div className="curve-box2"></div>
                 <div className="left-content">
                     <div className="bonding-journal-calendar">
                         <Calendar onChange={setValue} value={value}/> 

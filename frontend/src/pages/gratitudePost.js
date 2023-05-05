@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import UserService from "../userSerivces"
 import {useState} from 'react';
 
+
 const GratitudePost = (props) => {
     
     const [content, setContent] = useState("");
@@ -19,7 +20,7 @@ const GratitudePost = (props) => {
         const response = await UserService.addGratitudePost("Gratitude", content);
         this.console.log(response);
     }
-    
+
     return (
         <div className="gratitude-post">
             <Navbar/>
