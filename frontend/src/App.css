@@ -148,7 +148,7 @@ button:hover{
 }
 
 .Landingpage-Box1, .Landingpage-Box2, .Landingpage-Box3{
-  width: 80%;
+  width: 70%;
   height: 850px;
   background: linear-gradient(108.52deg, rgba(255, 254, 252, 0.5) 2.73%, rgba(255, 224, 177, 0.475) 50.33%, rgba(253, 253, 253, 0.5) 98.36%);
   opacity: 1.0;
@@ -156,14 +156,14 @@ button:hover{
   backdrop-filter: blur(25px);
   border-radius: 53px;
   margin: auto;
-  margin-bottom: 10%;
+  margin-bottom: 6px;
 }
 
 .Box1-content, .Box2-content, .Box3-content {
   color: #81644A;
   font-style: normal;
   font-weight: 500;
-  font-size: 80px;
+  font-size: 2rem;
   overflow-wrap: break-word;
 }
 

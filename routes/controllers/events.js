@@ -2,11 +2,12 @@ import e from 'express';
 import express from 'express';
 var router = express.Router();
 
-
+//get all events related to the family that the user is a member of
+// need to filter on date => req.date
 router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (this.Session.isAuthenticated) {
+        if (thisSession.user) {
             const user = await req.models.User.find({_id: thisSession.account.username});
             const family = await req.models.Family.find({_id: user.family});
             let events = [];
@@ -27,7 +28,7 @@ router.get('/', async function(req, res, next) {
 router.post('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.isAuthenticated) {
+        if (thisSession.user) {
             const user = await req.models.User.find({_id: thisSession.account.username});
             const family = await req.models.Family.find({_id: user.family});
             const newEvent = await req.models.Event.create({
@@ -54,7 +55,7 @@ router.post('/', async function(req, res, next) {
 router.delete('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.isAuthenticated) {
+        if (thisSession.user) {
             const user = await req.models.User.find({_id: thisSession.account.username});
             const event = req.query.eventId;
             const index = family.events.indexOf(event);
