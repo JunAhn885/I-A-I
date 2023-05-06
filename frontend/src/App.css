@@ -148,8 +148,11 @@ button:hover{
 }
 
 .Landingpage-Box1, .Landingpage-Box2, .Landingpage-Box3{
-  width: 70%;
-  height: 850px;
+  display: flex;
+  padding-right: 40px;
+  align-items: center;
+  width: 60%;
+  height: 531px;
   background: linear-gradient(108.52deg, rgba(255, 254, 252, 0.5) 2.73%, rgba(255, 224, 177, 0.475) 50.33%, rgba(253, 253, 253, 0.5) 98.36%);
   opacity: 1.0;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
@@ -159,66 +162,44 @@ button:hover{
   margin-bottom: 6px;
 }
 
-.Box1-content, .Box2-content, .Box3-content {
-  color: #81644A;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 2rem;
-  overflow-wrap: break-word;
+.Box1-text, .Box2-text, .Box3-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .Landingpage-Box1 {
   margin-top: 10%;
 }
 
-.Box1-content {
-  text-align: right;
-  margin-right: 50px;
-  position: absolute;
-  inline-size: 950px;
-  right: 50px;
-  top: 50px;
-}
-
 .Landingpage-Box1 > img {
-  position: absolute;
-  width: 700px;
-  height: 1400px;
-  top:-120px;
-}
-
-.Box2-content {
-  text-align: left;
-  margin-left: 50px;
-  position: absolute;
-  inline-size: 1050px;
-  left: 50px;
-  top: 70px;
+  margin: 0px 50px;
 }
 
 .Landingpage-Box2 > img {
-  position: absolute;
-  width: 1200px;
-  height: 1300px;
-  top:-130px;
-  right:-115px;
-}
-
-.Box3-content {
-  text-align: right;
-  margin-right: 50px;
-  position: absolute;
-  inline-size: 1200px;
-  right: 50px;
-  top: 70px;
+  margin: 0px 60px;
 }
 
 .Landingpage-Box3 > img {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  top:300px;
-  left:60px;
+  width: 325px;
+  height: 299px;
+  margin: 0px 40px;
+}
+
+.Box1-text > h1, .Box2-text > h1, .Box3-text > h1 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 59px;
+  color: #81644A;
+  margin-bottom: 30px;
+}
+
+.Box1-text > h2, .Box2-text > h2, .Box3-text > h2 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 37px;
+  color: #81644A;
 }
 
 .small-bean{
@@ -263,14 +244,14 @@ button:hover{
   display:flex;
   justify-content: flex-end;
   list-style: none;
-  margin-top: -80px;
+  margin-top: -60px;
   margin-bottom: 110px;
 }
 
 .navbar li {
   margin-right: 30px;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 340;
   font-size: 24px;
   color: #797979;
 }
@@ -504,10 +485,43 @@ button:hover{
   display: flex;
   width: 1072px;
   height: 866px;
-  background: rgba(255, 254, 252, 0.6);
   bottom: 0;
   border-radius: 30px;
-  z-index: 0;
+  z-index: 1;
+  overflow:hidden;
+}
+
+.bonding-journal > .content:before, .bonding-journal > .content::after{
+  content:'';
+  position: absolute;
+}
+
+.bonding-journal > .content:before{
+    top:-50px; left:453px;
+    width:170px; height:170px;
+    border-radius:40%;
+    box-shadow: 0px 0px 0px 9999px rgba(240,247,244,255);
+    z-index:-1;
+}
+
+.bonding-journal .curve-box1 {
+  position:absolute;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  left:403px;
+  border-top-right-radius: 40px;
+  box-shadow: 4px -15px 0px 4px #e5ebe5;
+}
+
+.bonding-journal .curve-box2 {
+  position:absolute;
+  width: 50px;
+  height: 50px;
+  background:transparent;
+  left:624px;
+  border-top-left-radius: 40px;
+  box-shadow: -7px -15px 0px 3px #e5ebe5;
 }
 
 .bonding-journal > .beanbag {
@@ -515,8 +529,8 @@ button:hover{
   left: 0;
   right: 0;
   margin: auto;
-  margin-top: 3rem;
-  z-index: 2;
+  margin-top: 5rem;
+  z-index: 0;
 }
 
 .react-calendar {
@@ -530,7 +544,15 @@ button:hover{
   justify-content: center;
   align-items: center;
   padding: 8px;
+  width: 353px;
 
+}
+
+.addlog-calendar {
+  margin-right: 50px;
+}
+
+.bonding-journal-calendar {
   position: absolute;
   width: 353px;
   margin-left: 60px;
@@ -674,6 +696,7 @@ a:-webkit-any-link {
   margin-top: 200px
 }
 
+/*
 .dimple {
   position: absolute;
   width: 200px;
@@ -686,7 +709,7 @@ a:-webkit-any-link {
   border-bottom-right-radius: 100px;
   z-index: 1;
 }
-
+*/
 
 /*CSS for the Bonding Journal Gratitude Box-------------------------*/
 .bonding-journal-gratitude-box {
@@ -695,6 +718,18 @@ a:-webkit-any-link {
   width: 541px;
   border-radius: 20px;
   margin-bottom: 30px;
+  position: relative;
+}
+
+.bonding-journal-gratitude-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -35px;
+  width: 7px;
+  height: 100%;
+  background-color: #81644A;
+  border-radius: 4px;
 }
 
 .bonding-journal-gratitude-box > h1 {
@@ -715,7 +750,19 @@ a:-webkit-any-link {
   background: #CDBBA2;
   border-radius: 20px;
   margin-bottom: 30px;
-  padding:30px 0px 30px 0px
+  padding:30px 0px 30px 0px;
+  position: relative;
+}
+
+.bonding-journal-emotion-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -35px;
+  width: 7px;
+  height: 100%;
+  background-color: #81644A;
+  border-radius: 4px;
 }
 
 .bonding-journal-emotion-box > img {

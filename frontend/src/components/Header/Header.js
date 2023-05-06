@@ -9,8 +9,10 @@ const Header = () => {
       <ul>
         <li>Dashboard</li>
         <li>Tasks</li>
-        <li>Bonding Journal</li>
-        <NavLink to="family-log">
+        <NavLink to="/bonding-journal">
+          <li>Bonding Journal</li>
+        </NavLink>
+        <NavLink to="/family-log">
           <li>Family Log</li>
         </NavLink>
         <li>Profile</li>
