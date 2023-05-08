@@ -4,29 +4,27 @@ import cookieParser from 'cookie-parser';
 import sessions from 'express-session';
 import passportSetup from './auth.js';
 import passport from 'passport';
+import cors from 'cors'
 import {SESSION_SECRET} from './credentials.js';
 
 import apiRouter from './routes/api.js';
 
-function isAuthenticated(req, res, next) {
-    if (req.user) {
-        return next();
-    } else {
-        return res.status(401).send("User not authenticated");
-    }
-}
-
 var app = express();
 
 const PORT = process.env.PORT || 8080;
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.use(sessions({
     secret: SESSION_SECRET,
     saveUninitialized: true,
     cookie: {maxAge: 1000 * 60 * 60 * 24},
     resave: false
-}))
-
+}));
+  
 app.use(passport.initialize());
 app.use(passport.session()); 
 
@@ -37,6 +35,7 @@ app.use(function(req, res, next) {
 
 app.use('/api', apiRouter);
 
+//testing route
 app.get('/', (req, res) => {
     res.send('<a href="/auth/google">Authenticate with Google</a>');
 });
@@ -51,7 +50,7 @@ app.get('/auth/google/callback',
     }),
     (req, res) => {
         req.session.user = req.user; //attaching user to session, information is in req.user variable 
-        res.redirect('/'); // when authentication is successful redirect to home
+        res.redirect('http://localhost:3000/bonding-journal'); // when authentication is successful redirect to home
     }
 );
 

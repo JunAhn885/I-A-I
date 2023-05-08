@@ -9,49 +9,36 @@ passport.use(
         clientSecret: CLIENT_SECRET,
         callbackURL: "http://localhost:8080/auth/google/callback"
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
         //looks for user in database, if not found, creates new user using information from google profile
-        models.User.findOne({username: profile.emails[0].value}, (err, user) => {
-            if (err) {
-                console.log(err);
-                return done(err);
+        try{
+            const user = await models.User.findOne({username: profile.emails[0].value});
+            if(user){
+                return done(null, user);
             } else {
-                if (!user) {
-                    const newFamily = new models.Family({
-                        name: profile.name.familyName,
-                        members: [newUser.username],
-                        events: [],
-                        posts: []
-                    })
-                    const newUser = new models.User({
-                        username: profile.emails[0].value,
-                        name: profile.name.givenName,
-                        familyName: profile.name.familyName,
-                        family: newFamily._id,
-                        posts: [],
-                        DateCreated: Date.now()
-                    })
-
-                    
-                    newUser.save((err) => {
-                        if (err) {
-                            console.log(err);
-                            return done(err);
-                        } else {
-                            return done(null, newUser);
-                        }
-                    })
-                    newFamily.save((err) => {
-                        if (err) {
-                            console.log(err);
-                            return done(err);
-                        }
-                    })
-                } else {
-                    return done(null, user);
-                }
+                const newFamily = new models.Family({
+                    name: profile.name.familyName,
+                    members: [],
+                    events: [],
+                    posts: []
+                })
+                const newUser = new models.User({
+                    username: profile.emails[0].value,
+                    name: profile.name.givenName,
+                    familyName: profile.name.familyName,
+                    family: newFamily._id,
+                    posts: [],
+                    DateCreated: Date.now()
+                })
+                newFamily.members.push(newUser._id);
+                await newUser.save();
+                await newFamily.save();
             }
-        })
+        }catch(err){
+            console.log(err);
+            return done(err);
+        }
+
     })
 )
 
