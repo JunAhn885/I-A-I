@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import sessions from 'express-session';
 import passportSetup from './auth.js';
 import passport from 'passport';
-import {CLIENT_ID, CLIENT_SECRET, SESSION_SECRET} from './credentials.js';
+import {SESSION_SECRET} from './credentials.js';
 
 import apiRouter from './routes/api.js';
 
@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/auth/google', 
-    passport.authenticate('google', {scope: ['email','profile'] })
+    passport.authenticate('google', {scope: ['email','profile'] }) //this is the authentication route
 );
 
 app.get('/auth/google/callback',
@@ -54,7 +54,6 @@ app.get('/auth/google/callback',
         res.redirect('/'); // when authentication is successful redirect to home
     }
 );
-
 
 app.get('/logout', (req, res) => {
     req.logout();

@@ -25,6 +25,8 @@ async function main(){
 
     const userSchema = new mongoose.Schema({
         username: String, //get from google auth
+        name: String, //get from google auth
+        familyName: String, //get from google auth
         password: String, //hash the password before saving to db
         family: {type: mongoose.Schema.Types.ObjectId, ref: 'Family'},
         post: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}], //for private posts
