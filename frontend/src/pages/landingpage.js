@@ -4,6 +4,7 @@ import Box3 from '../components/landingpage/box3'
 import Header from '../components/landingpage/header'
 import Footer from '../components/landingpage/footer'
 
+//need to add about us and meet the team
 export default function LandingPage() {
   return (
     <div className="LandingPage">
