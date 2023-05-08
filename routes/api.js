@@ -6,8 +6,8 @@ import userRouter from './controllers/user.js';
 import eventRouter from './controllers/events.js';
 
 //TODO: Add routes here
-router.use('/post', postRouter);
+router.use('/posts', postRouter);
 router.use('/user', userRouter);
-router.use('/event', eventRouter);
+router.use('/events', eventRouter);
 
 export default router;

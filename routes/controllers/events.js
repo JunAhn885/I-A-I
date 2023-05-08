@@ -2,8 +2,9 @@ import e from 'express';
 import express from 'express';
 var router = express.Router();
 
+//api/events/
 //get all events related to the family that the user is a member of
-// need to filter on date => req.date
+//filters on date => req.date
 router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
@@ -12,7 +13,7 @@ router.get('/', async function(req, res, next) {
             const family = await req.models.Family.find({_id: user.family});
             let events = [];
             family.events.forEach(async (event) => {
-                const fullEvent = await req.models.Event.find({_id: event});
+                const fullEvent = await req.models.Event.find({_id: event, data: req.date});
                 events.push(fullEvent);
             });
             res.json(events);

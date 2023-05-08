@@ -17,18 +17,34 @@ passport.use(
                 return done(err);
             } else {
                 if (!user) {
+                    const newFamily = new models.Family({
+                        name: profile.name.familyName,
+                        members: [newUser.username],
+                        events: [],
+                        posts: []
+                    })
                     const newUser = new models.User({
                         username: profile.emails[0].value,
                         name: profile.name.givenName,
                         familyName: profile.name.familyName,
+                        family: newFamily._id,
+                        posts: [],
                         DateCreated: Date.now()
                     })
+
+                    
                     newUser.save((err) => {
                         if (err) {
                             console.log(err);
                             return done(err);
                         } else {
                             return done(null, newUser);
+                        }
+                    })
+                    newFamily.save((err) => {
+                        if (err) {
+                            console.log(err);
+                            return done(err);
                         }
                     })
                 } else {

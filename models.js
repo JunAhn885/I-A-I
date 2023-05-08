@@ -29,7 +29,7 @@ async function main(){
         familyName: String, //get from google auth
         password: String, //hash the password before saving to db
         family: {type: mongoose.Schema.Types.ObjectId, ref: 'Family'},
-        post: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}], //for private posts
+        posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}], //for private posts
         DateCreated: Date,
     })
 
@@ -50,7 +50,7 @@ async function main(){
         title: String,
         date: Date,
         content: String,
-        emoji: String,
+        emotion: Number,
     })
 
     models.Family = mongoose.model('Family', familySchema);

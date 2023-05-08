@@ -1,17 +1,18 @@
 import express from 'express';
 var router = express.Router();
 
+//api/posts/
 //GET all public posts related to the faimly that the user is a member of
-// need to filter on date => req.date
+//filters on date => req.date
 router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
         if (thisSession.user) {
             const user = await req.models.User.find({username: thisSession.account.username});
-            const family = await req.models.Family.find({_id: user.family});
+            //const family = await req.models.Family.find({_id: user.family});
             let posts = [];
             family.posts.forEach(async (post) => {
-                const fullPost = await req.models.Event.find({_id: post});
+                const fullPost = await req.models.Event.find({_id: post, date: req.date});
                 posts.push(fullPost);
             });
             res.json(posts);
@@ -104,7 +105,7 @@ router.post('/private', async function(req, res, next) {
                 title: req.body.title,
                 date: Date.now(),
                 content: req.body.content,
-                emoji: req.body.emoji,
+                emotion: req.body.emotion,
             });
             await newPost.save();
             user.posts.push(newPost._id);
