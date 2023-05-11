@@ -9,7 +9,7 @@ router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
         if (thisSession.passport.user) {
-            const user = await req.models.User.find({_id: thisSession.account.username});
+            const user = await req.models.User.find({_id: thisSession.account.username}); //wrong search parameter
             const family = await req.models.Family.find({_id: user.family});
             let events = [];
             family.events.forEach(async (event) => {
@@ -29,11 +29,10 @@ router.get('/', async function(req, res, next) {
 router.post('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.passport.user) {
-            const user = await req.models.User.find({_id: thisSession.account.username});
-            const family = await req.models.Family.find({_id: user.family});
+        if (req.user) {
+            const family = await req.models.Family.find({_id: req.user.family});
             const newEvent = await req.models.Event.create({
-                postedBy: user._id,
+                postedBy: req.user._id,
                 family: family._id,
                 title: req.body.title,
                 date: Date.now(),
@@ -43,6 +42,7 @@ router.post('/', async function(req, res, next) {
             });
             await newEvent.save();
             family.events.push(newEvent._id);
+            family.save();
             res.json({status: "success"});
         } else {
             res.send('Error: You must be logged in to post to the family log');
@@ -56,9 +56,9 @@ router.post('/', async function(req, res, next) {
 router.delete('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.passport.user) {
-            const user = await req.models.User.find({_id: thisSession.account.username});
-            const event = req.query.eventId;
+        if (req.user) {
+            const user = await req.models.User.find({_id: req.user.username});
+            const event = req.body.eventId;
             const index = family.events.indexOf(event);
             if (index > -1) {
                 user.events.splice(index, 1);

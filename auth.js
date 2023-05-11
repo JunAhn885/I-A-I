@@ -7,7 +7,8 @@ passport.use(
     new GoogleStrategy({
         clientID: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
-        callbackURL: "http://localhost:8080/auth/google/callback"
+        callbackURL: "http://localhost:8080/auth/google/callback",
+        session: true
     },
     async (accessToken, refreshToken, profile, done) => {
         //looks for user in database, if not found, creates new user using information from google profile
@@ -44,10 +45,11 @@ passport.use(
 )
 
 passport.serializeUser((user, done) => {
+    //console.log(user);
     done(null, user);
 })
 
-passport.deserializeUser((user, done) => {
+passport.deserializeUser(async (user, done) => {
     done(null, user);
 })
 

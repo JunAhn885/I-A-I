@@ -7,12 +7,12 @@ var router = express.Router();
 router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.passport.user) {
-            const user = await req.models.User.find({username: thisSession.account.username});
-            //const family = await req.models.Family.find({_id: user.family});
+        if (req.user) {
+            const user = await req.models.User.find({username: req.user.username});
+            const family = await req.models.Family.find({_id: req.user.family});
             let posts = [];
             family.posts.forEach(async (post) => {
-                const fullPost = await req.models.Event.find({_id: post, date: req.date});
+                const fullPost = await req.models.Event.find({_id: post, date: req.body.date});
                 posts.push(fullPost);
             });
             res.json(posts);
@@ -29,17 +29,20 @@ router.get('/', async function(req, res, next) {
 router.post('/add-gratitude-post', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.passport.user) {
-            const family = await req.models.Family.find({_id: user.family});
+        if (req.user) {
+            const family = await req.models.Family.find({_id: req.user.family});
+            console.log('making new post')
             const newPost = new req.models.Post({
-                postedBy: thisSession.account.username,
+                postedBy: req.user.username,
                 title: req.body.title,
+                type: req.body.type,
                 date: Date.now(),
                 content: req.body.content,
-                emoji: req.body.emoji,
+                emotion: req.body.emoji,
             });
             await newPost.save();
             family.posts.push(newPost._id);
+            await family.save();
             res.json({status: "success"});
         } else {
             res.send('Error: You must be logged in to post to the family log');
@@ -53,10 +56,10 @@ router.post('/add-gratitude-post', async function(req, res, next) {
 router.delete('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.passport.user) {
-            let user = await req.models.User.find({username: req.session.account.username});
-            let family = await req.models.Family.find({_id: user.family});
-            let post = req.query.postId;
+        if (req.user) {
+            let user = await req.models.User.find({username: req.user.username});
+            let family = await req.models.Family.find({_id: req.user.family});
+            let post = req.body.postId;
             let index = family.posts.indexOf(post);
             if (index > -1) {
                 user.posts.splice(index, 1);
@@ -76,8 +79,8 @@ router.delete('/', async function(req, res, next) {
 router.get('/private', async function(req, res, next) {
     try{
         let thisSession = req.session;
-        if (thisSession.passport.user) {
-            const user = await req.models.User.find({username: thisSession.account.username});
+        if (req.user) {
+            const user = await req.models.User.find({username: req.user.username});
             let posts = [];
             user.posts.forEach(async (post) => {
                 const fullPost = await req.models.Event.find({_id: post});
@@ -98,17 +101,19 @@ router.get('/private', async function(req, res, next) {
 router.post('/private', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.passport.user) {
-            const user = await req.models.User.find({username: thisSession.account.username});
+        if (req.user) {
+            const user = await req.models.User.find({username: req.user.username});
             const newPost = new req.models.Post({
-                postedBy: thisSession.account.username,
+                postedBy: req.user.username,
                 title: req.body.title,
                 date: Date.now(),
                 content: req.body.content,
                 emotion: req.body.emotion,
+                type: req.body.type,
             });
             await newPost.save();
             user.posts.push(newPost._id);
+            await user.save();
             res.json({status: "success"});
         } else {
             res.send('Error: You must be logged in to post to the family log');
@@ -123,8 +128,8 @@ router.post('/private', async function(req, res, next) {
 router.delete('/private', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.passport.user) {
-            let user = await req.models.User.find({username: req.session.account.username});
+        if (req.user) {
+            let user = await req.models.User.find({username: req.user.username});
             let post = req.query.postId;
             let index = user.posts.indexOf(post);
             if (index > -1) {

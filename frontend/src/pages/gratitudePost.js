@@ -17,7 +17,7 @@ const GratitudePost = (props) => {
     const addGratitudePost = async() => {
         // need to pass the date as a parameter
         const response = await UserService.addGratitudePost("April 1st", "Gratitude", content);
-        this.console.log(response);
+        //this.console.log(response);
     }
 
     return (
