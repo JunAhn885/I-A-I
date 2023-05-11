@@ -11,13 +11,12 @@ const GratitudePost = (props) => {
     // update content whenever input change is detected
     const updateContent = event => {
         setContent(event.target.value);
-        console.log(content);
     }
 
     // sending post request to the backend
     const addGratitudePost = async() => {
         // need to pass the date as a parameter
-        const response = await UserService.addGratitudePost("Gratitude", content);
+        const response = await UserService.addGratitudePost("April 1st", "Gratitude", content);
         this.console.log(response);
     }
 

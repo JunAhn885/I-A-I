@@ -9,9 +9,9 @@ const GratitudePostEndpoint = `${serverUrl}/gratitude-post`;
 
 const getBJPosts = (date) => axios.get(`${calendarEndpoint}/`, {date:date});
 
-const addEmotionPost = (date, type, content, emotion) => axios.post(`${emotionPostEndpoint}/addPost`, {data:date, type:type, content:content, emotion:emotion});
+const addEmotionPost = (date, type, content, emotion) => axios.post(`${emotionPostEndpoint}/add-emotion-post`, {data:date, type:type, content:content, emotion:emotion});
 
-const addGratitudePost = (date, type, content) => axios.post(`${GratitudePostEndpoint}/addPost`, {date:date, type:type, content:content});
+const addGratitudePost = (date, type, content) => axios.post(`${serverUrl}/add-gratitude-post`, {date:date, type:type, content:content});
 
 const UserService = {
   getBJPosts,

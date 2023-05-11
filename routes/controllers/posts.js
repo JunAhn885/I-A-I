@@ -22,11 +22,11 @@ router.get('/', async function(req, res, next) {
     } catch (err) {
         console.log(err);
         res.status(500).json({status: "error", "error": err});
-    }  
+    }
 });
 
 //POST a new post to the public family log
-router.post('/', async function(req, res, next) {
+router.post('/add-gratitude-post', async function(req, res, next) {
     try {
         let thisSession = req.session;
         if (thisSession.user) {
@@ -45,7 +45,7 @@ router.post('/', async function(req, res, next) {
             res.send('Error: You must be logged in to post to the family log');
         }
     } catch(err) {
-
+        res.send("error!!!!!!!!!!!!!!!!!")
     }
 });
 

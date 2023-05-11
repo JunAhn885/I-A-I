@@ -39,7 +39,7 @@ export default function EmotionPost(props){
 
     const addEmotionPost = async () => {
       //need to pass in date as a parameter
-      const response = await UserService.addEmotionPost( "Emotion", content, emotion);
+      const response = await UserService.addEmotionPost("Emotion", content, emotion);
       this.console.log(response)
     }
 

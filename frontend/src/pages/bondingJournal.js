@@ -36,6 +36,7 @@ const BondingJournal = (props) => {
     const getJournalPost = async () => {
         try {
             const response = await UserService.getBJPosts(value);
+            console.log(response)
             this.setJournal([response.data])
         } catch (e) {
             console.error(e)
