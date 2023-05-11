@@ -26,14 +26,15 @@ router.get('/', async function(req, res, next) {
 });
 
 //POST a new post to the public family log
-router.post('/add-gratitude-post', async function(req, res, next) {
+router.post('/add-post', async function(req, res, next) {
     try {
         let thisSession = req.session;
         if (req.user) {
             const family = await req.models.Family.find({_id: req.user.family});
             console.log('making new post')
             const newPost = new req.models.Post({
-                postedBy: req.user.username,
+                postedBy: req.user._id,
+                family: family._id,
                 title: req.body.title,
                 type: req.body.type,
                 date: Date.now(),
@@ -48,7 +49,7 @@ router.post('/add-gratitude-post', async function(req, res, next) {
             res.send('Error: You must be logged in to post to the family log');
         }
     } catch(err) {
-        res.send("error!!!!!!!!!!!!!!!!!")
+        res.send(err);
     }
 });
 

@@ -29,20 +29,19 @@ const BondingJournal = (props) => {
     ]
 
     // useState hooks
-    const [value, setValue] = useState(new Date());
     //const [journal, setJournal] = useState([])
 
     // event handler when user clicks a date on the calendar
     const getJournalPost = async () => {
         try {
-            const response = await UserService.getBJPosts(value);
+            const response = await UserService.getBJPosts(props.value);
             console.log(response)
             this.setJournal([response.data])
         } catch (e) {
             console.error(e)
         }
     }
-
+    
     // iterate through the list received, then check each object and if the type === Gratitude, return gratitudebox component, and if Emotion, return emotionbox component. If object is empty, print "No Notes to display, add more notes".
     const boxElements = journal.map(item => {
         if (item.type === "Gratitude"){
@@ -53,7 +52,7 @@ const BondingJournal = (props) => {
             return <p className="no-notes-display">No Notes to display, add more notes</p>
         }
     })
-
+    
     return (
         <div className="bonding-journal">
             <Navbar/>
@@ -63,7 +62,7 @@ const BondingJournal = (props) => {
                 <div className="curve-box2"></div>
                 <div className="left-content">
                     <div className="bonding-journal-calendar">
-                        <Calendar onChange={setValue} value={value}/> 
+                        <Calendar onChange={props.setValue} value={props.value}/>
                     </div>
                     <div className="emotion-post-button">
                         <h1>Emotion Post</h1>

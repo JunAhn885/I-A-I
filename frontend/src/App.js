@@ -13,14 +13,18 @@ import { useState } from "react"
 
 function App() {
 
+  // state management for calendar dates
+  const [date, setDate] = useState(new Date());
+  console.log(date)
+
   return (
     <div>
       <Routes>
         <Route path="/" element={<LandingPage/>} />
         <Route path="login" element={<Login/>} />
         <Route path="emotion-post" element={<EmotionPost pageName="Emotion Post" name="John"/>} />
-        <Route path="gratitude-post" element={<GratitudePost pageName="Gratitude Post" name="John"/>} />
-        <Route path="bonding-journal" element={<BondingJournal/>} />
+        <Route path="gratitude-post" element={<GratitudePost value={date} setValue={setDate} pageName="Gratitude Post" name="John"/>} />
+        <Route path="bonding-journal" element={<BondingJournal value={date} setValue={setDate}/>} />
         <Route path="family-log" element={<FamilyLog />} />
         <Route path="edit-log" element={<EditLog />} />
         <Route path="add-log" element={<AddLog />} />

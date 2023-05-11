@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import UserService from "../userSerivces"
 import {useState} from 'react';
 
-
 const GratitudePost = (props) => {
     
     const [content, setContent] = useState("");
@@ -15,9 +14,8 @@ const GratitudePost = (props) => {
 
     // sending post request to the backend
     const addGratitudePost = async() => {
-        // need to pass the date as a parameter
-        const response = await UserService.addGratitudePost("April 1st", "Gratitude", content);
-        //this.console.log(response);
+        const response = await UserService.addGratitudePost(props.value, "Gratitude", content);
+        console.log(response);
     }
 
     return (
