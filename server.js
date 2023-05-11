@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/auth/google', 
-    passport.authenticate('google', {scope: ['email','profile'] }) //this is the authentication route
+    passport.authenticate('google', {scope: ['email','profile'] }) //this is the authentication route  
 );
 
 app.get('/auth/google/callback',
@@ -49,7 +49,10 @@ app.get('/auth/google/callback',
         failureRedirect: '/login' // when authentication is unsuccessful redirect to login
     }),
     (req, res) => {
-        req.session.user = req.user; //attaching user to session, information is in req.user variable 
+        console.log("successful authentication");
+        console.log(req.user)
+        req.session.user = req.user;
+        console.log(req.session.user);
         res.redirect('http://localhost:3000/bonding-journal'); // when authentication is successful redirect to home
     }
 );
@@ -59,6 +62,10 @@ app.get('/logout', (req, res) => {
     req.session.destroy();
     res.send("logged out");
     res.redirect('/');
+});
+
+app.get('/session-info', (req, res) => {
+    res.send(req.session);
 });
 
 app.listen(PORT, function () {

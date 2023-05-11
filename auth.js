@@ -33,6 +33,7 @@ passport.use(
                 newFamily.members.push(newUser._id);
                 await newUser.save();
                 await newFamily.save();
+                return done(null, newUser);
             }
         }catch(err){
             console.log(err);
