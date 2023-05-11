@@ -43,6 +43,7 @@ async function main(){
         description: String,
     })
 
+    //for bonding journal
     const postSchema = new mongoose.Schema({
         postedBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
         family: {type: mongoose.Schema.Types.ObjectId, ref: 'Family'},

@@ -6,7 +6,7 @@ export default function Login() {
 
   function handleGoogleLogin() {
     console.log("google login")
-    window.location.href='http://localhost:8080/auth/google';
+    window.location.href='http://localhost:8080/auth/google'; //redirects to google authentication - change to auth/google for production
   }
 
   //need a sign up page for normal login
