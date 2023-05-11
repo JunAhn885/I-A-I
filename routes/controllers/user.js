@@ -4,7 +4,7 @@ var router = express.Router();
 // GET user info to be used throught the whole application
 router.get('/', async function(req, res, next) {
     let thisSession = req.session;
-    if (thisSession.user){
+    if (thisSession.passport.user){
         res.json({
             status: "loggedin",
             userInfo: {

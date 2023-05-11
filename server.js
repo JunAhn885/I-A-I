@@ -52,7 +52,7 @@ app.get('/auth/google/callback',
         console.log("successful authentication");
         console.log(req.user)
         req.session.user = req.user;
-        console.log(req.session.user);
+        console.log(req.session);
         res.redirect('http://localhost:3000/bonding-journal'); // when authentication is successful redirect to home
     }
 );
@@ -62,10 +62,6 @@ app.get('/logout', (req, res) => {
     req.session.destroy();
     res.send("logged out");
     res.redirect('/');
-});
-
-app.get('/session-info', (req, res) => {
-    res.send(req.session);
 });
 
 app.listen(PORT, function () {

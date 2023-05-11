@@ -8,7 +8,7 @@ var router = express.Router();
 router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.user) {
+        if (thisSession.passport.user) {
             const user = await req.models.User.find({_id: thisSession.account.username});
             const family = await req.models.Family.find({_id: user.family});
             let events = [];
@@ -29,7 +29,7 @@ router.get('/', async function(req, res, next) {
 router.post('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.user) {
+        if (thisSession.passport.user) {
             const user = await req.models.User.find({_id: thisSession.account.username});
             const family = await req.models.Family.find({_id: user.family});
             const newEvent = await req.models.Event.create({
@@ -56,7 +56,7 @@ router.post('/', async function(req, res, next) {
 router.delete('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.user) {
+        if (thisSession.passport.user) {
             const user = await req.models.User.find({_id: thisSession.account.username});
             const event = req.query.eventId;
             const index = family.events.indexOf(event);

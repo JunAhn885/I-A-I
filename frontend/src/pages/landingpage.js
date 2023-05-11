@@ -9,11 +9,9 @@ export default function LandingPage() {
   return (
     <div className="LandingPage">
       <Header/>
-      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column'}}>
         <Box1/>
         <Box2/>
         <Box3/>
-      </div>
     </div>
   );
 }
