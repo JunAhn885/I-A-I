@@ -9,11 +9,15 @@ router.get('/', async function(req, res, next) {
         let thisSession = req.session;
         if (req.user) {
             const user = await req.models.User.find({username: req.user.username});
-            const family = await req.models.Family.findOne({_id: req.user.family});
+            let family = await req.models.Family.findOne({_id: req.user.family});
             let posts = [];
-            family.posts.map(async (post) => {
-                const fullPost = await req.models.Event.find({_id: post, date: req.body.date});
-                posts.push(fullPost);
+            family.posts.forEach(async (post) => {
+                const fullPost = await req.models.Post.find({_id: post});
+                if (fullPost.date.getFullYear() === req.query.date.getFullYear() &&
+                    fullPost.date.getMonth() === req.query.date.getMonth() &&
+                    fullPost.date.getDate() === req.query.date.getDate()) {
+                        posts.push(fullPost);    
+                    }
             });
             res.json(posts);
         } else {
