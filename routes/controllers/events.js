@@ -9,7 +9,7 @@ router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
         if (req.user) {
-            const user = await req.models.User.find({_id: req.user.username}); //wrong search parameter
+            const user = await req.models.User.find({username: req.user.username});
             const family = await req.models.Family.find({_id: req.user.family});
             let events = [];
             for (const event of family.events) {
@@ -41,7 +41,7 @@ router.post('/add-log', async function (req, res, next) {
                 postedBy: req.user._id,
                 family: family._id,
                 title: req.body.title,
-                date: Date.now(),
+                date: req.body.date,
                 location: req.body.location,
                 description: req.body.description,
                 //need to add media(image) field
