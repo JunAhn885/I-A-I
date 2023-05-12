@@ -18,11 +18,12 @@ router.get('/', async function(req, res, next) {
                 console.log('query month', req.query.month) // 0 indexed
                 console.log('query day', req.query.day)
                 if (fullPost.date.getFullYear() == req.query.year &&
-                    fullPost.date.getMonth() === req.query.month &&
-                    fullPost.date.getDate() === req.query.day) {
+                    fullPost.date.getMonth() == req.query.month &&
+                    fullPost.date.getDate() == req.query.day) {
                         console.log('pushing post')
                         allPosts.push(fullPost); 
                     }
+                console.log(allPosts)
             };
             res.json(allPosts);
         } else {

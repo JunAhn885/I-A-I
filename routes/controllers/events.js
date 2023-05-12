@@ -15,9 +15,9 @@ router.get('/', async function(req, res, next) {
             for (const event of family.events) {
                 const fullEvent = await req.models.Event.find({_id: event});
                 fullEvent = fullEvent[0];
-                if (String(fullEvent.date.getFullYear()) === req.query.year &&
-                    String(fullEvent.date.getMonth()) === req.query.month &&
-                    String(fullEvent.date.getDate()) === req.query.day) {
+                if (fullEvent.date.getFullYear() == req.query.year &&
+                    fullEvent.date.getMonth() == req.query.month &&
+                    fullEvent.date.getDate() == req.query.day) {
                         posts.push(fullEvent);    
                     }
             };
