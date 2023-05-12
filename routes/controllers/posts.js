@@ -23,6 +23,7 @@ router.get('/', async function(req, res, next) {
                         console.log('pushing post')
                         allPosts.push(fullPost); 
                     }
+                console.log(allPosts)
             };
             res.json(allPosts);
         } else {
