@@ -22,8 +22,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage/>} />
         <Route path="login" element={<Login/>} />
-        <Route path="emotion-post" element={<EmotionPost pageName="Emotion Post" name="John"/>} />
-        <Route path="gratitude-post" element={<GratitudePost value={date} setValue={setDate} pageName="Gratitude Post" name="John"/>} />
+        <Route path="emotion-post" element={<EmotionPost value={date} pageName="Emotion Post" name="John"/>} />
+        <Route path="gratitude-post" element={<GratitudePost value={date} pageName="Gratitude Post" name="John"/>} />
         <Route path="bonding-journal" element={<BondingJournal value={date} setValue={setDate}/>} />
         <Route path="family-log" element={<FamilyLog />} />
         <Route path="edit-log" element={<EditLog />} />

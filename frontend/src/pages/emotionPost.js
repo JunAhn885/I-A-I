@@ -37,10 +37,7 @@ export default function EmotionPost(props){
     const [content, setContent] = useState(null);
     const [emotion, setEmotion] = useState(null);
 
-    // sets the state of the emotion when user clicks on the image
-    const emotionHandler = event => {
-      console.log("hello!");
-    }
+    console.log(emotion)
 
     // post request to add emotion post
     const addEmotionPost = async () => {
@@ -52,11 +49,10 @@ export default function EmotionPost(props){
     // updates the state of the content on change
     const updateContent = event => {
       setContent(event.target.value)
-      console.log(content)
     }
 
-    const emotionElements = emotions.map(emotion => {
-        return <Emotion value={emotion.emotionName} onClick={emotionHandler} emotionName={emotion.emotionName} emotionImageUrl={emotion.emotionImageUrl} />
+    const emotionElements = emotions.map(emotionObj => {
+        return <Emotion emotion={emotion} setEmotion={setEmotion} emotionName={emotionObj.emotionName} emotionImageUrl={emotionObj.emotionImageUrl} />
     })
     
     return(

@@ -9,37 +9,14 @@ import UserService from "../userSerivces"
 
 const BondingJournal = (props) => {
     
-    const journal = [
-        {
-            type:"Gratitude", 
-            content: "Today, I am thankful for the way my wife challenges me to be my best self and pushes me to reach my goals.\
-            Their belief in me gives me the courage to keep going and continue to be a better mother. I feel empowered and loved!"
-        },
-        {
-            type:"Emotion",
-            content:"I just witnessed my baby’s first crawl, so cute,YAY!!",
-            emotion:"./images/emotionPost/good.svg"
-        },
-        {
-            type:"Emotion",
-            content:"Today, I felt exhausted and overwhelmed as a new parent. My baby wouldn't stop crying, and I felt like I\
-             didn't know what to do to comfort them.",
-            emotion:"./images/emotionPost/sad.svg"
-        }
-    ]
-
-    // useState hooks
-    //const [journal, setJournal] = useState([])
+    // state hook for journal
+    const [journal, setJournal] = useState([])
 
     // event handler when user clicks a date on the calendar
     const getJournalPost = async () => {
-        try {
-            const response = await UserService.getBJPosts(props.value);
-            console.log(response)
-            this.setJournal([response.data])
-        } catch (e) {
-            console.error(e)
-        }
+        const response = await UserService.getBJPosts(props.value);
+        console.log(response)
+        setJournal(response.data)
     }
     
     // iterate through the list received, then check each object and if the type === Gratitude, return gratitudebox component, and if Emotion, return emotionbox component. If object is empty, print "No Notes to display, add more notes".
@@ -62,8 +39,9 @@ const BondingJournal = (props) => {
                 <div className="curve-box2"></div>
                 <div className="left-content">
                     <div className="bonding-journal-calendar">
-                        <Calendar onChange={props.setValue} value={props.value}/>
+                        <Calendar onChange={props.setValue} onClick={getJournalPost} value={props.value}/>
                     </div>
+                    <button onClick={getJournalPost}>click me</button>
                     <div className="emotion-post-button">
                         <h1>Emotion Post</h1>
                         <div className="button"><h1><Link to="/emotion-post">+</Link></h1></div>
