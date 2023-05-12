@@ -8,19 +8,19 @@ var router = express.Router();
 router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.passport.user) {
-            const user = await req.models.User.find({_id: thisSession.account.username}); //wrong search parameter
-            const family = await req.models.Family.find({_id: user.family});
+        if (req.user) {
+            const user = await req.models.User.find({_id: req.user.username}); //wrong search parameter
+            const family = await req.models.Family.find({_id: req.user.family});
             let events = [];
-            family.events.forEach(async (event) => {
+            for (const event of family.events) {
                 const fullEvent = await req.models.Event.find({_id: event});
                 fullEvent = fullEvent[0];
-                if (fullEvent.date.getFullYear() === req.query.date.getFullYear() &&
-                    fullEvent.date.getMonth() === req.query.date.getMonth() &&
-                    fullEvent.date.getDate() === req.query.date.getDate()) {
+                if (String(fullEvent.date.getFullYear()) === req.query.year &&
+                    String(fullEvent.date.getMonth()) === req.query.month &&
+                    String(fullEvent.date.getDate()) === req.query.day) {
                         posts.push(fullEvent);    
                     }
-            });
+            };
             res.json(events);
         } else {
             res.send('Error: You must be logged in to view your family events');

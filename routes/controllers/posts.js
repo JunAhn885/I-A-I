@@ -10,17 +10,19 @@ router.get('/', async function(req, res, next) {
         if (req.user) {
             const user = await req.models.User.find({username: req.user.username});
             let family = await req.models.Family.findOne({_id: req.user.family});
-            let posts = [];
-            family.posts.forEach(async (post) => {
+            let allPosts = [];
+            for (const post of family.posts) {
                 let fullPost = await req.models.Post.find({_id: post});
                 fullPost = fullPost[0];
-                if (fullPost.date.getFullYear() == req.query.year &&
-                    fullPost.date.getMonth() == req.query.month &&
-                    fullPost.date.getDate() == req.query.day) {
-                        posts.push(fullPost);    
+                if (String(fullPost.date.getFullYear()) === req.query.year &&
+                    String(fullPost.date.getMonth()) === req.query.month &&
+                    String(fullPost.date.getDate()) === req.query.day) {
+                        console.log('pushing post')
+                        allPosts.push(fullPost); 
                     }
-            });
-            res.json(posts);
+                console.log('in loop', allPosts)
+            };
+            res.json(allPosts);
         } else {
             res.send('Error: You must be logged in to view your family log');
         }
