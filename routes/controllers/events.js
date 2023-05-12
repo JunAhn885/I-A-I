@@ -31,11 +31,11 @@ router.get('/', async function(req, res, next) {
     }  
 });
 
-router.post('/', async function(req, res, next) {
+router.post('/add-log', async function (req, res, next) {
     try {
         let thisSession = req.session;
         if (req.user) {
-            let family = await req.models.Family.find({_id: req.user.family});
+            let family = await req.models.Family.find({ _id: req.user.family });
             family = family[0];
             const newEvent = await req.models.Event.create({
                 postedBy: req.user._id,
@@ -52,13 +52,13 @@ router.post('/', async function(req, res, next) {
             }
             family.events.push(newEvent._id);
             family.save();
-            res.json({status: "success"});
+            res.json({ status: "success" });
         } else {
             res.send('Error: You must be logged in to post to the family log');
         }
-    } catch(err) {
+    } catch (err) {
         console.log(err);
-        res.status(500).json({status: "error", "error": err});
+        res.status(500).json({ status: "error", "error": err});
     }
 });
 

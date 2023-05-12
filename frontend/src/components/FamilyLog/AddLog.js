@@ -4,13 +4,15 @@ import lineDot from "./../../img/lineDot.svg";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Header from "../Header/Header";
-import UserService from "userService.js"
+import UserService from "../../userSerivces"
 
 const AddLog = () => {
   const [date, setDate] = useState(new Date());
   const [eventName, setEventName] = useState("");
   const [location, setLocation] = useState("");
   const [notes, setNotes] = useState("");
+
+  console.log(date, eventName, location, notes)
 
   const addLog = async () => {
     try {
