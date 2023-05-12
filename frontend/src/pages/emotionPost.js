@@ -35,11 +35,11 @@ export default function EmotionPost(props){
     
     // state hooks
     const [content, setContent] = useState(null);
-    const [emotion, setEmotion] = useState("sad");
+    const [emotion, setEmotion] = useState(null);
 
     // sets the state of the emotion when user clicks on the image
     const emotionHandler = event => {
-      console.log(emotion)
+      console.log("hello!");
     }
 
     // post request to add emotion post

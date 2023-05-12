@@ -37,9 +37,9 @@ router.post('/add-post', async function(req, res, next) {
                 family: family._id,
                 title: req.body.title,
                 type: req.body.type,
-                date: Date.now(),
+                date: req.body.date,
                 content: req.body.content,
-                emotion: req.body.emoji,
+                emotion: req.body.emotion,
             });
             await newPost.save();
             family.posts.push(newPost._id);
