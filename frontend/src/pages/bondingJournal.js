@@ -14,7 +14,8 @@ const BondingJournal = (props) => {
 
     // event handler when user clicks a date on the calendar
     const getJournalPost = async () => {
-        const response = await UserService.getBJPosts();
+        console.log(props.value)
+        const response = await UserService.getBJPosts(props.value);
         console.log(response)
         setJournal(response.data)
     }
