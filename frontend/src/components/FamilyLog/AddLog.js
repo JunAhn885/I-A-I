@@ -12,8 +12,6 @@ const AddLog = () => {
   const [location, setLocation] = useState("");
   const [notes, setNotes] = useState("");
 
-  console.log(date, eventName, location, notes)
-
   const addLog = async () => {
     try {
       const response = await UserService.addLog(date, eventName, location, notes);

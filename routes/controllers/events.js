@@ -41,9 +41,9 @@ router.post('/add-log', async function (req, res, next) {
                 postedBy: req.user._id,
                 family: family._id,
                 title: req.body.title,
-                date: req.body.date,
+                date: Date.now(),
                 location: req.body.location,
-                description: req.body.description,
+                description: req.body.notes,
                 //need to add media(image) field
             });
             await newEvent.save();
