@@ -13,8 +13,12 @@ router.get('/', async function(req, res, next) {
             const family = await req.models.Family.find({_id: user.family});
             let events = [];
             family.events.forEach(async (event) => {
-                const fullEvent = await req.models.Event.find({_id: event, data: req.date});
-                events.push(fullEvent);
+                const fullEvent = await req.models.Event.find({_id: event});
+                if (fullEvent.date.getFullYear() === req.query.date.getFullYear() &&
+                    fullEvent.date.getMonth() === req.query.date.getMonth() &&
+                    fullEvent.date.getDate() === req.query.date.getDate()) {
+                        posts.push(fullEvent);    
+                    }
             });
             res.json(events);
         } else {
