@@ -11,7 +11,7 @@ router.get('/', async function(req, res, next) {
             const user = await req.models.User.find({username: req.user.username});
             const family = await req.models.Family.find({_id: req.user.family});
             let posts = [];
-            family.posts.forEach(async (post) => {
+            family.posts.map(async (post) => {
                 const fullPost = await req.models.Event.find({_id: post, date: req.body.date});
                 posts.push(fullPost);
             });

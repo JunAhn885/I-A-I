@@ -2,7 +2,7 @@ import { typeImplementation } from '@testing-library/user-event/dist/type/typeIm
 import axios from 'axios';
 
 const serverUrl = 'http://localhost:8080/api';
-// api/posts/
+
 const calendarEndpoint = `${serverUrl}/bonding-journal`;
 const emotionPostEndpoint = `${serverUrl}/emotion-post`;
 const GratitudePostEndpoint = `${serverUrl}/gratitude-post`;

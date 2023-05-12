@@ -39,7 +39,7 @@ const BondingJournal = (props) => {
                 <div className="curve-box2"></div>
                 <div className="left-content">
                     <div className="bonding-journal-calendar">
-                        <Calendar onChange={props.setValue} onClick={getJournalPost} value={props.value}/>
+                        <Calendar onChange={props.setValue} value={props.value}/>
                     </div>
                     <button onClick={getJournalPost}>click me</button>
                     <div className="emotion-post-button">
