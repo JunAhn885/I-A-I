@@ -34,22 +34,25 @@ export default function EmotionPost(props){
     ]
     
     // state hooks
-    const [content, setContent] = useState("");
-    const [emotion, setEmotion] = useState("");
+    const [content, setContent] = useState(null);
+    const [emotion, setEmotion] = useState(null);
 
+    console.log(emotion)
+
+    // post request to add emotion post
     const addEmotionPost = async () => {
       //need to pass in date as a parameter
-      const response = await UserService.addEmotionPost("Emotion", content, emotion);
-      this.console.log(response)
+      const response = await UserService.addEmotionPost(props.value, "Emotion", content, emotion);
+      console.log(response)
     }
 
+    // updates the state of the content on change
     const updateContent = event => {
       setContent(event.target.value)
-      console.log(content)
     }
 
-    const emotionElements = emotions.map(emotion => {
-        return <Emotion emotionName={emotion.emotionName} emotionImageUrl={emotion.emotionImageUrl} />
+    const emotionElements = emotions.map(emotionObj => {
+        return <Emotion emotion={emotion} setEmotion={setEmotion} emotionName={emotionObj.emotionName} emotionImageUrl={emotionObj.emotionImageUrl} />
     })
     
     return(
