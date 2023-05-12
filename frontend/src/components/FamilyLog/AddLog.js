@@ -5,6 +5,12 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Header from "../Header/Header";
+import addLog from "userService.js"
+
+const addLog = async() => {
+  const response = await UserService.addLog(date,Event name, Location, Notes);
+  console.log(response);
+}
 
 
 
