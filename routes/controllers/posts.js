@@ -9,7 +9,7 @@ router.get('/', async function(req, res, next) {
         let thisSession = req.session;
         if (req.user) {
             const user = await req.models.User.find({username: req.user.username});
-            const family = await req.models.Family.find({_id: req.user.family});
+            const family = await req.models.Family.findOne({_id: req.user.family});
             let posts = [];
             family.posts.forEach(async (post) => {
                 const fullPost = await req.models.Event.find({_id: post, date: req.body.date});
@@ -31,6 +31,7 @@ router.post('/add-post', async function(req, res, next) {
         let thisSession = req.session;
         if (req.user) {
             let family = await req.models.Family.find({_id: req.user.family});
+            family = family[0];
             console.log('making new post')
             const newPost = new req.models.Post({
                 postedBy: req.user._id,
@@ -42,7 +43,14 @@ router.post('/add-post', async function(req, res, next) {
                 emotion: req.body.emotion,
             });
             await newPost.save();
+            console.log('new post saved')
+            
+            if (!family.posts) {
+                family.posts = [];
+            }
+            console.log(family)
             family.posts.push(newPost._id);
+            console.log(family)
             await family.save();
             res.json({status: "success"});
         } else {
