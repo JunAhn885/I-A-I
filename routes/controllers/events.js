@@ -9,15 +9,15 @@ router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
         if (req.user) {
-            const user = await req.models.User.find({_id: req.user.username}); //wrong search parameter
+            const user = await req.models.User.find({username: req.user.username});
             const family = await req.models.Family.find({_id: req.user.family});
             let events = [];
             for (const event of family.events) {
                 const fullEvent = await req.models.Event.find({_id: event});
                 fullEvent = fullEvent[0];
-                if (String(fullEvent.date.getFullYear()) === req.query.year &&
-                    String(fullEvent.date.getMonth()) === req.query.month &&
-                    String(fullEvent.date.getDate()) === req.query.day) {
+                if (fullEvent.date.getFullYear() == req.query.year &&
+                    fullEvent.date.getMonth() == req.query.month &&
+                    fullEvent.date.getDate() == req.query.day) {
                         posts.push(fullEvent);    
                     }
             };
@@ -40,10 +40,10 @@ router.post('/add-log', async function (req, res, next) {
             const newEvent = await req.models.Event.create({
                 postedBy: req.user._id,
                 family: family._id,
-                title: req.body.title,
-                date: Date.now(),
+                title: req.body.eventName,
+                date: req.body.date,
                 location: req.body.location,
-                description: req.body.description,
+                description: req.body.notes,
                 //need to add media(image) field
             });
             await newEvent.save();
