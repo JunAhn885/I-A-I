@@ -30,7 +30,8 @@ router.post('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
         if (req.user) {
-            const family = await req.models.Family.find({_id: req.user.family});
+            let family = await req.models.Family.find({_id: req.user.family});
+            family = family[0];
             const newEvent = await req.models.Event.create({
                 postedBy: req.user._id,
                 family: family._id,
@@ -41,6 +42,9 @@ router.post('/', async function(req, res, next) {
                 //need to add media(image) field
             });
             await newEvent.save();
+            if (!family.events) {
+                family.events = [];
+            }
             family.events.push(newEvent._id);
             family.save();
             res.json({status: "success"});
