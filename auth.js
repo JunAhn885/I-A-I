@@ -20,8 +20,6 @@ passport.use(
                 const newFamily = new models.Family({
                     name: profile.name.familyName,
                     members: [],
-                    events: [],
-                    posts: []
                 })
                 const newUser = new models.User({
                     username: profile.emails[0].value,
