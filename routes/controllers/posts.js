@@ -30,10 +30,11 @@ router.post('/add-gratitude-post', async function(req, res, next) {
     try {
         let thisSession = req.session;
         if (req.user) {
-            const family = await req.models.Family.find({_id: req.user.family});
+            let family = await req.models.Family.find({_id: req.user.family});
             console.log('making new post')
             const newPost = new req.models.Post({
-                postedBy: req.user.username,
+                postedBy: req.user._id,
+                family: family._id,
                 title: req.body.title,
                 type: req.body.type,
                 date: Date.now(),
@@ -105,6 +106,7 @@ router.post('/private', async function(req, res, next) {
             const user = await req.models.User.find({username: req.user.username});
             const newPost = new req.models.Post({
                 postedBy: req.user.username,
+                family: req.user.family,
                 title: req.body.title,
                 date: Date.now(),
                 content: req.body.content,
