@@ -12,10 +12,11 @@ router.get('/', async function(req, res, next) {
             let family = await req.models.Family.findOne({_id: req.user.family});
             let posts = [];
             family.posts.forEach(async (post) => {
-                const fullPost = await req.models.Post.find({_id: post});
-                if (fullPost.date.getFullYear() === req.query.date.getFullYear() &&
-                    fullPost.date.getMonth() === req.query.date.getMonth() &&
-                    fullPost.date.getDate() === req.query.date.getDate()) {
+                let fullPost = await req.models.Post.find({_id: post});
+                fullPost = fullPost[0];
+                if (fullPost.date.getFullYear() == req.query.year &&
+                    fullPost.date.getMonth() == req.query.month &&
+                    fullPost.date.getDate() == req.query.day) {
                         posts.push(fullPost);    
                     }
             });
