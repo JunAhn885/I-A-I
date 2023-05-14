@@ -25,7 +25,7 @@ const GratitudePost = (props) => {
             <div className="tab-gratitudepost">
                   <h1>{props.pageName}</h1>
             </div>
-            <input className="gratitude-post-input" type="text" value={content} onChange={updateContent}></input>
+            <textarea wrap="hard" rows={3} className="gratitude-post-input" type="text" value={content} onChange={updateContent}></textarea>
             <Link to="/bonding-journal"><button className="cancel-button-gratitudepost">Cancel</button></Link>
             <Link to="/bonding-journal"><button className="post-button-gratitudepost" onClick={addGratitudePost}>Post</button></Link>
         </div>
