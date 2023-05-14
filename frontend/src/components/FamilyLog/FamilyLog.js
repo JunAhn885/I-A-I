@@ -22,14 +22,14 @@ const FamilyLog = () => {
     setIsToggleYear(id);
   };
 
-  useEffect(async () => {
-    const response = await UserService.getLog(toggleMonth);
-    console.log('log', response); // this is the response from the backend
-    let components = response.map((item) => {
-      return '<div>' + item + '</div>'; // go through response and make react components
-    });
-    setLog(components);
-  }, [toggleMonth]);
+  // useEffect(async () => {
+  //   const response = await UserService.getLog(toggleMonth);
+  //   console.log('log', response); // this is the response from the backend
+  //   let components = response.map((item) => {
+  //     return '<div>' + item + '</div>'; // go through response and make react components
+  //   });
+  //   setLog(components);
+  // }, [toggleMonth]);
 
   return (
     <div>
