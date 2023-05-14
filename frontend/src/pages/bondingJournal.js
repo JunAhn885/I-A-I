@@ -10,7 +10,7 @@ import UserService from "../userSerivces"
 const BondingJournal = (props) => {
     
     // state hook for journal
-    const [journal, setJournal] = useState([])
+    const [journal, setJournal] = useState([]);
 
     // deconstructing the date object
     const year = props.value.getFullYear();

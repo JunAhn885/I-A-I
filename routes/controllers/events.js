@@ -9,19 +9,17 @@ router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
         if (req.user) {
-            const user = await req.models.User.find({username: req.user.username});
-            const family = await req.models.Family.find({_id: req.user.family});
-            let events = [];
+            let family = await req.models.Family.find({_id: req.user.family});
+            family = family[0];
+            let allEvents = [];
             for (const event of family.events) {
-                const fullEvent = await req.models.Event.find({_id: event});
+                let fullEvent = await req.models.Event.find({_id: event});
                 fullEvent = fullEvent[0];
-                if (fullEvent.date.getFullYear() == req.query.year &&
-                    fullEvent.date.getMonth() == req.query.month &&
-                    fullEvent.date.getDate() == req.query.day) {
-                        posts.push(fullEvent);    
+                if (fullEvent.date.getMonth() == req.query.month) {
+                        allEvents.push(fullEvent);    
                     }
             };
-            res.json(events);
+            res.json(allEvents);
         } else {
             res.send('Error: You must be logged in to view your family events');
         }
