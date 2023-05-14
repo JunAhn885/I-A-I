@@ -691,10 +691,11 @@ a:-webkit-any-link {
 .right-content {
   display: flex;
   flex-direction: column;
-  width: 600px;
-  margin-left: 40px;
+  width: 625px;
+  margin-left: 30px;
   margin-bottom: 40px;
-  margin-top: 200px
+  margin-top: 200px;
+  overflow: auto;
 }
 
 /*
