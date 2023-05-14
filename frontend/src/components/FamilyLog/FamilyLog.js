@@ -5,7 +5,7 @@ import line from "./../../img/line.svg";
 import baby from "./../../img/baby.png";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
-import UserService from "../userSerivces";
+import UserService from "../../userSerivces";
 import { set } from "mongoose";
 
 const FamilyLog = () => {
