@@ -1,13 +1,39 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import GoogleButton from 'react-google-button';
 
 export default function Login() {
 
-  function handleGoogleLogin() {
-    console.log("google login")
-    window.location.href='http://localhost:8080/auth/google'; //redirects to google authentication - change to auth/google for production
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [token, setToken] = useState(null);
+
+  const handleCallback = async (response) => {
+    try{
+      if (response.credential) {
+        setToken(response.credential);
+        setLoggedIn(true);
+        const res = await axios.post('http://localhost:8080/auth/google', { token: response.credential });
+        console.log(res)
+        window.location.href='http://localhost:3000/bonding-journal';
+      } 
+    } catch (err) {
+        console.log(err);
+      }
+
   }
+
+  useEffect(() => {
+      window.google.accounts.id.initialize({
+          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+          cancel_on_tap_outside: false,
+          callback: handleCallback
+      });
+
+      window.google.accounts.id.renderButton(document.getElementById("google-signin-button"), { 
+        theme: "outline", 
+        size: "large" }
+      );
+  }, []);
 
   //need a sign up page for normal login
   return (
@@ -17,7 +43,7 @@ export default function Login() {
         <input className="Password" type="text" placeholder="Password"></input>
         <button style={{color: "black"}}><Link to="/bonding-journal">Sign in</Link></button>
         <p>Don't have an account? <a href="">Sign up</a></p>
-        <GoogleButton onClick={handleGoogleLogin}/>
+        <div style={{width: "20%"}} id="google-signin-button"/>
     </div>
   );
 }

@@ -6,7 +6,10 @@ import passportSetup from './auth.js';
 import passport from 'passport';
 import cors from 'cors';
 import MongoStore from 'connect-mongo'
-import {SESSION_SECRET, MONGODB_USERNAME, MONGODB_PASSWORD} from './credentials.js';
+import { OAuth2Client } from 'google-auth-library';
+import jwt from 'jsonwebtoken';
+import jwtDecode from 'jwt-decode';
+import {SESSION_SECRET, MONGODB_USERNAME, MONGODB_PASSWORD, CLIENT_ID, CLIENT_SECRET, JWT_SECRET} from './credentials.js';
 
 import apiRouter from './routes/api.js';
 
@@ -49,19 +52,56 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(function(req, res, next) {
-    req.user = {
-        _id: "645d2d41f9284cd2c9387040",
-        username: "user@test.com",
-        name: "Test",
-        familyName: "User",
-        password: "testpassword",
-        family: "645d2d8a3590b3ed1ef08f06",
-        posts: [],
-        DateCreated: "2020-11-02T00:00:00.000Z",
-        __v: 0
-    };
-    next();
+// app.use(function(req, res, next) {
+//     req.user = {
+//         _id: "645d2d41f9284cd2c9387040",
+//         username: "user@test.com",
+//         name: "Test",
+//         familyName: "User",
+//         password: "testpassword",
+//         family: "645d2d8a3590b3ed1ef08f06",
+//         posts: [],
+//         DateCreated: "2020-11-02T00:00:00.000Z",
+//         __v: 0
+//     };
+//     next();
+// });
+
+app.post('/auth/google', async (req, res) => {
+    let userObject = jwtDecode(req.body.token);
+    console.log(userObject)
+    let user = await req.models.User.findOne({username: userObject.email});
+    console.log('user1', user)
+    try {
+        if(!user){
+            const newFamily = new models.Family({
+                name: userObject.family_name,
+                members: [],
+            })
+            const newUser = new models.User({
+                username: userObject.email,
+                name: userObject.given_name,
+                familyName: userObject.family_name,
+                family: newFamily._id,
+                posts: [],
+                DateCreated: Date.now()
+            })
+            newFamily.members.push(newUser._id);
+            await newUser.save();
+            await newFamily.save();
+            req.session.user = newUser;
+            req.session.save();
+        } else {
+            req.session.user = user;
+            req.session.save();
+        }
+        console.log(req.session.user)
+        console.log('user 3', user);
+        res.json({success: true})
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(401);
+    }
 });
 
 // Mount the API router
@@ -71,23 +111,6 @@ app.use('/api', checkAuthenticated, apiRouter);
 app.get('/', (req, res) => {
     res.send('<a href="/auth/google">Authenticate with Google</a>');
 });
-
-app.get('/auth/google', 
-    passport.authenticate('google', {scope: ['email','profile'] }) //this is the authentication route  
-);
-
-app.get('/auth/google/callback',
-    passport.authenticate('google', {
-        //successRedirect: 'http://localhost:3000/bonding-journal', //needs to redirect to a protected route
-        failureRedirect: 'http://localhost:3000/login'
-    }),(req, res) => {
-        req.session.user = req.user;
-        req.session.save();
-        console.log(req.session)
-        res.redirect('http://localhost:3000/bonding-journal');
-    }
-);
-
 
 app.get('/logout', (req, res) => {
     req.logout(() => {});
@@ -101,7 +124,7 @@ app.get('/test', checkAuthenticated, (req, res) => {
 });
 
 app.get('/session-info', (req, res) => {
-    res.send(req.user);
+    res.send(req.session);
 });
 
 app.listen(PORT, function () {
