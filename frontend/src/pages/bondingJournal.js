@@ -10,7 +10,7 @@ import UserService from "../userSerivces"
 const BondingJournal = (props) => {
     
     // state hook for journal
-    const [journal, setJournal] = useState([])
+    const [journal, setJournal] = useState([]);
 
     // event handler when user clicks a date on the calendar
     const getJournalPost = async () => {

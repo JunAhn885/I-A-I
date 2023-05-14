@@ -17,13 +17,14 @@ const addGratitudePost = (date, type, content) => axios.post(`${serverUrl}/posts
 // / /events are for family log
 const addLog = (date, eventName, location, notes) => axios.post(`${serverUrl}/events/add-log`, {date: date, eventName: eventName, location: location, notes: notes});
 
-const getLog = (month) => axios.get(`${serverUrl}/events?month=${month}`);
+const getLog = (month) => axios.get(`${serverUrl}/events/?month=${month}`);
 
 const UserService = {
   getBJPosts,
   addEmotionPost,
   addGratitudePost,
-  addLog
+  addLog,
+  getLog
 };
 
 export default UserService;
