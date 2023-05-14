@@ -68,8 +68,8 @@ export default function EmotionPost(props){
                 </div>
                 <h3>Record your thoughts</h3>
                 <input className="emotion-post-input" value={content} onChange={updateContent} type="text"></input>
-                <button className="cancel-button-emotionpost"><Link to="/bonding-journal">Cancel</Link></button>
-                <button className="post-button-emotionpost" onClick={addEmotionPost}><Link to="/bonding-journal">Post</Link></button>
+                <Link to="/bonding-journal"><button className="cancel-button-emotionpost">Cancel</button></Link>
+                <Link to="/bonding-journal"><button className="post-button-emotionpost" onClick={addEmotionPost}>Post</button></Link>
             </div>
         </div>
     )
