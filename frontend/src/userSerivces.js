@@ -8,7 +8,7 @@ const emotionPostEndpoint = `${serverUrl}/emotion-post`;
 const GratitudePostEndpoint = `${serverUrl}/gratitude-post`;
 
 // /posts are for bonding journal 
-const getBJPosts = (date) => axios.get(`${serverUrl}/posts?date=${date}`);
+const getBJPosts = (year, month, day) => axios.get(`${serverUrl}/posts?year=${year}&month=${month}&day=${day}`);
 
 const addEmotionPost = (date, type, content, emotion) => axios.post(`${serverUrl}/posts/add-post`, {date:date, type:type, content:content, emotion:emotion});
 
