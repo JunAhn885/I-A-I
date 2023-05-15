@@ -38,7 +38,7 @@ const BondingJournal = (props) => {
         } else {
           return null;
         }
-      }) : <p className="no-notes-display">No Notes to display for this day. Add more posts!</p>;
+      }) : <p className="no-notes-display">No Notes to display for this day. Add more posts or select a different day to display notes!</p>;
     
     return (
         <div className="bonding-journal">

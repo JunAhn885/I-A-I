@@ -67,7 +67,7 @@ export default function EmotionPost(props){
                     {emotionElements}
                 </div>
                 <h3>Record your thoughts</h3>
-                <input className="emotion-post-input" value={content} onChange={updateContent} type="text"></input>
+                <textarea wrap="hard" rows={3} className="emotion-post-input" value={content} onChange={updateContent}></textarea>
                 <Link to="/bonding-journal"><button className="cancel-button-emotionpost">Cancel</button></Link>
                 <Link to="/bonding-journal"><button className="post-button-emotionpost" onClick={addEmotionPost}>Post</button></Link>
             </div>

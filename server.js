@@ -9,7 +9,7 @@ import MongoStore from 'connect-mongo'
 import { OAuth2Client } from 'google-auth-library';
 import jwt from 'jsonwebtoken';
 import jwtDecode from 'jwt-decode';
-import {SESSION_SECRET, MONGODB_USERNAME, MONGODB_PASSWORD, CLIENT_ID, CLIENT_SECRET, JWT_SECRET} from './credentials.js';
+import {SESSION_SECRET, MONGODB_USERNAME, MONGODB_PASSWORD, CLIENT_ID, CLIENT_SECRET} from './credentials.js';
 
 import apiRouter from './routes/api.js';
 

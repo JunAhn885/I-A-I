@@ -304,11 +304,6 @@ button:hover{
   margin-top: 60px;
 }
 
-.emotion-post > .content-box > button {
-  width: 157px;
-  height: 78px;
-  border-radius: 10px;
-}
 
 .cancel-button-emotionpost, .post-button-emotionpost {
   position: absolute;
@@ -316,12 +311,15 @@ button:hover{
 }
 
 .cancel-button-emotionpost {
-  top: 648px;
+  top: 660px;
   background: #DBD3C9;
   font-style: normal;
   font-weight: 500;
   font-size: 40px;
   color:#AC9C86;
+  width: 157px;
+  height: 78px;
+  border-radius: 10px;
 }
 
 .post-button-emotionpost {
@@ -330,7 +328,10 @@ button:hover{
   font-weight: 500;
   font-size: 40px;
   color:#FFFFFF;
-  top: 753px;
+  top: 770px;
+  width: 157px;
+  height: 78px;
+  border-radius: 10px;
 }
 
 .emotion-post-input{
@@ -339,6 +340,11 @@ button:hover{
   background: #DBD3C9;
   margin-left: 80px;
   margin-top: 20px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 49px;
+  color: #AC9C86;
 }
 
 .emotion-box {
@@ -352,11 +358,16 @@ button:hover{
   text-align: center;
 }
 
+.emotion > img {
+  cursor:pointer;
+}
+
 .emotion-name {
   color:#706455;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .tab-emotionpost {
@@ -416,6 +427,11 @@ button:hover{
   height: 224px;
   margin-top: 150px;
   background: #DBD3C9;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 49px;
+  color: #81644A;
 }
 
 .tab-gratitudepost {
@@ -698,20 +714,10 @@ a:-webkit-any-link {
   overflow: auto;
 }
 
-/*
-.dimple {
-  position: absolute;
-  width: 200px;
-  height: 100px;
-  background:#E6EAE4;
-  left: 0;
-  right: 0;
-  margin: auto;
-  border-bottom-left-radius: 100px;
-  border-bottom-right-radius: 100px;
-  z-index: 1;
+.no-notes-display {
+  font-size: 40px;
+  margin-left: 20px;
 }
-*/
 
 /*CSS for the Bonding Journal Gratitude Box-------------------------*/
 .bonding-journal-gratitude-box {
@@ -741,6 +747,8 @@ a:-webkit-any-link {
   font-size: 24px;
   color: #FFFFFF;
   padding: 30px;
+  inline-size: 460px;
+  overflow-wrap: break-word;
 }
 
 /*CSS for the Bonding Journal Emotion Box-------------------------*/
@@ -782,5 +790,8 @@ a:-webkit-any-link {
   color: #FFFFFF;
   margin-right: 20px;
   margin-left: 20px;
+  inline-size: 400px;
+  overflow-wrap: break-word;
 }
+
 
