@@ -7,23 +7,19 @@ var router = express.Router();
 router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (req.user) {
-            const user = await req.models.User.find({username: req.user.username});
-            let family = await req.models.Family.findOne({_id: req.user.family});
+        if (thisSession.user) {
+            const user = await req.models.User.find({username: thisSession.user.username});
+            let family = await req.models.Family.findOne({_id: thisSession.user.family});
             let allPosts = [];
             for (const post of family.posts) {
                 let fullPost = await req.models.Post.find({_id: post});
                 fullPost = fullPost[0];
-                console.log('query year', req.query.year)
-                console.log('query month', req.query.month) // 0 indexed
-                console.log('query day', req.query.day)
                 if (fullPost.date.getFullYear() == req.query.year &&
                     fullPost.date.getMonth() == req.query.month &&
                     fullPost.date.getDate() == req.query.day) {
                         console.log('pushing post')
                         allPosts.push(fullPost); 
                     }
-                console.log(allPosts)
             };
             res.json(allPosts);
         } else {
@@ -39,12 +35,12 @@ router.get('/', async function(req, res, next) {
 router.post('/add-post', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (req.user) {
-            let family = await req.models.Family.find({_id: req.user.family});
+        if (thisSession.user) {
+            let family = await req.models.Family.find({_id: thisSession.user.family});
             family = family[0];
             console.log('making new post')
             const newPost = new req.models.Post({
-                postedBy: req.user._id,
+                postedBy: thisSession.user._id,
                 family: family._id,
                 title: req.body.title,
                 type: req.body.type,
@@ -75,9 +71,9 @@ router.post('/add-post', async function(req, res, next) {
 router.delete('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (req.user) {
-            let user = await req.models.User.find({username: req.user.username});
-            let family = await req.models.Family.find({_id: req.user.family});
+        if (thisSession.user) {
+            let user = await req.models.User.find({username: thisSession.user.username});
+            let family = await req.models.Family.find({_id: thisSession.user.family});
             let post = req.body.postId;
             let index = family.posts.indexOf(post);
             if (index > -1) {
@@ -94,18 +90,24 @@ router.delete('/', async function(req, res, next) {
     }
 });
 
-//GET all private posts related to the user
+//GET private posts related to the user by date
 router.get('/private', async function(req, res, next) {
     try{
         let thisSession = req.session;
-        if (req.user) {
-            const user = await req.models.User.find({username: req.user.username});
-            let posts = [];
-            user.posts.forEach(async (post) => {
-                const fullPost = await req.models.Event.find({_id: post});
-                posts.push(fullPost);
-            });
-            res.json(posts);
+        if (thisSession.user) {
+            const user = await req.models.User.find({username: thisSession.user.username});
+            let allPosts = [];
+            for (const post of user.posts) {
+                let fullPost = await req.models.Post.find({_id: post});
+                fullPost = fullPost[0];
+                if (fullPost.date.getFullYear() == req.query.year &&
+                    fullPost.date.getMonth() == req.query.month &&
+                    fullPost.date.getDate() == req.query.day) {
+                        console.log('pushing post')
+                        allPosts.push(fullPost); 
+                    }
+            };
+            res.json(allPosts);
         } else {
             res.send('Error: You must be logged in to view your private log');
         }
@@ -120,8 +122,9 @@ router.get('/private', async function(req, res, next) {
 router.post('/private', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (req.user) {
-            const user = await req.models.User.find({username: req.user.username});
+        if (thisSession.user) {
+            let user = await req.models.User.find({username: thisSession.user.username});
+            user = user[0];
             const newPost = new req.models.Post({
                 postedBy: req.user.username,
                 family: req.user.family,
@@ -148,8 +151,9 @@ router.post('/private', async function(req, res, next) {
 router.delete('/private', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (req.user) {
-            let user = await req.models.User.find({username: req.user.username});
+        if (thisSession.user) {
+            let user = await req.models.User.find({username: thisSession.user.username});
+            user = user[0];
             let post = req.query.postId;
             let index = user.posts.indexOf(post);
             if (index > -1) {
