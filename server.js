@@ -100,19 +100,25 @@ app.post('/auth/google', async (req, res) => {
         res.json({success: true})
     } catch (err) {
         console.log(err);
-        res.sendStatus(401);
+        res.setStatus(401).json({success: false, message: "Invalid username or password"});
     }
 });
 
 app.post('/auth/login', async (req, res) => {
-    let user = await req.models.User.findOne({username: req.body.username, password: req.body.password});
-    if (!user) {
-        res.status(401).json({success: false, message: "Invalid username or password"});
-    } else {
-        req.session.user = user;
-        req.session.save();
-        res.json({success: true})
+    try {
+        let user = await req.models.User.findOne({username: req.body.username, password: req.body.password});
+        if (!user) {
+            res.status(401).json({success: false, message: "Invalid username or password"});
+        } else {
+            req.session.user = user;
+            req.session.save();
+            res.json({success: true})
+        }
+    } catch (err) {
+        console.log(err);
+        res.setStatus(401).json({success: false, message: "Invalid username or password"});
     }
+    
 });
 // Mount the API router
 app.use('/api', checkAuthenticated, apiRouter);
