@@ -76,7 +76,7 @@ export default function Login(props) {
         <button style={{color: "black"}} onClick={handleLogin}><Link to="/bonding-journal">Sign in</Link></button>
         <div id="google-signin-button"/>
         <p>Don't have an account? <a href="">Sign up</a></p>
-        <div style={{width: "40%", marginLeft: "33%", marginTop: "15px"}} id="google-signin-button"/>
+        <div id="google-signin-button"/>
     </div>
   );
 }
