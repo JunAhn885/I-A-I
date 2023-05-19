@@ -87,7 +87,7 @@ button:hover{
   margin-top: 10%;
 }
 
-.Login-Box > button {
+.sign-in-button {
   margin: auto;
   display: block;
   margin-top: 30px;
@@ -112,7 +112,7 @@ button:hover{
   z-index: 2;
 }
 
-.Landingpage-Header > button {
+.landingpage-login-button{
   position: absolute;
   width: 291px;
   height: 66px;
@@ -128,7 +128,7 @@ button:hover{
   z-index: 2;
 }
 
-.Landingpage-Header > button:hover{
+.landingpage-login-button:hover{
   color:#81644A;
 }
 
@@ -362,7 +362,7 @@ button:hover{
   cursor:pointer;
 }
 
-.emotion-name {
+.emotion > p {
   color:#706455;
   font-style: normal;
   font-weight: 400;
@@ -391,6 +391,11 @@ button:hover{
   font-size: 24px;
   line-height: 29px;
 }
+
+.bold-text {
+  font-weight: bold;
+}
+
 
 /* CSS for the gratitude Post -----------------------------*/
 .gratitude-post {

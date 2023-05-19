@@ -2,7 +2,7 @@ import Navbar from "../components/shared/navbar";
 import Emotion from "../components/emotionPost/emotion";
 import { Link } from "react-router-dom"
 import UserService from "../userSerivces"
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 // props should include name, page name, and list of emotions and respective images
 export default function EmotionPost(props){
@@ -38,8 +38,13 @@ export default function EmotionPost(props){
     // state hooks
     const [content, setContent] = useState(null);
     const [emotion, setEmotion] = useState(null);
+    const [isAwesomeBold, setIsAwesomeBold] = useState(false);
+    const [isGoodBold, setIsGoodBold] = useState(false);
+    const [isNeutralBold, setIsNeutralBold] = useState(false);
+    const [isShockedBold, setIsShockedBold] = useState(false);
+    const [isAngryBold, setIsAngryBold] = useState(false);
+    const [isSadBold, setIsSadBold] = useState(false);
 
-    console.log(emotion)
 
     // post request to add emotion post
     const addEmotionPost = async () => {
@@ -54,9 +59,25 @@ export default function EmotionPost(props){
     }
 
     const emotionElements = emotions.map(emotionObj => {
-        return <Emotion emotion={emotion} setEmotion={setEmotion} emotionName={emotionObj.emotionName} emotionImageUrl={emotionObj.emotionImageUrl} />
+        return <Emotion setEmotion={setEmotion} emotionName={emotionObj.emotionName} emotionImageUrl={emotionObj.emotionImageUrl} />
     })
-    
+
+    useEffect(() =>{
+      if (emotion === "./images/emotionPost/awesome.svg") {
+        setIsAwesomeBold(true);
+      } else if (emotion === "./images/emotionPost/good.svg") {
+        setIsGoodBold(true);
+      } else if (emotion === "./images/emotionPost/neutral.svg") {
+        setIsNeutralBold(true);
+      } else if (emotion === "./images/emotionPost/shocked.svg") {
+        setIsShockedBold(true);
+      } else if (emotion === "./images/emotionPost/angry.svg") {
+        setIsAngryBold(true);
+      } else if (emotion === "./images/emotionPost/sad.svg") {
+        setIsSadBold(true)
+      }
+    }, [emotion])
+
     return(
         <div className='emotion-post'>
             <div className='content-box'>
