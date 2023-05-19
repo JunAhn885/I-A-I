@@ -37,7 +37,7 @@ export default function Login() {
       window.location.href='http://localhost:3000/bonding-journal';
     } catch (err) {
       console.log(err);
-      setErrorMessage(res.message)
+      //setErrorMessage(res.message)
     }
   }
   
@@ -69,8 +69,9 @@ export default function Login() {
         <input onChange={handleUsernameChange} className="Email" type="text" placeholder="Email"></input>
         <input onChange={handlePasswordChange} className="Password" type="text" placeholder="Password"></input>
         <button style={{color: "black"}} onClick={handleLogin}><Link to="/bonding-journal">Sign in</Link></button>
+        <div id="google-signin-button"/>
         <p>Don't have an account? <a href="">Sign up</a></p>
-        <div style={{width: "20%"}} id="google-signin-button"/>
+        
     </div>
   );
 }

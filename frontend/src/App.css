@@ -36,7 +36,11 @@ button:hover{
 
 /*CSS for the Login Page----------------------------*/
 .Login-Box {
-  width: 699px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  max-width: 699px;
   height: 504px;
   background: rgba(255, 255, 255, 0.51);
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
@@ -57,16 +61,18 @@ button:hover{
   font-style: normal;
   font-weight: 500;
   font-size: 40px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 .Login-Box > input {
   background: #D9D9D9;
   border-radius: 16px;
-  width: 493px;
+  width: 70%;
   height: 54px;
   margin-top: 40px;
-  padding-left: 20px;
+  margin: auto;
+  padding-left: 30px;
+  padding-top: 5px;
   border: 0;
   outline: 0;
 }
@@ -84,15 +90,17 @@ button:hover{
   font-style: normal;
   font-weight: 200;
   font-size: 16px;
-  margin-top: 10%;
+  margin: 20px;
 }
 
-.sign-in-button {
+#google-signin-button {
   margin: auto;
   display: block;
   margin-top: 30px;
-  margin-bottom: -30px;
+  width: "20%";
 }
+
+
 
 /*CSS for the Landingpage----------------------------------------*/
 .Landingpage-Header {
