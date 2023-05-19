@@ -1,30 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { set } from "mongoose";
+import jwtDecode from 'jwt-decode';
 
-export default function Login() {
+export default function Login(props) {
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [token, setToken] = useState(null);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
+  const navigate = useNavigate();
+
   const handleCallback = async (response) => {
+    const userObject = jwtDecode(response.credential);
+    console.log('userObject', userObject);
     try{
       if (response.credential) {
-        setToken(response.credential);
-        const res = await axios.post('http://localhost:8080/auth/google', { token: token});
-        if (res.success) {
+        const res = await axios.post('http://localhost:8080/auth/google', {token: response.credential}, {withCredentials: true});
+        const setCookieHeader = res.headers['set-cookie'];
+        console.log('Set-Cookie Header:', setCookieHeader);
+        if (res.data.success) {
           setLoggedIn(true);
-          console.log(res);
+          console.log('response in frontend', res);
+          let meta = {id: res.data.user._id, name: res.data.user.name, familyName: res.data.user.familyName};
+          localStorage.setItem('username', res.data.user.username);
+          localStorage.setItem('user', JSON.stringify(meta)); //need to clear cache on logout
+          navigate('/bonding-journal');
         }
-        window.location.href='http://localhost:3000/bonding-journal';
       } 
     } catch (err) {
         console.log(err);
-        setErrorMessage('Something went wrong with Google login');
+        console.log('Something went wrong with Google login');
+        console.log(errorMessage);
     }
   }
 
@@ -33,11 +41,9 @@ export default function Login() {
     try {
       const res = await axios.post('http://localhost:8080/auth/login', { username: username, password: password });
       console.log(res)
-      setLoggedIn(true);
-      window.location.href='http://localhost:3000/bonding-journal';
+      navigate('/bonding-journal');;
     } catch (err) {
       console.log(err);
-      //setErrorMessage(res.message)
     }
   }
   
@@ -61,8 +67,7 @@ export default function Login() {
         size: "large" }
       );
   }, []);
-  
-  //need a sign up page for normal login
+
   return (
     <div className="Login-Box">
         <h1>Login to your account</h1>
@@ -71,7 +76,7 @@ export default function Login() {
         <button style={{color: "black"}} onClick={handleLogin}><Link to="/bonding-journal">Sign in</Link></button>
         <div id="google-signin-button"/>
         <p>Don't have an account? <a href="">Sign up</a></p>
-        
+        <div style={{width: "40%", marginLeft: "33%", marginTop: "15px"}} id="google-signin-button"/>
     </div>
   );
 }

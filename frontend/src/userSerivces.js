@@ -8,16 +8,16 @@ const emotionPostEndpoint = `${serverUrl}/emotion-post`;
 const GratitudePostEndpoint = `${serverUrl}/gratitude-post`;
 
 // /posts are for bonding journal 
-const getBJPosts = (year, month, day) => axios.get(`${serverUrl}/posts?year=${year}&month=${month}&day=${day}`);
+const getBJPosts = (id, year, month, day) => axios.get(`${serverUrl}/posts?id=${id}&year=${year}&month=${month}&day=${day}`);
 
-const addEmotionPost = (date, type, content, emotion) => axios.post(`${serverUrl}/posts/add-post`, {date:date, type:type, content:content, emotion:emotion});
+const addEmotionPost = (id, date, type, content, emotion) => axios.post(`${serverUrl}/posts/add-post`, {id: id, date:date, type:type, content:content, emotion:emotion});
 
-const addGratitudePost = (date, type, content) => axios.post(`${serverUrl}/posts/add-post`, {date:date, type:type, content:content});
+const addGratitudePost = (id, date, type, content) => axios.post(`${serverUrl}/posts/add-post`, {id: id, date:date, type:type, content:content});
 
 // / /events are for family log
-const addLog = (date, eventName, location, notes) => axios.post(`${serverUrl}/events/add-log`, {date: date, eventName: eventName, location: location, notes: notes});
+const addLog = (id, date, eventName, location, notes) => axios.post(`${serverUrl}/events/add-log`, {id: id, date: date, eventName: eventName, location: location, notes: notes});
 
-const getLog = (month) => axios.get(`${serverUrl}/events/?month=${month}`);
+const getLog = (id, month) => axios.get(`${serverUrl}/events/?id=${id}&month=${month}`);
 
 const UserService = {
   getBJPosts,

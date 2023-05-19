@@ -7,10 +7,9 @@ var router = express.Router();
 //filters on date => req.date
 router.get('/', async function(req, res, next) {
     try {
-        let thisSession = req.session;
-        if (thisSession.user) {
-            let family = await req.models.Family.find({_id: thisSession.user.family});
-            family = family[0];
+        if (req.query.id) {
+            let user = await req.models.User.findOne({_id: req.query.id})
+            let family = await req.models.Family.findOne({_id: user.family});
             let allEvents = [];
             for (const event of family.events) {
                 let fullEvent = await req.models.Event.find({_id: event});
@@ -31,12 +30,11 @@ router.get('/', async function(req, res, next) {
 
 router.post('/add-log', async function (req, res, next) {
     try {
-        let thisSession = req.session;
-        if (thisSession.user) {
-            let family = await req.models.Family.find({ _id: thisSession.user.family });
-            family = family[0];
+        if (req.body.id) {
+            let user = await req.models.User.findOne({_id: req.body.id})
+            let family = await req.models.Family.findOne({ _id: user.family });
             const newEvent = await req.models.Event.create({
-                postedBy: req.user._id,
+                postedBy: req.body._id,
                 family: family._id,
                 title: req.body.title,
                 date: Date.now(),

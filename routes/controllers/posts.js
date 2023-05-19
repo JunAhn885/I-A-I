@@ -7,9 +7,9 @@ var router = express.Router();
 router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.user) {
-            const user = await req.models.User.find({username: thisSession.user.username});
-            let family = await req.models.Family.findOne({_id: thisSession.user.family});
+        if (req.query.id) {
+            let user = await req.models.User.findOne({_id: req.query.id});
+            let family = await req.models.Family.findOne({_id: user.family});
             let allPosts = [];
             for (const post of family.posts) {
                 let fullPost = await req.models.Post.find({_id: post});
@@ -34,13 +34,12 @@ router.get('/', async function(req, res, next) {
 //POST a new post to the public family log
 router.post('/add-post', async function(req, res, next) {
     try {
-        let thisSession = req.session;
-        if (thisSession.user) {
-            let family = await req.models.Family.find({_id: thisSession.user.family});
-            family = family[0];
+        if (req.body.id) {
+            let user = await req.models.User.findOne({_id: req.body.id});
+            let family = await req.models.Family.findOne({_id: user.family});
             console.log('making new post')
             const newPost = new req.models.Post({
-                postedBy: thisSession.user._id,
+                postedBy: req.body._id,
                 family: family._id,
                 title: req.body.title,
                 type: req.body.type,
@@ -70,10 +69,9 @@ router.post('/add-post', async function(req, res, next) {
 // DELETE a post from the public family log
 router.delete('/', async function(req, res, next) {
     try {
-        let thisSession = req.session;
-        if (thisSession.user) {
-            let user = await req.models.User.find({username: thisSession.user.username});
-            let family = await req.models.Family.find({_id: thisSession.user.family});
+        if (req.body.id) {
+            let user = await req.models.User.findOne({_id: req.body.id});
+            let family = await req.models.Family.findOne({_id: user.family});
             let post = req.body.postId;
             let index = family.posts.indexOf(post);
             if (index > -1) {
@@ -93,9 +91,8 @@ router.delete('/', async function(req, res, next) {
 //GET private posts related to the user by date
 router.get('/private', async function(req, res, next) {
     try{
-        let thisSession = req.session;
-        if (thisSession.user) {
-            const user = await req.models.User.find({username: thisSession.user.username});
+        if (req.query.id) {
+            let user = await req.models.User.findOne({_id: req.body.id});
             let allPosts = [];
             for (const post of user.posts) {
                 let fullPost = await req.models.Post.find({_id: post});
@@ -122,12 +119,11 @@ router.get('/private', async function(req, res, next) {
 router.post('/private', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (thisSession.user) {
-            let user = await req.models.User.find({username: thisSession.user.username});
-            user = user[0];
+        if (req.body.id) {
+            let user = await req.models.User.findOne({_id: req.body.id});
             const newPost = new req.models.Post({
-                postedBy: req.user.username,
-                family: req.user.family,
+                postedBy: user.username,
+                family: user.family,
                 title: req.body.title,
                 date: Date.now(),
                 content: req.body.content,

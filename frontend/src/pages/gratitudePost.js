@@ -6,7 +6,8 @@ import {useState} from 'react';
 const GratitudePost = (props) => {
     
     const [content, setContent] = useState("");
-    
+    let user = localStorage.getItem('user');
+    user = JSON.parse(user);
     // update content whenever input change is detected
     const updateContent = event => {
         setContent(event.target.value);
@@ -14,14 +15,14 @@ const GratitudePost = (props) => {
 
     // sending post request to the backend
     const addGratitudePost = async() => {
-        const response = await UserService.addGratitudePost(props.value, "Gratitude", content);
+        const response = await UserService.addGratitudePost(user.id, props.value, "Gratitude", content);
         console.log(response);
     }
 
     return (
         <div className="gratitude-post">
             <Navbar/>
-            <h1>Hi, {props.name}, are you grateful for anything your partner did for you today?</h1>
+            <h1>Hi, {user.name}, are you grateful for anything your partner did for you today?</h1>
             <div className="tab-gratitudepost">
                   <h1>{props.pageName}</h1>
             </div>
