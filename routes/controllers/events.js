@@ -8,8 +8,8 @@ var router = express.Router();
 router.get('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (req.user) {
-            let family = await req.models.Family.find({_id: req.user.family});
+        if (thisSession.user) {
+            let family = await req.models.Family.find({_id: thisSession.user.family});
             family = family[0];
             let allEvents = [];
             for (const event of family.events) {
@@ -32,8 +32,8 @@ router.get('/', async function(req, res, next) {
 router.post('/add-log', async function (req, res, next) {
     try {
         let thisSession = req.session;
-        if (req.user) {
-            let family = await req.models.Family.find({ _id: req.user.family });
+        if (thisSession.user) {
+            let family = await req.models.Family.find({ _id: thisSession.user.family });
             family = family[0];
             const newEvent = await req.models.Event.create({
                 postedBy: req.user._id,
@@ -63,8 +63,8 @@ router.post('/add-log', async function (req, res, next) {
 router.delete('/', async function(req, res, next) {
     try {
         let thisSession = req.session;
-        if (req.user) {
-            const user = await req.models.User.find({_id: req.user.username});
+        if (thisSession.user) {
+            const user = await req.models.User.find({_id: thisSession.user.username});
             const event = req.body.eventId;
             const index = family.events.indexOf(event);
             if (index > -1) {

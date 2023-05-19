@@ -100,10 +100,26 @@ app.post('/auth/google', async (req, res) => {
         res.json({success: true})
     } catch (err) {
         console.log(err);
-        res.sendStatus(401);
+        res.setStatus(401).json({success: false, message: "Invalid username or password"});
     }
 });
 
+app.post('/auth/login', async (req, res) => {
+    try {
+        let user = await req.models.User.findOne({username: req.body.username, password: req.body.password});
+        if (!user) {
+            res.status(401).json({success: false, message: "Invalid username or password"});
+        } else {
+            req.session.user = user;
+            req.session.save();
+            res.json({success: true})
+        }
+    } catch (err) {
+        console.log(err);
+        res.setStatus(401).json({success: false, message: "Invalid username or password"});
+    }
+    
+});
 // Mount the API router
 app.use('/api', checkAuthenticated, apiRouter);
 
@@ -112,15 +128,16 @@ app.get('/', (req, res) => {
     res.send('<a href="/auth/google">Authenticate with Google</a>');
 });
 
-app.get('/logout', (req, res) => {
-    req.logout(() => {});
-    req.session.destroy();
-    res.redirect('/login');
-});
-
-app.get('/test', checkAuthenticated, (req, res) => {
-    req.session.user = req.user;
-    res.send(`Welcome, ${req.user.name}!`);
+app.post('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if(err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            res.clearCookie('connect.sid');
+            res.redirect('http://localhost:3000/login');  
+        }
+    });     
 });
 
 app.get('/session-info', (req, res) => {
