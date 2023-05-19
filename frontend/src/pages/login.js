@@ -19,7 +19,6 @@ export default function Login() {
     } catch (err) {
         console.log(err);
       }
-
   }
 
   useEffect(() => {
@@ -34,15 +33,15 @@ export default function Login() {
         size: "large" }
       );
   }, []);
-
+  
   //need a sign up page for normal login
   return (
     <div className="Login-Box">
         <h1>Login to your account</h1>
         <input className="Email" type="text" placeholder="Email"></input>
         <input className="Password" type="text" placeholder="Password"></input>
-        <button style={{color: "black"}}><Link to="/bonding-journal">Sign in</Link></button>
-        <p>Don't have an account? <a href="">Sign up</a></p>
+        <Link to="/bonding-journal"><button className="sign-in-button">Sign in</button></Link>
+        <p>Don't have an account? Sign up</p>
         <div style={{width: "20%"}} id="google-signin-button"/>
     </div>
   );

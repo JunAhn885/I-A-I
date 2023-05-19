@@ -13,7 +13,7 @@ export default function Header(){
             <div className="header-content">
                 Raising a child is as much about the parents as it is about the child. Nutrify your little bean with love and bonding to nurture a healthier family dynamic as new parents.
             </div>
-            <button><Link to="/login">Log in/Sign up</Link></button>
+            <Link to="/login" style={{ textDecoration: 'none' }}><button className="landingpage-login-button">Log in/Sign up</button></Link>
         </div>
     )
 }

@@ -22,13 +22,11 @@ const BondingJournal = (props) => {
         // event handler when user clicks a date on the calendar
         const getJournalPost = async () => {
             const response = await UserService.getBJPosts(year, month, day);
-            console.log(response)
             setJournal(response.data)
         }
         getJournalPost();
     }, [props.value])
 
-    
     // iterate through the list received, then check each object and if the type === Gratitude, return gratitudebox component, and if Emotion, return emotionbox component. If object is empty, print "No Notes to display, add more notes".
     const boxElements = journal.length > 0 ? journal.map(item => {
         if (item.type === "Gratitude"){

@@ -17,7 +17,6 @@ const FamilyLog = () => {
     setIsToggleMonth(index);
   };
 
-
   const showYearData = (id) => {
     setIsToggleYear(id);
   };
