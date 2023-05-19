@@ -6,6 +6,8 @@ import {useState} from 'react';
 
 // props should include name, page name, and list of emotions and respective images
 export default function EmotionPost(props){
+  let user = localStorage.getItem('user');
+  user = JSON.parse(user);
     var emotions = [
         {
           emotionName: "Awesome",
@@ -42,7 +44,7 @@ export default function EmotionPost(props){
     // post request to add emotion post
     const addEmotionPost = async () => {
       //need to pass in date as a parameter
-      const response = await UserService.addEmotionPost(props.value, "Emotion", content, emotion);
+      const response = await UserService.addEmotionPost(user.id, props.value, "Emotion", content, emotion);
       console.log(response)
     }
 
@@ -59,7 +61,7 @@ export default function EmotionPost(props){
         <div className='emotion-post'>
             <div className='content-box'>
               <Navbar/>
-                <h1>Hi, {props.name}, how are you feeling today?</h1>
+                <h1>Hi, {user.name}, how are you feeling today?</h1>
                 <div className="tab-emotionpost">
                   <h1>{props.pageName}</h1>
                 </div>

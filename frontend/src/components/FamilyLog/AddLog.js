@@ -13,8 +13,10 @@ const AddLog = () => {
   const [notes, setNotes] = useState("");
 
   const addLog = async () => {
+    let user = localStorage.getItem('user');
+    user = JSON.parse(user);
     try {
-      const response = await UserService.addLog(date, eventName, location, notes);
+      const response = await UserService.addLog(user.id, date, eventName, location, notes);
       console.log(response);
       // handle successful response here, such as redirecting to another page or clearing the form
     } catch (error) {

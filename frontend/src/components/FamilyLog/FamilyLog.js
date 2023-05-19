@@ -11,10 +11,13 @@ const FamilyLog = () => {
   const [toggleMonth, setIsToggleMonth] = useState(1);
   const [toggleYear, setIsToggleYear] = useState(1);
   const [logs, setLogs] = useState([]);
+  
+  const user = localStorage.getItem("user");
+  const userObj = JSON.parse(user);
 
   const showMonthData = async (index) => {
     setIsToggleMonth(index);
-    const response = await UserService.getLog(index);
+    const response = await UserService.getLog(userObj.id, index);
     setLogs(response.data);
   };
 

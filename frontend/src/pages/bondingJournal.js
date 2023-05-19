@@ -16,12 +16,14 @@ const BondingJournal = (props) => {
     const year = props.value.getFullYear();
     const month = props.value.getMonth();
     const day = props.value.getDate();
-
+    let user = localStorage.getItem('user');
+    user = JSON.parse(user);
     //useEffect hook to execute endpoint call when props.value is changed
     useEffect(() => {
         // event handler when user clicks a date on the calendar
+        console.log(user)
         const getJournalPost = async () => {
-            const response = await UserService.getBJPosts(year, month, day);
+            const response = await UserService.getBJPosts(user.id, year, month, day);
             console.log(response)
             setJournal(response.data)
         }
