@@ -15,8 +15,12 @@ const GratitudePost = (props) => {
 
     // sending post request to the backend
     const addGratitudePost = async() => {
-        const response = await UserService.addGratitudePost(user.id, props.value, "Gratitude", content);
-        console.log(response);
+        if (content === "") {
+            alert("cannot save empty notes!")
+        } else {
+            const response = await UserService.addGratitudePost(user.id, props.value, "Gratitude", content);
+            console.log(response);
+        }
     }
 
     return (

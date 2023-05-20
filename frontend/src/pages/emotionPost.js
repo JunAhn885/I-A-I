@@ -46,11 +46,16 @@ export default function EmotionPost(props){
     const [isSadBold, setIsSadBold] = useState(false);
 
 
-    // post request to add emotion post
+    // post request to add emotion post. Reqeust is sent only if the emotion and content state is changed
     const addEmotionPost = async () => {
-      //need to pass in date as a parameter
-      const response = await UserService.addEmotionPost(user.id, props.value, "Emotion", content, emotion);
-      console.log(response)
+      if (emotion === null){
+        alert("please select an emotion!")
+      } else if (content === null) {
+        alert("cannot save empty notes!")
+      } else {
+        const response = await UserService.addEmotionPost(user.id, props.value, "Emotion", content, emotion);
+        console.log(response)
+      }
     }
 
     // updates the state of the content on change

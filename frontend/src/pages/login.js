@@ -2,13 +2,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import Modal from '../components/login/modal'
 
 export default function Login(props) {
 
+  // authentication states
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+
+  // Sign up modal states
+  const [openModal, setOpenModal] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -73,9 +79,10 @@ export default function Login(props) {
         <h1>Login to your account</h1>
         <input onChange={handleUsernameChange} className="Email" type="text" placeholder="Email"></input>
         <input onChange={handlePasswordChange} className="Password" type="text" placeholder="Password"></input>
-        <button style={{color: "black"}} onClick={handleLogin}><Link to="/bonding-journal">Sign in</Link></button>
+        <button className="signin-button" onClick={handleLogin}><Link to="/bonding-journal">Sign in</Link></button>
         <div id="google-signin-button"/>
-        <p>Don't have an account? <a href="">Sign up</a></p>
+        <p>Don't have an account? <button onClick={()=> {setOpenModal(true)}}>Sign up</button></p>
+        {openModal && <Modal setOpenModal={setOpenModal}/>}
         <div id="google-signin-button"/>
     </div>
   );
