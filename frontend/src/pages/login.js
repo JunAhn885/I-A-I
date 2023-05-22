@@ -46,7 +46,9 @@ export default function Login(props) {
   const handleLogin = async () => {
     try {
       const res = await axios.post('http://localhost:8080/auth/login', { username: username, password: password });
-      console.log(res)
+      let meta = {id: res.data.user._id, name: res.data.user.name, familyName: res.data.user.familyName};
+      localStorage.setItem('username', res.data.user.username);
+      localStorage.setItem('user', JSON.stringify(meta)); //need to clear cache on logout
       navigate('/bonding-journal');;
     } catch (err) {
       console.log(err);

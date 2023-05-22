@@ -7,6 +7,7 @@ import jwtDecode from 'jwt-decode';
 import cookieParser from 'cookie-parser';
 import {OAuth2Client} from 'google-auth-library';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 import {SESSION_SECRET, MONGODB_USERNAME, MONGODB_PASSWORD, CLIENT_ID, CLIENT_SECRET, JWT_SECRET} from './credentials.js';
 
 import apiRouter from './routes/api.js';
@@ -126,16 +127,18 @@ app.post('/auth/google', async (req, res) => {
 
 app.post('/auth/login', async (req, res) => {
     try {
-        let user = await req.models.User.findOne({username: req.body.username, password: req.body.password});
-        if (!user) {
-            res.status(401).json({success: false, message: "Invalid username or password"});
-        } else {
-            req.session.user = user;
-            res.json({success: true, name: req.session.user.name, username: req.session.user.username})
-        }
+        let user = await req.models.User.findOne({username: req.body.username});
+        bycrypt.compare(req.body.password, user.password, function(err, result) {
+            if (result) {
+                req.session.user = user;
+                res.json({success: true, name: req.session.user.name, username: req.session.user.username})
+            } else {
+                res.status(401).json({success: false, message: "Invalid username or password"});
+            }
+        });
     } catch (err) {
         console.log(err);
-        res.setStatus(401).json({success: false, message: "Invalid username or password"});
+        res.status(401).json({success: false, message: "Invalid username or password"});
     }
     
 });

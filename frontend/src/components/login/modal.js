@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState } from "react";
+import axios from "axios";
 
 const Modal = (props) => {
     
@@ -28,7 +29,7 @@ const Modal = (props) => {
         setRetypePassword(event.target.value)
     }
 
-    const singUpToggle = () => {
+    const singUpToggle = async () => {
         if (password != retypePassword){
             alert("Passwords do not match!")
         } else if (fname === "" ||
@@ -39,6 +40,20 @@ const Modal = (props) => {
                     alert("please fill out all input fields!")
         } else {
             props.setOpenModal(false);
+            //make axios call to backend to create new user
+            try {
+                const rest = await axios.post("/api/user/", {
+                    username: email,
+                    name: fname,
+                    familyName: lname,
+                    password: password,
+                });
+                if (rest.data.success){
+                    alert("Account created successfully!");
+                }
+            } catch (err) {
+                console.log(err);
+            }
         }
     }
     
