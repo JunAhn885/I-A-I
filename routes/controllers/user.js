@@ -1,5 +1,6 @@
 import express from 'express';
 var router = express.Router();
+import bcrypt from 'bcrypt';
 
 // GET user info
 router.get('/', async function(req, res, next) {
@@ -18,13 +19,15 @@ router.get('/', async function(req, res, next) {
 })
 
 // POST new user
-router.post('/new', async function(req, res, next) {
+router.post('/', async function(req, res, next) {
     try {
+        salt = await bcrypt.genSalt(10);
+        hashedPassword = await bcrypt.hash(req.body.password, salt);
         const newUser = new req.models.User({
             username: req.body.username,
             name: req.body.name,
             familyName: req.body.familyName,
-            password: req.body.password,
+            password: hashedPassword,
         });
         const newFamily = new req.models.Family({
             name: req.body.familyName,
@@ -35,10 +38,10 @@ router.post('/new', async function(req, res, next) {
         await newFamily.save();
         req.session.user = newUser;
         req.session.save();
-        res.json({success: true});
+        res.status(200).json({success: true});
     } catch (err) {
         console.log(err);
-        res.sendStatus(500);
+        res.status(500).json({success: false, error: err});
     }
 });
 
