@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 export default function Header(){
     return(
         <div className="Landingpage-Header">
-            <img className="plant-pot" src="./images/landingpage/pot.svg" alt="plant pot"></img>
             <img className="mark-left" src="./images/landingpage/mark_left.svg" alt="mark"></img>
             <img className="mark-right-top" src="./images/landingpage/mark_right_top.svg" alt="mark"></img>
             <img className="header-image" src="./images/landingpage/header_image.svg" alt="parent with bean and pot"></img>

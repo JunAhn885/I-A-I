@@ -8,6 +8,7 @@
 
 html{
   min-height: 100%;
+  font-size: 14px;
 }
 
 body {
@@ -25,7 +26,6 @@ body {
   padding: 0;
   border: 0;
   outline: 0;
-  font-size: 100%;
   vertical-align: baseline;
   background: transparent;
 }
@@ -41,7 +41,7 @@ button:hover{
   justify-content: center;
   width: 60%;
   max-width: 699px;
-  height: 504px;
+  max-height: 504px;
   background: rgba(255, 255, 255, 0.51);
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
   border-radius: 69px;
@@ -76,6 +76,7 @@ button:hover{
   border: 0;
   outline: 0;
   margin-bottom: 20px;
+  font-size: 20px;
 }
 
 .signin-button {
@@ -165,7 +166,7 @@ a:-webkit-any-link {
 /*CSS for the Landingpage----------------------------------------*/
 .Landingpage-Header {
   width: 100%;
-  height: 600px;
+  min-height: 600px;
   background: #F2DBC5;
   z-index: 0;
 }
@@ -174,7 +175,7 @@ a:-webkit-any-link {
   margin-left: 10%;
   color: #A1876F;
   font-weight: 700;
-  font-size: 64px;
+  font-size: 5rem;
   padding-top: 70px;
   position: relative;
   z-index: 2;
@@ -182,8 +183,8 @@ a:-webkit-any-link {
 
 .landingpage-login-button{
   position: absolute;
-  width: 291px;
-  height: 66px;
+  width: 9em;
+  height: 2em;
   left: 10%;
   top: 565px;
   background: linear-gradient(179.05deg, #C9AC91 0.81%, #81644A 199.8%);
@@ -210,8 +211,9 @@ a:-webkit-any-link {
   color: #81644A;
   font-style: normal;
   font-weight: 400;
-  font-size: 36px;
-  margin-top:200px;
+  font-size: 2.3rem;
+  margin-top:min(15vw, 230px);
+  
   z-index: 2;
 }
 
@@ -219,15 +221,20 @@ a:-webkit-any-link {
   display: flex;
   padding-right: 40px;
   align-items: center;
-  width: 60%;
-  height: 531px;
+  width: 80%;
+  max-width: 1300px;
+  min-height: 531px;
   background: linear-gradient(108.52deg, rgba(255, 254, 252, 0.5) 2.73%, rgba(255, 224, 177, 0.475) 50.33%, rgba(253, 253, 253, 0.5) 98.36%);
   opacity: 1.0;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(25px);
   border-radius: 53px;
   margin: auto;
-  margin-bottom: 6px;
+  margin-bottom: 60px;
+}
+
+.Landingpage-Box1 {
+  margin-top: 500px;
 }
 
 .Box1-text, .Box2-text, .Box3-text {
@@ -240,33 +247,36 @@ a:-webkit-any-link {
 }
 
 .Landingpage-Box1 > img {
-  margin: 0px 50px;
-  width: 100%;
+  margin: 0px 7%;
+  width: 70.3%;
+  max-width: 400px;
+  min-width: 200px;
 }
 
 .Landingpage-Box2 > img {
-  margin: 0px 60px;
+  margin: 0px 5%;
+  width: 100%;
+  max-width: 450px;
 }
 
 .Landingpage-Box3 > img {
-  width: 325px;
-  height: 299px;
-  margin: 0px 40px;
+  margin: 0px 7%;
+  width: 55.7%;
+  max-width: 400px;
+  min-width: 200px;
 }
 
 .Box1-text > h1, .Box2-text > h1, .Box3-text > h1 {
-  font-style: normal;
   font-weight: 500;
-  font-size: 48px;
+  font-size: 3.7rem;
   line-height: 59px;
   color: #81644A;
-  margin-bottom: 30px;
+  margin-bottom: 1em;
 }
 
 .Box1-text > h2, .Box2-text > h2, .Box3-text > h2 {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
+  font-weight: 400;
+  font-size: 2rem;
   line-height: 37px;
   color: #81644A;
 }
@@ -285,12 +295,6 @@ a:-webkit-any-link {
   z-index: 2;
 }
 
-.plant-pot{
-  position:absolute;
-  right:10%;
-  top: 358px;
-}
-
 .mark-left{
   position:absolute;
   left:0;
@@ -306,6 +310,42 @@ a:-webkit-any-link {
   top: 0;
   z-index: 1;
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(248deg) brightness(106%) contrast(106%);
+}
+
+.header-image {
+  position: absolute;
+  right: 0;
+  margin-top: 211px;
+  z-index: 2;
+  margin-right: 8%;
+}
+
+@media (max-width: 1450px) {
+  .header-content{
+    width: 50%;
+  }
+}
+
+@media (max-width: 1250px) {
+  .header-image {
+    width: 300px;
+    margin-top: 280px;
+  }
+  
+  .html {
+    font-size: 12px;
+  }
+
+  .Box1-text > h1, .Box2-text > h1, .Box3-text > h1 {
+    font-size: 2.7rem;
+  }
+
+  .Box1-text > h2, .Box2-text > h2, .Box3-text > h2 {
+    font-size: 2rem;
+  }
+
+  .Landingpage-Box1, .Landingpage-Box2, .Landingpage-Box3 {
+  }
 }
 
 /*CSS for the navbar-----------------------------*/
@@ -564,7 +604,7 @@ a:-webkit-any-link {
   bottom: 0;
   margin: auto;
   width: 1072px;
-  height: 1098px;
+  height: 83%;
   background: rgba(253, 253, 253, 0.5);
   backdrop-filter: blur(25px);
   border-radius: 30px;
@@ -574,7 +614,7 @@ a:-webkit-any-link {
   position: absolute;
   display: flex;
   width: 1072px;
-  height: 866px;
+  height: 78.87%;
   bottom: 0;
   border-radius: 30px;
   z-index: 1;
