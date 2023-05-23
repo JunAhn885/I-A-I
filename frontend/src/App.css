@@ -320,6 +320,53 @@ a:-webkit-any-link {
   margin-right: 8%;
 }
 
+.about-us {
+  display: flex;
+  margin: auto;
+  margin-top: 20rem;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+}
+
+.about-us .title {
+  font-size: 5rem;
+  color: #81644A;
+}
+
+.member-section {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1300px;
+  width: 80%;
+  margin-top: 3rem;
+  color: #543a22;
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 20px
+}
+
+.member > img {
+  width: 300px;
+  height: 300px;
+  border-radius: 300px;
+  object-fit: cover;
+}
+
+.member > h2 {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.member > p {
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+}
 @media (max-width: 1450px) {
   .header-content{
     width: 50%;
