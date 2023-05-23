@@ -81,7 +81,7 @@ export default function Login(props) {
         <h1>Login to your account</h1>
         <input onChange={handleUsernameChange} className="Email" type="text" placeholder="Email"></input>
         <input onChange={handlePasswordChange} className="Password" type="text" placeholder="Password"></input>
-        <button className="signin-button" onClick={handleLogin}><Link to="/bonding-journal">Sign in</Link></button>
+        <button className="signin-button" onClick={handleLogin}>Sign in</button>
         <div id="google-signin-button"/>
         <p>Don't have an account? <button onClick={()=> {setOpenModal(true)}}>Sign up</button></p>
         {openModal && <Modal setOpenModal={setOpenModal}/>}
