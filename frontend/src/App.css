@@ -80,7 +80,12 @@ button:hover{
 }
 
 .signin-button {
-  color: black;
+  color: rgb(68, 67, 67);
+  font-size: 1.5rem;
+}
+
+.signin-button:hover {
+  color: #000;
 }
 
 a:-webkit-any-link {
@@ -116,7 +121,7 @@ a:-webkit-any-link {
   justify-content: center;
   width: 100%;
   max-width: 699px;
-  height: 700px;
+  height: 750px;
   background: rgba(255, 255, 255);
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
   border-radius: 69px;
@@ -143,11 +148,18 @@ a:-webkit-any-link {
 
 .modal > label {
   margin-left: 13%;
+  font-size: 1.5rem;
   align-self: flex-start;
 }
 
 .modal-signup {
   margin-top: 10px;
+  font-size: 1.5rem;
+  color: rgb(64, 64, 64);
+}
+
+.modal-signup:hover {
+  color: black;
 }
 
 .modal-close {
@@ -367,33 +379,6 @@ a:-webkit-any-link {
   font-size: 1.3rem;
   margin-top: 0.5rem;
 }
-@media (max-width: 1450px) {
-  .header-content{
-    width: 50%;
-  }
-}
-
-@media (max-width: 1250px) {
-  .header-image {
-    width: 300px;
-    margin-top: 280px;
-  }
-  
-  .html {
-    font-size: 12px;
-  }
-
-  .Box1-text > h1, .Box2-text > h1, .Box3-text > h1 {
-    font-size: 2.7rem;
-  }
-
-  .Box1-text > h2, .Box2-text > h2, .Box3-text > h2 {
-    font-size: 2rem;
-  }
-
-  .Landingpage-Box1, .Landingpage-Box2, .Landingpage-Box3 {
-  }
-}
 
 /*CSS for the navbar-----------------------------*/
 .navbar{
@@ -419,7 +404,7 @@ a:-webkit-any-link {
 /*CSS for the emotion post page---------------------------------*/
 .emotion-post > .content-box {
   margin: auto;
-  margin-top: 200px;
+  margin-top: 70px;
   width: 1055px;
   height: 967px;
   left: 110px;
@@ -555,7 +540,7 @@ a:-webkit-any-link {
 /* CSS for the gratitude Post -----------------------------*/
 .gratitude-post {
   margin: auto;
-  margin-top: 200px;
+  margin-top: 70px;
   width: 1055px;
   height: 626px;
   left: 110px;
@@ -652,6 +637,7 @@ a:-webkit-any-link {
   margin: auto;
   width: 1072px;
   height: 83%;
+  max-height: 1082px;
   background: rgba(253, 253, 253, 0.5);
   backdrop-filter: blur(25px);
   border-radius: 30px;
@@ -660,8 +646,8 @@ a:-webkit-any-link {
 .bonding-journal > .content {
   position: absolute;
   display: flex;
-  width: 1072px;
-  height: 78.87%;
+  width: 100%;
+  height: 80%;
   bottom: 0;
   border-radius: 30px;
   z-index: 1;
@@ -715,14 +701,12 @@ a:-webkit-any-link {
   border: 5px dashed #81644A !important;
   border-radius: 16px;
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 8px;
   width: 353px;
-
 }
 
 .addlog-calendar {
@@ -730,10 +714,9 @@ a:-webkit-any-link {
 }
 
 .bonding-journal-calendar {
-  position: absolute;
   width: 353px;
   margin-left: 60px;
-  margin-top: 200px;
+  margin-top: 150px;
 }
 
 .react-calendar__navigation {
@@ -777,6 +760,11 @@ a:-webkit-any-link {
 
 .react-calendar__navigation__label {
   width:150px
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
 }
 
 .left-content h1{
@@ -831,7 +819,7 @@ a:-webkit-any-link {
 }
 
 .emotion-post-button {
-  margin-top: 650px;
+  margin-top:50px;
 }
 
 .gratitude-post-button {
@@ -870,13 +858,14 @@ a:-webkit-any-link {
   width: 625px;
   margin-left: 30px;
   margin-bottom: 40px;
-  margin-top: 200px;
+  margin-top: 150px;
   overflow: auto;
 }
 
 .no-notes-display {
   font-size: 40px;
   margin-left: 20px;
+  color: #81644A;
 }
 
 /*CSS for the Bonding Journal Gratitude Box-------------------------*/
@@ -954,4 +943,49 @@ a:-webkit-any-link {
   overflow-wrap: break-word;
 }
 
+/*Media Queries for responsiveness------------------------------*/
+@media (max-width: 1450px) {
+  .header-content{
+    width: 50%;
+  }
+}
 
+@media (max-width: 1250px) {
+  .header-image {
+    width: 300px;
+    margin-top: 280px;
+  }
+  
+  .html {
+    font-size: 12px;
+  }
+
+  .Box1-text > h1, .Box2-text > h1, .Box3-text > h1 {
+    font-size: 2.7rem;
+  }
+
+  .Box1-text > h2, .Box2-text > h2, .Box3-text > h2 {
+    font-size: 2rem;
+  }
+
+  .Landingpage-Box1, .Landingpage-Box2, .Landingpage-Box3 {
+  }
+}
+
+@media (max-height:1080px){
+  .bonding-journal > .content {
+    height: 95%;
+  }
+
+  .bonding-journal > .beanbag {
+    margin-top: -6rem;
+  }
+}
+
+@media (max-height:900px){
+  .bonding-journal-calendar {
+    width: 353px;
+    margin-left: 60px;
+    margin-top: 50px;
+  }
+}

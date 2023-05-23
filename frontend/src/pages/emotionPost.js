@@ -50,7 +50,6 @@ export default function EmotionPost(props){
     const [isAngryBold, setIsAngryBold] = useState(false);
     const [isSadBold, setIsSadBold] = useState(false);
 
-
     // post request to add emotion post. Reqeust is sent only if the emotion and content state is changed
     const addEmotionPost = async () => {
       if (emotion === null){
@@ -69,6 +68,7 @@ export default function EmotionPost(props){
       setContent(event.target.value)
     }
 
+    //rendering list of emotions
     const emotionElements = emotions.map(emotionObj => {
         return <Emotion setEmotion={setEmotion} emotionName={emotionObj.emotionName} emotionImageUrl={emotionObj.emotionImageUrl} />
     })

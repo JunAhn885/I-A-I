@@ -3,8 +3,7 @@ import {useState} from 'react'
 export default function Emotion(props){
     
     const [isBold, setIsBold] = useState(false)
-
-
+    
     const emotionHandler = () => {
         props.setEmotion(props.emotionImageUrl);
         setIsBold(true);
