@@ -34,8 +34,10 @@ const GratitudePost = (props) => {
                   <h1>{props.pageName}</h1>
             </div>
             <textarea wrap="hard" rows={3} className="gratitude-post-input" type="text" value={content} onChange={updateContent}></textarea>
-            <Link to="/bonding-journal"><button className="cancel-button-gratitudepost">Cancel</button></Link>
-            <button className="post-button-gratitudepost" onClick={addGratitudePost}>Post</button>
+            <div className="gratitude-post-buttons">
+                <Link to="/bonding-journal"><button className="cancel-button-gratitudepost">Cancel</button></Link>
+                <button className="post-button-gratitudepost" onClick={addGratitudePost}>Post</button>
+            </div>
         </div>
     )
 }
