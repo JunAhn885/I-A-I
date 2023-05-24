@@ -538,14 +538,16 @@ a:-webkit-any-link {
 .bold-image {
   filter: invert(40%) sepia(22%) saturate(356%) hue-rotate(354deg) brightness(91%) contrast(86%);
 }
+
 /* CSS for the gratitude Post -----------------------------*/
 .gratitude-post {
+  display: flex;
+  flex-direction: column;
   margin: auto;
   margin-top: 70px;
-  width: 1055px;
-  height: 626px;
-  left: 110px;
-  top: 133px;
+  max-width: 1055px;
+  width: 80%;
+  min-height: 626px;
   background: rgba(253, 253, 253, 0.6);
   border: 10px solid #81644A;
   backdrop-filter: blur(25px);
@@ -554,12 +556,9 @@ a:-webkit-any-link {
 
 .gratitude-post > h1 {
   margin-top: 20px;
-  position: absolute;
-  width: 720px;
+  width: 70%;
   height: 83px;
   margin-left: 80px;
-  font-family: 'Helvetica Neue';
-  font-style: normal;
   font-weight: 700;
   font-size: 40px;
   line-height: 49px;
@@ -567,13 +566,11 @@ a:-webkit-any-link {
 }
 
 .gratitude-post-input {
-  position: absolute;
   margin-left: 80px;
-  width: 751px;
-  height: 224px;
-  margin-top: 150px;
+  width: 70%;
+  min-height: 300px;
+  margin-top: 50px;
   background: #DBD3C9;
-  font-style: normal;
   font-weight: 700;
   font-size: 40px;
   line-height: 49px;
@@ -595,18 +592,19 @@ a:-webkit-any-link {
 
 .tab-gratitudepost > h1 {
   color: #FFFFFF;
-  font-family: 'Helvetica Neue';
-  font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 29px;
   }
 
+.gratitude-post-buttons{
+  display:flex;
+}
+
 .cancel-button-gratitudepost {
-  margin-top: 400px;
+  margin: 50px;
   background: #DBD3C9;
   margin-left: 80px;
-  font-style: normal;
   font-weight: 500;
   font-size: 40px;
   color:#81644A;
@@ -616,10 +614,9 @@ a:-webkit-any-link {
 }
 
 .post-button-gratitudepost {
-  margin-top: 400px;
+  margin: 50px;
   background: #81644A;
-  margin-left: 70px;
-  font-style: normal;
+  margin-left: 20px;
   font-weight: 500;
   font-size: 40px;
   color:#FFFFFF;
@@ -971,6 +968,10 @@ a:-webkit-any-link {
 
   .Landingpage-Box1, .Landingpage-Box2, .Landingpage-Box3 {
   }
+
+  .gratitude-post-input{
+    margin-top: 100px;
+  }
 }
 
 @media (max-height:1080px){
@@ -989,4 +990,5 @@ a:-webkit-any-link {
     margin-left: 60px;
     margin-top: 50px;
   }
+  
 }
