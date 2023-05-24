@@ -46,11 +46,18 @@ export default function Login(props) {
   const handleLogin = async () => {
     try {
       const res = await axios.post('http://localhost:8080/auth/login', { username: username, password: password });
-      let meta = {id: res.data.user._id, name: res.data.user.name, familyName: res.data.user.familyName};
-      localStorage.setItem('username', res.data.user.username);
-      localStorage.setItem('user', JSON.stringify(meta)); //need to clear cache on logout
-      navigate('/bonding-journal');;
+      if (res.data.success) {
+
+        let meta = {id: res.data.user._id, name: res.data.user.name, familyName: res.data.user.familyName};
+        localStorage.setItem('username', res.data.user.username);
+        localStorage.setItem('user', JSON.stringify(meta)); //need to clear cache on logout
+        navigate('/bonding-journal');;
+      } else {
+        console.log('Login failed');
+        alert('Wrong username or password');
+      }
     } catch (err) {
+      alert('login failed')
       console.log(err);
     }
   }
@@ -81,7 +88,7 @@ export default function Login(props) {
         <h1>Login to your account</h1>
         <input onChange={handleUsernameChange} className="Email" type="text" placeholder="Email"></input>
         <input onChange={handlePasswordChange} className="Password" type="text" placeholder="Password"></input>
-        <button className="signin-button" onClick={handleLogin}><Link to="/bonding-journal">Sign in</Link></button>
+        <button className="signin-button" onClick={handleLogin}>Sign in</button>
         <div id="google-signin-button"/>
         <p>Don't have an account? <button onClick={()=> {setOpenModal(true)}}>Sign up</button></p>
         {openModal && <Modal setOpenModal={setOpenModal}/>}
