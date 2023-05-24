@@ -2,9 +2,11 @@ import Navbar from "../components/shared/navbar";
 import { Link } from "react-router-dom"
 import UserService from "../userSerivces"
 import {useState} from 'react';
+import { useNavigate } from "react-router-dom";
 
 const GratitudePost = (props) => {
     
+    const navigate = useNavigate();
     const [content, setContent] = useState("");
     let user = localStorage.getItem('user');
     user = JSON.parse(user);
@@ -20,6 +22,7 @@ const GratitudePost = (props) => {
         } else {
             const response = await UserService.addGratitudePost(user.id, props.value, "Gratitude", content);
             console.log(response);
+            return navigate("../bonding-journal")
         }
     }
 
@@ -32,7 +35,7 @@ const GratitudePost = (props) => {
             </div>
             <textarea wrap="hard" rows={3} className="gratitude-post-input" type="text" value={content} onChange={updateContent}></textarea>
             <Link to="/bonding-journal"><button className="cancel-button-gratitudepost">Cancel</button></Link>
-            <Link to="/bonding-journal"><button className="post-button-gratitudepost" onClick={addGratitudePost}>Post</button></Link>
+            <button className="post-button-gratitudepost" onClick={addGratitudePost}>Post</button>
         </div>
     )
 }

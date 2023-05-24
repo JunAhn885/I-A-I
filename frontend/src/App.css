@@ -8,6 +8,7 @@
 
 html{
   min-height: 100%;
+  font-size: 14px;
 }
 
 body {
@@ -25,7 +26,6 @@ body {
   padding: 0;
   border: 0;
   outline: 0;
-  font-size: 100%;
   vertical-align: baseline;
   background: transparent;
 }
@@ -41,7 +41,7 @@ button:hover{
   justify-content: center;
   width: 60%;
   max-width: 699px;
-  height: 504px;
+  max-height: 504px;
   background: rgba(255, 255, 255, 0.51);
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
   border-radius: 69px;
@@ -76,10 +76,16 @@ button:hover{
   border: 0;
   outline: 0;
   margin-bottom: 20px;
+  font-size: 20px;
 }
 
 .signin-button {
-  color: black;
+  color: rgb(68, 67, 67);
+  font-size: 1.5rem;
+}
+
+.signin-button:hover {
+  color: #000;
 }
 
 a:-webkit-any-link {
@@ -115,7 +121,7 @@ a:-webkit-any-link {
   justify-content: center;
   width: 100%;
   max-width: 699px;
-  height: 700px;
+  height: 750px;
   background: rgba(255, 255, 255);
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
   border-radius: 69px;
@@ -142,11 +148,18 @@ a:-webkit-any-link {
 
 .modal > label {
   margin-left: 13%;
+  font-size: 1.5rem;
   align-self: flex-start;
 }
 
 .modal-signup {
   margin-top: 10px;
+  font-size: 1.5rem;
+  color: rgb(64, 64, 64);
+}
+
+.modal-signup:hover {
+  color: black;
 }
 
 .modal-close {
@@ -165,7 +178,7 @@ a:-webkit-any-link {
 /*CSS for the Landingpage----------------------------------------*/
 .Landingpage-Header {
   width: 100%;
-  height: 600px;
+  min-height: 600px;
   background: #F2DBC5;
   z-index: 0;
 }
@@ -174,7 +187,7 @@ a:-webkit-any-link {
   margin-left: 10%;
   color: #A1876F;
   font-weight: 700;
-  font-size: 64px;
+  font-size: 5rem;
   padding-top: 70px;
   position: relative;
   z-index: 2;
@@ -182,8 +195,8 @@ a:-webkit-any-link {
 
 .landingpage-login-button{
   position: absolute;
-  width: 291px;
-  height: 66px;
+  width: 9em;
+  height: 2em;
   left: 10%;
   top: 565px;
   background: linear-gradient(179.05deg, #C9AC91 0.81%, #81644A 199.8%);
@@ -210,8 +223,9 @@ a:-webkit-any-link {
   color: #81644A;
   font-style: normal;
   font-weight: 400;
-  font-size: 36px;
-  margin-top:200px;
+  font-size: 2.3rem;
+  margin-top:min(15vw, 230px);
+  
   z-index: 2;
 }
 
@@ -219,15 +233,20 @@ a:-webkit-any-link {
   display: flex;
   padding-right: 40px;
   align-items: center;
-  width: 60%;
-  height: 531px;
+  width: 80%;
+  max-width: 1300px;
+  min-height: 531px;
   background: linear-gradient(108.52deg, rgba(255, 254, 252, 0.5) 2.73%, rgba(255, 224, 177, 0.475) 50.33%, rgba(253, 253, 253, 0.5) 98.36%);
   opacity: 1.0;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(25px);
   border-radius: 53px;
   margin: auto;
-  margin-bottom: 6px;
+  margin-bottom: 60px;
+}
+
+.Landingpage-Box1 {
+  margin-top: 500px;
 }
 
 .Box1-text, .Box2-text, .Box3-text {
@@ -240,33 +259,36 @@ a:-webkit-any-link {
 }
 
 .Landingpage-Box1 > img {
-  margin: 0px 50px;
-  width: 100%;
+  margin: 0px 7%;
+  width: 70.3%;
+  max-width: 400px;
+  min-width: 200px;
 }
 
 .Landingpage-Box2 > img {
-  margin: 0px 60px;
+  margin: 0px 5%;
+  width: 100%;
+  max-width: 450px;
 }
 
 .Landingpage-Box3 > img {
-  width: 325px;
-  height: 299px;
-  margin: 0px 40px;
+  margin: 0px 7%;
+  width: 55.7%;
+  max-width: 400px;
+  min-width: 200px;
 }
 
 .Box1-text > h1, .Box2-text > h1, .Box3-text > h1 {
-  font-style: normal;
   font-weight: 500;
-  font-size: 48px;
+  font-size: 3.7rem;
   line-height: 59px;
   color: #81644A;
-  margin-bottom: 30px;
+  margin-bottom: 1em;
 }
 
 .Box1-text > h2, .Box2-text > h2, .Box3-text > h2 {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
+  font-weight: 400;
+  font-size: 2rem;
   line-height: 37px;
   color: #81644A;
 }
@@ -285,12 +307,6 @@ a:-webkit-any-link {
   z-index: 2;
 }
 
-.plant-pot{
-  position:absolute;
-  right:10%;
-  top: 358px;
-}
-
 .mark-left{
   position:absolute;
   left:0;
@@ -306,6 +322,62 @@ a:-webkit-any-link {
   top: 0;
   z-index: 1;
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(248deg) brightness(106%) contrast(106%);
+}
+
+.header-image {
+  position: absolute;
+  right: 0;
+  margin-top: 211px;
+  z-index: 2;
+  margin-right: 8%;
+}
+
+.about-us {
+  display: flex;
+  margin: auto;
+  margin-top: 20rem;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+}
+
+.about-us .title {
+  font-size: 5rem;
+  color: #81644A;
+}
+
+.member-section {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1300px;
+  width: 80%;
+  margin-top: 3rem;
+  color: #543a22;
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 20px
+}
+
+.member > img {
+  width: 300px;
+  height: 300px;
+  border-radius: 300px;
+  object-fit: cover;
+}
+
+.member > h2 {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.member > p {
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
 }
 
 /*CSS for the navbar-----------------------------*/
@@ -332,7 +404,7 @@ a:-webkit-any-link {
 /*CSS for the emotion post page---------------------------------*/
 .emotion-post > .content-box {
   margin: auto;
-  margin-top: 200px;
+  margin-top: 70px;
   width: 1055px;
   height: 967px;
   left: 110px;
@@ -433,7 +505,6 @@ a:-webkit-any-link {
 .emotion > p {
   color:#706455;
   font-style: normal;
-  font-weight: 400;
   font-size: 16px;
   cursor: pointer;
 }
@@ -461,14 +532,16 @@ a:-webkit-any-link {
 }
 
 .bold-text {
-  font-weight: bold;
+  font-weight: 900;
 }
 
-
+.bold-image {
+  filter: invert(40%) sepia(22%) saturate(356%) hue-rotate(354deg) brightness(91%) contrast(86%);
+}
 /* CSS for the gratitude Post -----------------------------*/
 .gratitude-post {
   margin: auto;
-  margin-top: 200px;
+  margin-top: 70px;
   width: 1055px;
   height: 626px;
   left: 110px;
@@ -564,7 +637,8 @@ a:-webkit-any-link {
   bottom: 0;
   margin: auto;
   width: 1072px;
-  height: 1098px;
+  height: 83%;
+  max-height: 1082px;
   background: rgba(253, 253, 253, 0.5);
   backdrop-filter: blur(25px);
   border-radius: 30px;
@@ -573,8 +647,8 @@ a:-webkit-any-link {
 .bonding-journal > .content {
   position: absolute;
   display: flex;
-  width: 1072px;
-  height: 866px;
+  width: 100%;
+  height: 80%;
   bottom: 0;
   border-radius: 30px;
   z-index: 1;
@@ -628,14 +702,12 @@ a:-webkit-any-link {
   border: 5px dashed #81644A !important;
   border-radius: 16px;
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 8px;
   width: 353px;
-
 }
 
 .addlog-calendar {
@@ -643,10 +715,9 @@ a:-webkit-any-link {
 }
 
 .bonding-journal-calendar {
-  position: absolute;
   width: 353px;
   margin-left: 60px;
-  margin-top: 200px;
+  margin-top: 150px;
 }
 
 .react-calendar__navigation {
@@ -690,6 +761,11 @@ a:-webkit-any-link {
 
 .react-calendar__navigation__label {
   width:150px
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
 }
 
 .left-content h1{
@@ -744,7 +820,7 @@ a:-webkit-any-link {
 }
 
 .emotion-post-button {
-  margin-top: 650px;
+  margin-top:50px;
 }
 
 .gratitude-post-button {
@@ -783,13 +859,14 @@ a:-webkit-any-link {
   width: 625px;
   margin-left: 30px;
   margin-bottom: 40px;
-  margin-top: 200px;
+  margin-top: 150px;
   overflow: auto;
 }
 
 .no-notes-display {
   font-size: 40px;
   margin-left: 20px;
+  color: #81644A;
 }
 
 /*CSS for the Bonding Journal Gratitude Box-------------------------*/
@@ -867,4 +944,49 @@ a:-webkit-any-link {
   overflow-wrap: break-word;
 }
 
+/*Media Queries for responsiveness------------------------------*/
+@media (max-width: 1450px) {
+  .header-content{
+    width: 50%;
+  }
+}
 
+@media (max-width: 1250px) {
+  .header-image {
+    width: 300px;
+    margin-top: 280px;
+  }
+  
+  .html {
+    font-size: 12px;
+  }
+
+  .Box1-text > h1, .Box2-text > h1, .Box3-text > h1 {
+    font-size: 2.7rem;
+  }
+
+  .Box1-text > h2, .Box2-text > h2, .Box3-text > h2 {
+    font-size: 2rem;
+  }
+
+  .Landingpage-Box1, .Landingpage-Box2, .Landingpage-Box3 {
+  }
+}
+
+@media (max-height:1080px){
+  .bonding-journal > .content {
+    height: 95%;
+  }
+
+  .bonding-journal > .beanbag {
+    margin-top: -6rem;
+  }
+}
+
+@media (max-height:900px){
+  .bonding-journal-calendar {
+    width: 353px;
+    margin-left: 60px;
+    margin-top: 50px;
+  }
+}

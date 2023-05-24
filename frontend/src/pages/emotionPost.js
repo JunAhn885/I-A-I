@@ -3,48 +3,46 @@ import Emotion from "../components/emotionPost/emotion";
 import { Link } from "react-router-dom"
 import UserService from "../userSerivces"
 import {useState, useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 
 // props should include name, page name, and list of emotions and respective images
 export default function EmotionPost(props){
+  
+  //user information
   let user = localStorage.getItem('user');
   user = JSON.parse(user);
-    var emotions = [
-        {
-          emotionName: "Awesome",
-          emotionImageUrl:"./images/emotionPost/awesome.svg"
-        },
-        {
-          emotionName:"Good",
-          emotionImageUrl:"./images/emotionPost/good.svg"
-        },
-        {
-          emotionName:"Neutral",
-          emotionImageUrl:"./images/emotionPost/neutral.svg"
-        },
-        {
-          emotionName:"Shocked",
-          emotionImageUrl:"./images/emotionPost/shocked.svg"
-        },
-        {
-          emotionName:"Angry",
-          emotionImageUrl:"./images/emotionPost/angry.svg"
-        },
-        {
-          emotionName:"Sad",
-          emotionImageUrl:"./images/emotionPost/sad.svg"
-        }
-    ]
-    
+
+  var emotions = [
+      {
+        emotionName: "Awesome",
+        emotionImageUrl:"./images/emotionPost/awesome.svg"
+      },
+      {
+        emotionName:"Good",
+        emotionImageUrl:"./images/emotionPost/good.svg"
+      },
+      {
+        emotionName:"Neutral",
+        emotionImageUrl:"./images/emotionPost/neutral.svg"
+      },
+      {
+        emotionName:"Shocked",
+        emotionImageUrl:"./images/emotionPost/shocked.svg"
+      },
+      {
+        emotionName:"Angry",
+        emotionImageUrl:"./images/emotionPost/angry.svg"
+      },
+      {
+        emotionName:"Sad",
+        emotionImageUrl:"./images/emotionPost/sad.svg"
+      }
+  ]
+    const navigate = useNavigate();
+
     // state hooks
     const [content, setContent] = useState(null);
     const [emotion, setEmotion] = useState(null);
-    const [isAwesomeBold, setIsAwesomeBold] = useState(false);
-    const [isGoodBold, setIsGoodBold] = useState(false);
-    const [isNeutralBold, setIsNeutralBold] = useState(false);
-    const [isShockedBold, setIsShockedBold] = useState(false);
-    const [isAngryBold, setIsAngryBold] = useState(false);
-    const [isSadBold, setIsSadBold] = useState(false);
-
 
     // post request to add emotion post. Reqeust is sent only if the emotion and content state is changed
     const addEmotionPost = async () => {
@@ -55,6 +53,7 @@ export default function EmotionPost(props){
       } else {
         const response = await UserService.addEmotionPost(user.id, props.value, "Emotion", content, emotion);
         console.log(response)
+        return navigate("../bonding-journal")
       }
     }
 
@@ -63,25 +62,10 @@ export default function EmotionPost(props){
       setContent(event.target.value)
     }
 
+    //rendering list of emotions
     const emotionElements = emotions.map(emotionObj => {
-        return <Emotion setEmotion={setEmotion} emotionName={emotionObj.emotionName} emotionImageUrl={emotionObj.emotionImageUrl} />
+        return <Emotion emotion={emotion} setEmotion={setEmotion} emotionName={emotionObj.emotionName} emotionImageUrl={emotionObj.emotionImageUrl} />
     })
-
-    useEffect(() =>{
-      if (emotion === "./images/emotionPost/awesome.svg") {
-        setIsAwesomeBold(true);
-      } else if (emotion === "./images/emotionPost/good.svg") {
-        setIsGoodBold(true);
-      } else if (emotion === "./images/emotionPost/neutral.svg") {
-        setIsNeutralBold(true);
-      } else if (emotion === "./images/emotionPost/shocked.svg") {
-        setIsShockedBold(true);
-      } else if (emotion === "./images/emotionPost/angry.svg") {
-        setIsAngryBold(true);
-      } else if (emotion === "./images/emotionPost/sad.svg") {
-        setIsSadBold(true)
-      }
-    }, [emotion])
 
     return(
         <div className='emotion-post'>
@@ -97,7 +81,7 @@ export default function EmotionPost(props){
                 <h3>Record your thoughts</h3>
                 <textarea wrap="hard" rows={3} className="emotion-post-input" value={content} onChange={updateContent}></textarea>
                 <Link to="/bonding-journal"><button className="cancel-button-emotionpost">Cancel</button></Link>
-                <Link to="/bonding-journal"><button className="post-button-emotionpost" onClick={addEmotionPost}>Post</button></Link>
+                <button className="post-button-emotionpost" onClick={addEmotionPost}>Post</button>
             </div>
         </div>
     )
