@@ -131,6 +131,7 @@ a:-webkit-any-link {
   right: 0;
   bottom: 0;
   margin: auto;
+  z-index: 4;
 }
 
 .modal > input {
@@ -399,6 +400,7 @@ a:-webkit-any-link {
 
 .navbar li:hover{
   color: #000000;
+  cursor: pointer;
 }
 
 /*CSS for the emotion post page---------------------------------*/
@@ -552,7 +554,7 @@ a:-webkit-any-link {
   border: 10px solid #81644A;
   backdrop-filter: blur(25px);
   border-radius: 30px; 
-} 
+}
 
 .gratitude-post > h1 {
   margin-top: 20px;
@@ -813,7 +815,6 @@ a:-webkit-any-link {
   height: 50px;
   background: #81644A;
   border-radius: 30px;
-  
 }
 
 .emotion-post-button > h1 {
@@ -945,6 +946,59 @@ a:-webkit-any-link {
   overflow-wrap: break-word;
 }
 
+/*CSS for the addUser modal*/
+.adduser-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 699px;
+  min-height: 300px;
+  background: rgba(255, 255, 255);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 69px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 4;
+}
+
+.adduser-modal > input {
+  background: #D9D9D9;
+  border-radius: 16px;
+  width: 70%;
+  height: 54px;
+  padding-left: 30px;
+  padding-top: 5px;
+  margin-bottom: 30px;
+  margin-top: 5px;
+  border: 0;
+  outline: 0;
+  font-size: 20px;
+}
+
+.adduser-modal > label {
+  margin-left: 13%;
+  font-size: 1.5rem;
+  align-self: flex-start;
+}
+
+.adduser-modal-overlay {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left:-50%;
+  bottom:0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 4;
+}
+
 /*Media Queries for responsiveness------------------------------*/
 @media (max-width: 1450px) {
   .header-content{
@@ -968,9 +1022,6 @@ a:-webkit-any-link {
 
   .Box1-text > h2, .Box2-text > h2, .Box3-text > h2 {
     font-size: 2rem;
-  }
-
-  .Landingpage-Box1, .Landingpage-Box2, .Landingpage-Box3 {
   }
 
   .gratitude-post-input{

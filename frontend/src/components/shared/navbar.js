@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom"
+import { useState } from "react";
 import axios from 'axios';
+import AddFamilyModal from "./addFamilyModal"
 
 export default function Navbar(){
+    
+    // states
+    const [addFamily, setAddFamily] = useState("");
+    const [openModal, setOpenModal] = useState(false);
+
+
     const handleLogout = async () => {
         localStorage.removeItem('user');
         localStorage.removeItem('username');
@@ -12,6 +20,8 @@ export default function Navbar(){
         <div className='navbar'>
             <Link to="/bonding-journal"><li>Bonding Journal</li></Link>
             <Link to="/family-log"><li>Family Log</li></Link>
+            <li onClick={()=> {setOpenModal(true)}}>Add Family</li>
+            {openModal && <AddFamilyModal setOpenModal={setOpenModal}/>}
             <Link to="/" onClick={handleLogout}><li>Log Out</li></Link>
         </div>     
     )
