@@ -31,7 +31,7 @@ const Card = ({log}) => {
 
 const FamilyLog = () => {
   const [toggleMonth, setIsToggleMonth] = useState(1);
-  const [toggleYear, setIsToggleYear] = useState(2021);
+  const [toggleYear, setIsToggleYear] = useState(2021); //maybe change to 2023
   const [logs, setLogs] = useState([]);
 
   const user = localStorage.getItem("user");
@@ -42,7 +42,13 @@ const FamilyLog = () => {
   }, [toggleMonth]);
 
   const fetchLogData = async (month) => {
-    const response = await UserService.getLog(userObj.id, month);
+    //get events for the month and year
+    try {
+      const response = await UserService.getLog(userObj.id, toggleMonth, toggleYear);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
     setLogs(response.data);
   };
 
@@ -56,6 +62,10 @@ const FamilyLog = () => {
 
   const years = [2021, 2022, 2023];
   const months = Array.from({length: 12}, (_, i) => i + 1); // generates numbers 1-12
+
+  const renderEvents = logs.length > 0 ? logs.map((event) => {
+    return //react component for the logs
+  }) : <p>You have no events planned for this month </p>; //if there is no events show this message.
 
   return (
     <div className={classes.familyLogTop}>

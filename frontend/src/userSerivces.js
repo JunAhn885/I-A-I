@@ -13,10 +13,10 @@ const addGratitudePost = (id, date, type, content) => axios.post(`${serverUrl}/p
 // events are for family log
 const addLog = (id, date, eventName, location, notes) => axios.post(`${serverUrl}/events/add-log`, {id: id, date: date, eventName: eventName, location: location, notes: notes});
 
-const getLog = (id, month) => axios.get(`${serverUrl}/events/?id=${id}&month=${month}`);
+const getLog = (id, month, year) => axios.get(`${serverUrl}/events/?id=${id}&month=${month}&year=${year}`);
 
 // add family handler 
-const addFamily = (id) => axios.put(`${serverUrl}/addrouteshere`, {id:id})
+const updateFamily = (id, userToAdd) => axios.put(`${serverUrl}/family/update-family`, {id: id, userToAdd: userToAdd})
 
 const UserService = {
   getBJPosts,
@@ -24,7 +24,7 @@ const UserService = {
   addGratitudePost,
   addLog,
   getLog,
-  addFamily
+  updateFamily
 };
 
 export default UserService;

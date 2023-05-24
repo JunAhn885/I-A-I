@@ -20,7 +20,7 @@ export default function Navbar(){
         <div className='navbar'>
             <Link to="/bonding-journal"><li>Bonding Journal</li></Link>
             <Link to="/family-log"><li>Family Log</li></Link>
-            <li onClick={()=> {setOpenModal(true)}}>Add Family</li>
+            <li onClick={()=> {setOpenModal(true)}}>Add Family Member</li>
             {openModal && <AddFamilyModal setOpenModal={setOpenModal}/>}
             <Link to="/" onClick={handleLogout}><li>Log Out</li></Link>
         </div>     

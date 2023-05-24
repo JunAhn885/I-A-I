@@ -10,11 +10,16 @@ const AddFamilyModal = (props) => {
     }
 
     const addUserToggle = async() => {
-        const res = await UserService.addFamily(userName)
-        if (res.status === 404){
-            alert("User has been added succesfully!")
-        } else {
+        let user = JSON.parse(localStorage.getItem('user'));
+        const res = await UserService.updateFamily(user.id, userName)
+        if (res.status === 400) {
             alert("Cannot find user. please enter a valid username")
+        } else if (res.status === 500) {
+            alert("Error: " + res.message)
+        } else if (res.status === 401) {
+            alert("You must be logged in to add a user to your family")
+        } else {
+            alert("User added to family")
         }
     }
 
