@@ -763,7 +763,11 @@ a:-webkit-any-link {
 .left-content {
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  position: relative;
+  width: 40%;
 }
+
 
 .left-content h1{
   font-family: 'Helvetica Neue';
@@ -853,7 +857,7 @@ a:-webkit-any-link {
 .right-content {
   display: flex;
   flex-direction: column;
-  width: 625px;
+  width: 58%;
   margin-left: 30px;
   margin-bottom: 40px;
   margin-top: 150px;
