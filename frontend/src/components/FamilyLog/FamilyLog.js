@@ -44,12 +44,13 @@ const FamilyLog = () => {
   const fetchLogData = async (month) => {
     //get events for the month and year
     try {
-      const response = await UserService.getLog(userObj.id, toggleMonth, toggleYear);
+      const response = await UserService.getLog(userObj.id, toggleMonth, toggleYear); //make sure that month is 0 indexed @jun knows what this means
       console.log(response.data);
+      setLogs(response.data);
     } catch (error) {
       console.error(error);
     }
-    setLogs(response.data);
+    
   };
 
   const showMonthData = (index) => {
@@ -64,7 +65,7 @@ const FamilyLog = () => {
   const months = Array.from({length: 12}, (_, i) => i + 1); // generates numbers 1-12
 
   const renderEvents = logs.length > 0 ? logs.map((event) => {
-    return //react component for the logs
+    return //react component for the logs, have to implement like an on click type of thing that shows the details of the event
   }) : <p>You have no events planned for this month </p>; //if there is no events show this message.
 
   return (
