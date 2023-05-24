@@ -43,12 +43,6 @@ export default function EmotionPost(props){
     // state hooks
     const [content, setContent] = useState(null);
     const [emotion, setEmotion] = useState(null);
-    const [isAwesomeBold, setIsAwesomeBold] = useState(false);
-    const [isGoodBold, setIsGoodBold] = useState(false);
-    const [isNeutralBold, setIsNeutralBold] = useState(false);
-    const [isShockedBold, setIsShockedBold] = useState(false);
-    const [isAngryBold, setIsAngryBold] = useState(false);
-    const [isSadBold, setIsSadBold] = useState(false);
 
     // post request to add emotion post. Reqeust is sent only if the emotion and content state is changed
     const addEmotionPost = async () => {
@@ -70,7 +64,7 @@ export default function EmotionPost(props){
 
     //rendering list of emotions
     const emotionElements = emotions.map(emotionObj => {
-        return <Emotion setEmotion={setEmotion} emotionName={emotionObj.emotionName} emotionImageUrl={emotionObj.emotionImageUrl} />
+        return <Emotion emotion={emotion} setEmotion={setEmotion} emotionName={emotionObj.emotionName} emotionImageUrl={emotionObj.emotionImageUrl} />
     })
 
     return(

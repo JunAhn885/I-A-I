@@ -505,7 +505,6 @@ a:-webkit-any-link {
 .emotion > p {
   color:#706455;
   font-style: normal;
-  font-weight: 400;
   font-size: 16px;
   cursor: pointer;
 }
@@ -533,10 +532,12 @@ a:-webkit-any-link {
 }
 
 .bold-text {
-  font-weight: bold;
+  font-weight: 900;
 }
 
-
+.bold-image {
+  filter: invert(40%) sepia(22%) saturate(356%) hue-rotate(354deg) brightness(91%) contrast(86%);
+}
 /* CSS for the gratitude Post -----------------------------*/
 .gratitude-post {
   margin: auto;
