@@ -37,7 +37,7 @@ const Modal = (props) => {
                    email === "" ||
                    password === "" ||
                    retypePassword === "") {
-                    alert("please fill out all input fields!")
+            alert("please fill out all input fields!")
         } else {
             props.setOpenModal(false);
             //make axios call to backend to create new user
