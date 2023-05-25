@@ -24,7 +24,7 @@ const AddFamilyModal = (props) => {
     }
 
     return (
-        <>
+        <div>
             <div className="adduser-modal-overlay"></div>
             <dialog className="adduser-modal">
                 <button className="modal-close" onClick={() => {props.setOpenModal(false)}}>X</button>
@@ -32,7 +32,7 @@ const AddFamilyModal = (props) => {
                 <input value={userName} onChange={usernameHandler} type="text" id="fname" name="fname" placeholder="Username"></input>
                 <button className="modal-signup"onClick={addUserToggle}>Add User</button>
             </dialog>
-        </>
+        </div>
     )
 }
 
