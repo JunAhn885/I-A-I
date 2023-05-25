@@ -5,24 +5,37 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Header from "../Header/Header";
 import UserService from "../../userSerivces"
+import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const AddLog = () => {
   const [date, setDate] = useState(new Date());
   const [eventName, setEventName] = useState("");
   const [location, setLocation] = useState("");
   const [notes, setNotes] = useState("");
+  const navigate = useNavigate();
+  
 
   const addLog = async () => {
     let user = localStorage.getItem('user');
     user = JSON.parse(user);
-    try {
-      const response = await UserService.addLog(user.id, date, eventName, location, notes);
-      console.log(response);
-      // handle successful response here, such as redirecting to another page or clearing the form
-    } catch (error) {
-      console.error(error);
-      // handle errors here
+    if (eventName === "") {
+      alert("Please fill out the event name")
+    } else if (location === "") {
+      alert("Please fill out the location")
+    } else if (notes === ""){
+      alert("please fill out the notes")
+    } else {
+      try {
+        const response = await UserService.addLog(user.id, date, eventName, location, notes);
+        console.log(response);
+        navigate("../family-log")
+      } catch (error) {
+        console.error(error);
+        // handle errors here
+      }
     }
+    
   }
 
   return (
@@ -40,34 +53,13 @@ const AddLog = () => {
             <div className="addlog-calendar">
               <Calendar onChange={setDate} value={date}/>
             </div>
-            <div className={classes.timePicker}>
-              <div className={classes.left}>
-                <div className={classes.card}>
-                  <p>00</p>
-                </div>{" "}
-                <h1>:</h1>
-                <div className={classes.card}>
-                  <p>00</p>
-                </div>
-              </div>
-              <img className={classes.lineDot} src={lineDot} alt="lineDot" />
-              <div className={classes.right}>
-                <div className={classes.card}>
-                  <p>00</p>
-                </div>{" "}
-                <h1>:</h1>
-                <div className={classes.card}>
-                  <p>00</p>
-                </div>
-              </div>
-            </div>
           </div>
           <label>Location</label>
           <input type="text" placeholder="Search..." value={location} onChange={(e) => setLocation(e.target.value)} />
           <label>Notes</label>
           <textarea placeholder="Notes" value={notes} onChange={(e) => setNotes(e.target.value)}></textarea>
           <div className={classes.btns}>
-            <button className={classes.cancel}>Cancel</button>
+            <Link to="/family-log"><button className={classes.cancel}>Cancel</button></Link>
             <button className={classes.create} onClick={addLog}>Create</button>
           </div>
         </div>
