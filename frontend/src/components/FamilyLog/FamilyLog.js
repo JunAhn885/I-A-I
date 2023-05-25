@@ -53,8 +53,9 @@ function LogCardByMonth(props) {
 */
 
 const FamilyLog = () => {
-  const [toggleMonth, setIsToggleMonth] = useState(5);
-  const [toggleYear, setIsToggleYear] = useState(2023);
+  const today = new Date();
+  const [toggleMonth, setIsToggleMonth] = useState(today.getMonth() + 1);
+  const [toggleYear, setIsToggleYear] = useState(today.getFullYear());
   const [logs, setLogs] = useState([]);
 
   const user = localStorage.getItem("user");
