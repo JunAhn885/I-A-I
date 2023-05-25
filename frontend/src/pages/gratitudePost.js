@@ -29,7 +29,7 @@ const GratitudePost = (props) => {
     return (
         <div className="gratitude-post">
             <Navbar/>
-            <h1>Hi, {user.name}, are you grateful for anything your partner did for you today?</h1>
+            <h1>Hi {user.name}, are you grateful for anything your partner did for you today?</h1>
             <div className="tab-gratitudepost">
                   <h1>{props.pageName}</h1>
             </div>
