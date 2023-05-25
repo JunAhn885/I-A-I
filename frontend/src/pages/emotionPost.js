@@ -51,7 +51,7 @@ export default function EmotionPost(props){
       } else if (content === null) {
         alert("cannot save empty notes!")
       } else {
-        const response = await UserService.addEmotionPost(user.id, props.value, "Emotion", content, emotion);
+        const response = await UserService.addEmotionPost(user.id, user, props.value, "Emotion", content, emotion);
         console.log(response)
         return navigate("../bonding-journal")
       }

@@ -20,7 +20,7 @@ const GratitudePost = (props) => {
         if (content === "") {
             alert("cannot save empty notes!")
         } else {
-            const response = await UserService.addGratitudePost(user.id, props.value, "Gratitude", content);
+            const response = await UserService.addGratitudePost(user.id, user, props.value, "Gratitude", content);
             console.log(response);
             return navigate("../bonding-journal")
         }
