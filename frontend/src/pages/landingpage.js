@@ -20,7 +20,7 @@ export default function LandingPage() {
       linkedIn:""
     },
     {
-      image:"",
+      image:"./images/member_headshots/Helen.jpg",
       name:"Helen Li",
       role:"Developer",
       linkedIn:""

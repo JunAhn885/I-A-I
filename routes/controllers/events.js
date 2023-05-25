@@ -10,11 +10,14 @@ router.get('/', async function(req, res, next) {
         if (req.query.id) {
             let user = await req.models.User.findOne({_id: req.query.id})
             let family = await req.models.Family.findOne({_id: user.family});
+            console.log(family)
             let allEvents = [];
             for (const event of family.events) {
-                let fullEvent = await req.models.Event.find({_id: event});
-                fullEvent = fullEvent[0];
-                if (fullEvent.date.getMonth() == req.query.month && fullEvent.date.getFullYear() == req.query.year) {
+                let fullEvent = await req.models.Event.findOne({_id: event});
+                console.log(fullEvent)
+                let month = fullEvent.date.getMonth();
+                let year = fullEvent.date.getFullYear();
+                if (month == req.query.month && year == req.query.year) {
                         allEvents.push(fullEvent);    
                     }
             };

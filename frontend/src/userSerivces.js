@@ -11,7 +11,7 @@ const addEmotionPost = (id, date, type, content, emotion) => axios.post(`${serve
 const addGratitudePost = (id, date, type, content) => axios.post(`${serverUrl}/posts/add-post`, {id: id, date:date, type:type, content:content});
 
 // events are for family log
-const addLog = (id, date, eventName, location, notes) => axios.post(`${serverUrl}/events/add-log`, {id: id, date: date, eventName: eventName, location: location, notes: notes});
+const addLog = (id, date, eventName, location, notes) => axios.post(`${serverUrl}/events/add-log`, {id: id, date: date, title: eventName, location: location, notes: notes});
 
 const getLog = (id, month, year) => axios.get(`${serverUrl}/events/?id=${id}&month=${month}&year=${year}`);
 
