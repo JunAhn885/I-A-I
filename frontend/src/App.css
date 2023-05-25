@@ -858,8 +858,8 @@ a:-webkit-any-link {
 .right-content {
   display: flex;
   flex-direction: column;
-  width: 58%;
-  margin-left: 30px;
+  width: 59%;
+  margin-left: 20px;
   margin-bottom: 40px;
   margin-top: 150px;
   overflow: auto;
@@ -873,6 +873,7 @@ a:-webkit-any-link {
 
 /*CSS for the Bonding Journal Gratitude Box-------------------------*/
 .bonding-journal-gratitude-box {
+  display: flex;
   margin:0 auto;
   background: #81644A;
   width: 541px;
@@ -901,6 +902,13 @@ a:-webkit-any-link {
   padding: 30px;
   inline-size: 460px;
   overflow-wrap: break-word;
+}
+
+.bonding-journal-gratitude-box > p {
+  font-size: 19px;
+  color: #FFFFFF;
+  margin-right: 13px;
+  margin-top: 10px;
 }
 
 /*CSS for the Bonding Journal Emotion Box-------------------------*/
@@ -946,6 +954,13 @@ a:-webkit-any-link {
   overflow-wrap: break-word;
 }
 
+.bonding-journal-emotion-box > p {
+  font-size: 19px;
+  color: #FFFFFF;
+  margin-right: 10px;
+  margin-top: -70px;
+  
+}
 /*CSS for the addUser modal*/
 .adduser-modal {
   display: flex;
@@ -990,12 +1005,13 @@ a:-webkit-any-link {
 .adduser-modal-overlay {
   position: absolute;
   margin: auto;
-  top: 0;
-  left:-50%;
+  top:0;
+  left:0;
   bottom:0;
+  right:0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 4;
 }
 
