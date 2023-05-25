@@ -33,9 +33,9 @@ const BondingJournal = (props) => {
     // iterate through the list received, then check each object and if the type === Gratitude, return gratitudebox component, and if Emotion, return emotionbox component. If object is empty, print "No Notes to display, add more notes".
     const boxElements = journal.length > 0 ? journal.map(item => {
         if (item.type === "Gratitude"){
-          return <GratitudeBox content={item.content} />
+          return <GratitudeBox author={item.firstname} content={item.content} />
         } else if (item.type === "Emotion"){
-          return <EmotionBox content={item.content} emotion={item.emotion}/>
+          return <EmotionBox author={item.firstname} content={item.content} emotion={item.emotion}/>
         } else {
           return null;
         }

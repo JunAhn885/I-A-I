@@ -53,8 +53,8 @@ function LogCardByMonth(props) {
 */
 
 const FamilyLog = () => {
-  const [toggleMonth, setIsToggleMonth] = useState(new Date().getMonth());
-  const [toggleYear, setIsToggleYear] = useState(new Date().getYear());
+  const [toggleMonth, setIsToggleMonth] = useState(5);
+  const [toggleYear, setIsToggleYear] = useState(2023);
   const [logs, setLogs] = useState([]);
 
   const user = localStorage.getItem("user");
@@ -63,6 +63,8 @@ const FamilyLog = () => {
   const showMonthData = index => {
     setIsToggleMonth(index);
   };
+
+  console.log(toggleMonth, toggleYear)
 
   const showYearData = (id) => {
     setIsToggleYear(id);
@@ -74,7 +76,6 @@ const FamilyLog = () => {
 
   useEffect(() => {
     const showMonthData = async (index) => {
-      setIsToggleMonth(index);
       const response = await UserService.getLog(userObj.id, toggleMonth, toggleYear);
       setLogs(response.data);
       console.log(response.data);
@@ -90,10 +91,7 @@ const FamilyLog = () => {
         </div>
         <div className={classes.right}>
           <div className={classes.years}>
-            <div
-            onClick={() => {
-              showYearData(2021);
-            }}
+            <div onClick={() => {showYearData(2021);}}
             className={
               toggleYear === 2021
                 ? `${classes.arrow} ${classes.arrowActive}`
@@ -282,7 +280,7 @@ const FamilyLog = () => {
             <span>+</span>
           </Link>
         </div>
-      <div>  
+      <div>
         {showLog}
       </div>  
       </div>
