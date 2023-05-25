@@ -32,7 +32,7 @@ export default function LandingPage() {
       linkedIn:""
     },
     {
-      image:"",
+      image:"./images/member_headshots/Yuemin.jpg",
       name:"Yuemin Cao",
       role:"UX Designer",
       linkedIn:""

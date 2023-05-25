@@ -35,7 +35,6 @@ const AddLog = () => {
         // handle errors here
       }
     }
-    
   }
 
   return (
