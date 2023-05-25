@@ -6,9 +6,7 @@ import AddFamilyModal from "./addFamilyModal"
 export default function Navbar(){
     
     // states
-    const [addFamily, setAddFamily] = useState("");
     const [openModal, setOpenModal] = useState(false);
-
 
     const handleLogout = async () => {
         localStorage.removeItem('user');
