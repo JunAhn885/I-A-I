@@ -71,7 +71,7 @@ export default function EmotionPost(props){
         <div className='emotion-post'>
             <div className='content-box'>
               <Navbar/>
-                <h1>Hi, {user.name}, how are you feeling today?</h1>
+                <h1>Hi {user.name}, how are you feeling today?</h1>
                 <div className="tab-emotionpost">
                   <h1>{props.pageName}</h1>
                 </div>

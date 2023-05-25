@@ -4,18 +4,14 @@ import bcrypt from 'bcrypt';
 
 // GET user info
 router.get('/', async function(req, res, next) {
-    let thisSession = req.session;
-    if (thisSession.user){
-        res.json({
-            status: "loggedin",
-            userInfo: {
-                name: thisSession.user.name,
-                username: thisSession.user.username
-            }
-        })
-    } else {
-        res.json({ status: "loggedout" });
+    try {
+        let res = await req.models.User.findOne({_id: req.body.id});
+        res.status(200).json({success: true, user: res}); 
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({success: false, error: err});
     }
+    
 })
 
 // POST new user
