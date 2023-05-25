@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 // GET user info
 router.get('/', async function(req, res, next) {
     try {
-        let res = await req.models.User.findOne({_id: req.body.id});
+        let res = await req.models.User.findOne({_id: req.query.id});
         res.status(200).json({success: true, user: res}); 
     } catch (err) {
         console.log(err);
