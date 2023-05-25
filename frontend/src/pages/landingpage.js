@@ -17,7 +17,7 @@ export default function LandingPage() {
       image:"./images/member_headshots/Matthew.jpg",
       name:"Matthew Khoo",
       role:"Developer",
-      linkedIn:""
+      linkedIn:"https://www.linkedin.com/in/matthew-khoo-2b347522a/"
     },
     {
       image:"./images/member_headshots/Helen.jpg",
@@ -29,7 +29,7 @@ export default function LandingPage() {
       image:"./images/member_headshots/Allen.jpg",
       name:"Allen Liu",
       role:"Poduct Manager",
-      linkedIn:""
+      linkedIn:"https://www.linkedin.com/in/xu-liu-644666225/"
     },
     {
       image:"./images/member_headshots/Yuemin.jpg",
@@ -46,6 +46,12 @@ export default function LandingPage() {
   return (
     <div className="LandingPage">
         <Header/>
+        <div className="Landingpage-textbox" style={{marginTop: "12%", alignItems:"center"}}>
+          <h1>About Us</h1>
+          <p>It is common that when couples become parents for the first time their relationship experiences more strain and stress as they navigate new challenges. 
+            Our project is centred around growing stronger bonds within young families by improving communication between partners and bringing into the spotlight 
+            memorable experiences. Our solution creates a fun experience for couples to share and record memories so that their relationship continues to grow alongside their child. </p>
+        </div>
         <Box1/>
         <Box2/>
         <Box3/>
