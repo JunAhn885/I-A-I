@@ -16,6 +16,7 @@ router.put('/update-family', async (req, res) => {
             }
             family.members.push(userToAdd._id);
             family.posts = family.posts.concat(userToAddFamily.posts);
+            family.events = family.events.concat(userToAddFamily.events);
             userToAdd.family = family._id;
 
             await family.save();
