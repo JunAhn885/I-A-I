@@ -28,6 +28,7 @@ async function main(){
         name: String, //get from google auth
         familyName: String, //get from google auth
         password: String, //hash the password before saving to db
+        salt: String, //salt used to hash password
         family: {type: mongoose.Schema.Types.ObjectId, ref: 'Family'},
         posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}], //for private posts
         DateCreated: Date,

@@ -54,10 +54,10 @@ export default function Login(props) {
         navigate('/bonding-journal');;
       } else {
         console.log('Login failed');
-        alert('Wrong username or password');
+        alert(res.data.message);
       }
     } catch (err) {
-      alert('login failed')
+      //alert('login failed')
       console.log(err);
     }
   }

@@ -16,14 +16,16 @@ router.get('/', async function(req, res, next) {
 
 // POST new user
 router.post('/', async function(req, res, next) {
+    console.log(req.body)
     try {
-        salt = await bcrypt.genSalt(10);
-        hashedPassword = await bcrypt.hash(req.body.password, salt);
+        let salt = await bcrypt.genSalt(10);
+        let hashedPassword = await bcrypt.hash(req.body.password, salt);
         const newUser = new req.models.User({
             username: req.body.username,
             name: req.body.name,
             familyName: req.body.familyName,
             password: hashedPassword,
+            salt: salt,
         });
         const newFamily = new req.models.Family({
             name: req.body.familyName,

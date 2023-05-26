@@ -128,14 +128,19 @@ app.post('/auth/google', async (req, res) => {
 app.post('/auth/login', async (req, res) => {
     try {
         let user = await req.models.User.findOne({username: req.body.username});
-        bycrypt.compare(req.body.password, user.password, function(err, result) {
-            if (result) {
-                req.session.user = user;
-                res.json({success: true, name: req.session.user.name, username: req.session.user.username})
+        if(!user){
+            res.status(401).json({success: false, message: "Invalid username"});
+        } else {
+            let hashedPassword = await bcrypt.hash(req.body.password, user.salt);
+            if(hashedPassword === user.password){
+                req.session.authenticated = true;
+                req.session.save();
+                res.status(200).json({success: true, user: user, token: jwt.sign({user: user}, JWT_SECRET, {expiresIn: '1d'})})
             } else {
-                res.status(401).json({success: false, message: "Invalid username or password"});
+                res.status(401).json({success: false, message: "Invalid password"});
             }
-        });
+        }    
+        
     } catch (err) {
         console.log(err);
         res.status(401).json({success: false, message: "Invalid username or password"});

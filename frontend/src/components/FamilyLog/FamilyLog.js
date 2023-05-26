@@ -13,9 +13,9 @@ function LogCardPast(props) {
   let logLocation = props.location
 
   return (
-    <div>
+    <div className={classes.LogCardPast}>
       <div className={
-        props.toggleMonth == props.month
+        props.toggleMonth === props.month
           ? `${classes.data} ${classes.findActiveContent}`
           : `${classes.data}`
       }></div>
@@ -32,6 +32,7 @@ function LogCardPast(props) {
     </div>
   );
 }
+
 
 function LogCardByMonth(props) {
   let monthNum = props.month;
