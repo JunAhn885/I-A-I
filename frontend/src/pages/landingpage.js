@@ -32,7 +32,7 @@ export default function LandingPage() {
       linkedIn:"https://www.linkedin.com/in/xu-liu-644666225/"
     },
     {
-      image:"",
+      image:"./images/member_headshots/Yuemin.jpg",
       name:"Yuemin Cao",
       role:"UX Designer",
       linkedIn:""
