@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import classes from "./FamilyLog.module.css";
 import foot from "./../../img/foot.svg";
 import line from "./../../img/line.svg";
-import baby from "./../../img/baby.png";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import UserService from "../../userSerivces";
@@ -14,9 +13,9 @@ function LogCardPast(props) {
   let logLocation = props.location
 
   return (
-    <div>
+    <div className={classes.LogCardPast}>
       <div className={
-        props.toggleMonth == props.month
+        props.toggleMonth === props.month
           ? `${classes.data} ${classes.findActiveContent}`
           : `${classes.data}`
       }></div>
@@ -33,6 +32,7 @@ function LogCardPast(props) {
     </div>
   );
 }
+
 
 function LogCardByMonth(props) {
   let monthNum = props.month;

@@ -3,7 +3,6 @@ import UserService from "../../userSerivces";
 
 const AddFamilyModal = (props) => {
     const [userName, setUserName] = useState("");
-    console.log(userName)
 
     const usernameHandler = event => {
         setUserName(event.target.value)
@@ -11,15 +10,19 @@ const AddFamilyModal = (props) => {
 
     const addUserToggle = async() => {
         let user = JSON.parse(localStorage.getItem('user'));
-        const res = await UserService.updateFamily(user.id, userName)
-        if (res.status === 400) {
-            alert("Cannot find user. please enter a valid username")
-        } else if (res.status === 500) {
-            alert("Error: " + res.message)
-        } else if (res.status === 401) {
-            alert("You must be logged in to add a user to your family")
-        } else {
-            alert("User added to family")
+        try {
+            const response = await UserService.updateFamily(user.id, userName);
+          } catch (error) {
+            let response = error.response
+            if (response.status === 400) {
+                alert("Cannot find user. Please enter a valid username");
+              } else if (response.status === 500) {
+                alert("Error: " + response.data.message);
+              } else if (response.status === 401) {
+                alert("You must be logged in to add a user to your family");
+              } else {
+                alert("User added to the family");
+              }
         }
     }
 
