@@ -39,21 +39,25 @@ const Modal = (props) => {
                    retypePassword === "") {
             alert("please fill out all input fields!")
         } else {
-            props.setOpenModal(false);
+            
             //make axios call to backend to create new user
             try {
-                const rest = await axios.post("/api/user/", {
+                console.log('making user')
+                const res = await axios.post("http://localhost:8080/api/user/", {
                     username: email,
                     name: fname,
                     familyName: lname,
                     password: password,
                 });
-                if (rest.data.success){
+                if (res.data.success){
                     alert("Account created successfully!");
+                } else {
+                    alert("Account creation failed!");
                 }
             } catch (err) {
                 console.log(err);
             }
+            props.setOpenModal(false);
         }
     }
     
@@ -75,7 +79,7 @@ const Modal = (props) => {
             <label for="password-retype">Retype Your Password:</label>
             <input value={retypePassword} onChange={retypePasswordHandler} type="text" id="password-retype" name="password-retype" placeholder="Password"></input>
 
-            <button className="modal-signup"onClick={singUpToggle}>Sign Up</button>
+            <button className="modal-signup" onClick={singUpToggle}>Sign Up</button>
         </dialog>
     )
 }
