@@ -6,6 +6,7 @@ import Header from "../Header/Header";
 import UserService from "../../userSerivces"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
+import Navbar from "../shared/navbar2"
 
 const AddLog = () => {
   const [date, setDate] = useState(new Date());
@@ -38,8 +39,8 @@ const AddLog = () => {
 
   return (
     <div>
-      <Header/>
       <div className={classes.addLogTop}>
+      <Navbar/>
         <div className={classes.pageName}>
           <h1>Family Log</h1>
         </div>

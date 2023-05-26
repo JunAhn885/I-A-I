@@ -84,6 +84,10 @@ line-height: 44px;
   margin: auto;
   border-radius: 30px;
   margin-bottom: 100px;
+  margin-top: 170px;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 .familyLogTop .rowTop {
@@ -195,6 +199,7 @@ line-height: 44px;
   flex-direction: column; /* Add this */
   align-items: center; /* Add this to center align the cards */
   padding: 20px; /* Add some padding if necessary */
+  margin-top: 20px;
 }
 
 .familyLogTop .LogCardPast .card {
