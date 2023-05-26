@@ -43,7 +43,7 @@ const Modal = (props) => {
             //make axios call to backend to create new user
             try {
                 console.log('making user')
-                const res = await axios.post("http://localhost:8080/api/user/", {
+                const res = await axios.post("https://squid-app-hq6q4.ondigitalocean.app/api/user/", {
                     username: email,
                     name: fname,
                     familyName: lname,

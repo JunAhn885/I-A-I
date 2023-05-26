@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser';
 import {OAuth2Client} from 'google-auth-library';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import functions from 'firebase-functions'
 import {SESSION_SECRET, MONGODB_USERNAME, MONGODB_PASSWORD, CLIENT_ID, CLIENT_SECRET, JWT_SECRET} from './credentials.js';
 
 import apiRouter from './routes/api.js';
@@ -15,6 +16,7 @@ import apiRouter from './routes/api.js';
 var app = express();
 
 const PORT = process.env.PORT || 8080;
+const origin = process.env.ORIGIN || `http://localhost:${PORT}`;
 
 const client = new OAuth2Client(CLIENT_ID);
 
@@ -55,7 +57,7 @@ app.use(session({
 }));
 
 app.use(cors({
-  origin: true, // Replace with the actual URL of your frontend application
+  origin: true, 
   credentials: true, // Allow cookies to be sent across origins
 }));
 app.use(express.json());
@@ -80,9 +82,7 @@ app.post('/test-user', function(req, res, next) {
 });
         
 app.get('/session-info', (req, res) => {
-    //req.session.test = true;
     res.send(req.session);
-    //req.session.destroy();
 });
 
 app.post('/auth/google', async (req, res) => {
@@ -155,13 +155,14 @@ app.post('/logout', (req, res) => {
             res.sendStatus(500);
         } else {
             res.clearCookie('connect.sid');
-            res.redirect('http://localhost:3000/login');  
+            res.redirect(origin + '/login');  
         }
     });     
 });
 
-app.listen(PORT, function () {
-    console.log("Express server listening on port", PORT);
-});
+// app.listen(PORT, function () {
+//     console.log("Express server listening on port", PORT); //don't need this for firebase
+// });
+
 
 export default app;

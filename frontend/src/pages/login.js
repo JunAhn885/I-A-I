@@ -23,7 +23,7 @@ export default function Login(props) {
     console.log('userObject', userObject);
     try{
       if (response.credential) {
-        const res = await axios.post('http://localhost:8080/auth/google', {token: response.credential}, {withCredentials: true});
+        const res = await axios.post('https://squid-app-hq6q4.ondigitalocean.app/auth/google', {token: response.credential}, {withCredentials: true});
         const setCookieHeader = res.headers['set-cookie'];
         console.log('Set-Cookie Header:', setCookieHeader);
         if (res.data.success) {
@@ -45,7 +45,7 @@ export default function Login(props) {
   // handeler for normal login
   const handleLogin = async () => {
     try {
-      const res = await axios.post('http://localhost:8080/auth/login', { username: username, password: password });
+      const res = await axios.post('https://squid-app-hq6q4.ondigitalocean.app/auth/login', { username: username, password: password });
       if (res.data.success) {
 
         let meta = {id: res.data.user._id, name: res.data.user.name, familyName: res.data.user.familyName};
