@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import classes from "./AddLog.module.css";
-import lineDot from "./../../img/lineDot.svg";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Header from "../Header/Header";
