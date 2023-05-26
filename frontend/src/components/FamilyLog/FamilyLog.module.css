@@ -160,6 +160,7 @@ line-height: 44px;
 .details {
   width: 95%;
   margin: auto;
+  height: auto;
 }
 .details .addLog {
   display: flex;
@@ -186,7 +187,7 @@ line-height: 44px;
   margin-bottom: 22px;
 }
 .familyLogTop .LogCardPast {
-  width: 972px;
+  width: 75%;
   height: auto; /* Change to auto to accommodate all cards */
   background: #FFD3AC;
   border-radius: 20px;
@@ -197,13 +198,14 @@ line-height: 44px;
 }
 
 .familyLogTop .LogCardPast .card {
-  width: 916px;
+  width: 100%;
   height: 246px;
   background: #FFB06B;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   margin: auto; /* Add some margin if necessary */
   position: relative; /* Change from absolute to relative */
+  display: flex; 
 }
 
 .familyLogTop .LogCardPast .card .text {
@@ -226,4 +228,20 @@ line-height: 44px;
   color: white;
   margin:5%;
   font-size: 0.5em;
+}
+
+.LogCardPast {
+  margin: 15px;
+  margin-left: 0%;
+}
+
+.log {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 0px;
+  padding-bottom: 30px !important;
+  height: auto;
 }

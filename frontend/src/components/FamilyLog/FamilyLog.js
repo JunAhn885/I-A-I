@@ -23,9 +23,9 @@ function LogCardPast(props) {
         <div className={classes.lineLeft}></div>
         <div className={classes.cardInner}>
           <div className={classes.text}>
-            <h2>{logTitle}</h2>
-            <p>{logContent}</p>
-            <p>{logLocation}</p>
+            <h2 style={{marginBottom: "0"}}>{logTitle}</h2>
+            <p style={{marginTop: "3px", marginBottom: "0", fontSize: "20px", color: "#A1A1A1"}}>{logLocation}</p>
+            <p style={{marginTop:"5px"}}>{logContent}</p>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@ const FamilyLog = () => {
   const user = localStorage.getItem("user");
   const userObj = JSON.parse(user);
 
-  const [toggleMonth, setIsToggleMonth] = useState(today.getMonth() + 1);
+  const [toggleMonth, setIsToggleMonth] = useState(today.getMonth());
   const [toggleYear, setIsToggleYear] = useState(today.getFullYear());
   const [logs, setLogs] = useState([]);
 
@@ -71,7 +71,7 @@ const FamilyLog = () => {
 
   const showLog = logs.length > 0 ? logs.map(logs => {
     return <LogCardPast title={logs.title} description={logs.description} location={logs.location} month={logs.month} toggleMonth={toggleMonth}/>;
-  }) : <p className="no-notes-display-family-log">No Notes to display for this day. Add more posts or select a different day to display notes!</p>;
+  }) : <p style={{color: "#8b8888", fontSize: "24px", fontWeight: "500"}} className="no-notes-display-family-log">No Notes to display for this day. Add more events or select a different day to display events!</p>;
 
   useEffect(() => {
     const showMonthData = async (index) => {
@@ -273,15 +273,15 @@ const FamilyLog = () => {
         </div>
       </div>
 
-      <div className={classes.details}>
+      <div style={{height: "auto"}}className={classes.details}>
         <div className={classes.addLog}>
           <Link to="/add-Log">
             <span>+</span>
           </Link>
         </div>
-      <div>
-        {showLog}
-      </div>  
+        <div className={classes.log}>
+          {showLog}
+        </div>  
       </div>
     </div>
   );

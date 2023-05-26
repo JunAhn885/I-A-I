@@ -160,9 +160,9 @@ app.post('/logout', (req, res) => {
     });     
 });
 
-// app.listen(PORT, function () {
-//     console.log("Express server listening on port", PORT); //don't need this for firebase
-// });
+app.listen(PORT, function () {
+    console.log("Express server listening on port", PORT); //don't need this for firebase
+});
 
 
 export default app;

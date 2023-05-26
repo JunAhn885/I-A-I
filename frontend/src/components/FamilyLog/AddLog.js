@@ -45,7 +45,7 @@ const AddLog = () => {
         </div>
         <div className={classes.addMainContent}>
           <label>Event name</label>
-          <input type="text" placeholder="Event Name" value={eventName} onChange={(e) => setEventName(e.target.value)} />
+          <input style={{color: "#8b8888", fontSize: "24px", fontWeight: "500"}} type="text" placeholder="Event Name" value={eventName} onChange={(e) => setEventName(e.target.value)} />
           <label>Date & Time</label>
           <div className={classes.datePicker}>
             <div className="addlog-calendar">
@@ -53,9 +53,9 @@ const AddLog = () => {
             </div>
           </div>
           <label>Location</label>
-          <input type="text" placeholder="Search..." value={location} onChange={(e) => setLocation(e.target.value)} />
+          <input style={{color: "#8b8888", fontSize: "24px", fontWeight: "500"}} type="text" placeholder="Search..." value={location} onChange={(e) => setLocation(e.target.value)} />
           <label>Notes</label>
-          <textarea placeholder="Notes" value={notes} onChange={(e) => setNotes(e.target.value)}></textarea>
+          <textarea style={{color: "#8b8888", fontSize: "24px", fontWeight: "500"}} placeholder="Notes" value={notes} onChange={(e) => setNotes(e.target.value)}></textarea>
           <div className={classes.btns}>
             <Link to="/family-log"><button className={classes.cancel}>Cancel</button></Link>
             <button className={classes.create} onClick={addLog}>Create</button>
