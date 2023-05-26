@@ -5,7 +5,7 @@ import line from "./../../img/line.svg";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import UserService from "../../userSerivces";
-import Navbar from "../shared/navbar"
+import Navbar from "../shared/navbar2"
 
 
 function LogCardPast(props) {

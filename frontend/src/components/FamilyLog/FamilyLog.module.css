@@ -85,6 +85,9 @@ line-height: 44px;
   border-radius: 30px;
   margin-bottom: 100px;
   margin-top: 170px;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 .familyLogTop .rowTop {
@@ -235,3 +238,4 @@ line-height: 44px;
   flex-direction: column;
   align-items: center;
 }
+
