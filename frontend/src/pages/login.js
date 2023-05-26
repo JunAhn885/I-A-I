@@ -57,7 +57,7 @@ export default function Login(props) {
         alert(res.data.message);
       }
     } catch (err) {
-      alert('login failed')
+      //alert('login failed')
       console.log(err);
     }
   }
