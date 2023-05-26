@@ -77,8 +77,8 @@ const FamilyLog = () => {
   }
 
   return (
-    <div className={classes.familyLogTop}>
-      <Navbar/>
+    <div style={{marginTop: "80px"}} className={classes.familyLogTop}>
+      <Navbar style={{marginTop: "-60px"}} className={classes.FamilyLog}/>
       <div className={classes.rowTop}>
         <div className={classes.left}>
           <img src={foot} alt="foot" />

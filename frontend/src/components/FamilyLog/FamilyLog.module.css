@@ -79,7 +79,7 @@ line-height: 44px;
   background: rgba(253, 253, 253, 0.5);
   backdrop-filter: blur(25px);
   width: 90%;
-  max-width: 1300px;
+  max-width: 1150px;
   padding-bottom: 30px;
   margin: auto;
   border-radius: 30px;
@@ -249,4 +249,8 @@ line-height: 44px;
   padding: 50px 0px;
   padding-bottom: 30px !important;
   height: auto;
+}
+
+.familyLog {
+  margin-top: -60px;
 }

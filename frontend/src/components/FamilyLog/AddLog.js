@@ -6,7 +6,7 @@ import Header from "../Header/Header";
 import UserService from "../../userSerivces"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
-import Navbar from "../shared/navbar2"
+import Navbar from "../shared/navbar3"
 
 const AddLog = () => {
   const [date, setDate] = useState(new Date());

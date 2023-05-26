@@ -440,7 +440,7 @@ a:-webkit-any-link {
   display:flex;
   justify-content: flex-end;
   list-style: none;
-  margin-top: -120px;
+  margin-top: -60px;
   margin-bottom: 110px;
   position:relative
 }
@@ -454,6 +454,28 @@ a:-webkit-any-link {
 }
 
 .navbar2 li:hover{
+  color: #000000;
+  cursor: pointer;
+}
+
+.navbar3{
+  display:flex;
+  justify-content: flex-end;
+  list-style: none;
+  margin-top: -120px;
+  margin-bottom: 110px;
+  position:relative
+}
+
+.navbar3 li {
+  margin-right: 30px;
+  font-style: normal;
+  font-weight: 340;
+  font-size: 24px;
+  color: #797979;
+}
+
+.navbar3 li:hover{
   color: #000000;
   cursor: pointer;
 }
