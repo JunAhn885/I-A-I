@@ -1,7 +1,7 @@
 import { typeImplementation } from '@testing-library/user-event/dist/type/typeImplementation';
 import axios from 'axios';
 
-const serverUrl = 'https://squid-app-hq6q4.ondigitalocean.app/';
+const serverUrl = 'http://localhost:8080/api';
 
 // posts for bonding journal 
 const getBJPosts = (id, year, month, day) => axios.get(`${serverUrl}/posts?id=${id}&year=${year}&month=${month}&day=${day}`);

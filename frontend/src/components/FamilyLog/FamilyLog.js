@@ -5,6 +5,7 @@ import line from "./../../img/line.svg";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import UserService from "../../userSerivces";
+import Navbar from "../shared/navbar"
 
 
 function LogCardPast(props) {
@@ -33,31 +34,12 @@ function LogCardPast(props) {
   );
 }
 
-
-function LogCardByMonth(props) {
-  let monthNum = props.month;
-
-  return (
-    <div className={
-      props.toggleMonth === {monthNum}
-        ? `${classes.data} ${classes.findActiveContent}`
-        : `${classes.data}`
-    }>
-      <LogCardPast title={props.title} description={props.description} location={props.location} />;
-    </div>
-  );
-}
-
-/*<LogCardUpcoming title="Doctor’s appointment" time="06/15/2023"/>
-  <LogCardUpcoming title="Doctor’s appointment" time="01/31/2024"/>
-*/
-
 const FamilyLog = () => {
   const today = new Date();
   const user = localStorage.getItem("user");
   const userObj = JSON.parse(user);
 
-  const [toggleMonth, setIsToggleMonth] = useState(today.getMonth() + 1);
+  const [toggleMonth, setIsToggleMonth] = useState(today.getMonth());
   const [toggleYear, setIsToggleYear] = useState(today.getFullYear());
   const [logs, setLogs] = useState([]);
 
@@ -82,8 +64,21 @@ const FamilyLog = () => {
     showMonthData();
   }, [toggleMonth, toggleYear])
 
+  const contentStyle = {
+    display: 'flex', 
+    flexDirection: 'column', 
+    alignItems: 'center',
+  }
+
+  const test = {
+    color: 'blue',
+   lineHeight: 10,
+   padding: '1.5em',
+  }
+
   return (
     <div className={classes.familyLogTop}>
+      <Navbar/>
       <div className={classes.rowTop}>
         <div className={classes.left}>
           <img src={foot} alt="foot" />
@@ -279,7 +274,7 @@ const FamilyLog = () => {
             <span>+</span>
           </Link>
         </div>
-      <div>
+      <div className="family-log-content" style={contentStyle}>
         {showLog}
       </div>  
       </div>
